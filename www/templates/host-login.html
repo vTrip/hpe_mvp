@@ -1,17 +1,15 @@
-<ion-view hide-nav-bar="true">
+<ion-view hide-nav-bar="true" ng-controller="LoginCtrl">
   <ion-content>
     <div class="host-login" >
       <div class="host-login--panel">
           <div class="host-login--content">
-              <h2>Welcome to</h2>
-              <h1>The Chairman's Club</h1>
-              <a href="#/menu">
-                <form id="form-login">
-                    <input id="form-login-password" type="password" placeholder="Password" autofocus>
-                    <input type="submit" style="position: absolute; left: -9999px" data-role="none" />
-                </form>
-              </a>
-              <div class="host-login--logo"></div>
+            <h2>Welcome to</h2>
+            <h1>The Chairman's Club</h1>
+            <form id="form-login" ng-submit="login()">
+                <input id="form-login-password" type="password" placeholder="Password" autofocus>
+                <input type="submit" style="position: absolute; left: -9999px" data-role="none" />
+            </form>
+            <div class="host-login--logo"></div>
           </div>
           <div class="shim"></div>
       </div>
