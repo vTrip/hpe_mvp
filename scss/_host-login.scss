@@ -1,0 +1,49 @@
+.host-login {
+    position: relative;
+    height: 100%;
+    background: url("../assets/background-login.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    &--panel {
+        position: relative;
+        margin: 4 * $space 4 * $space;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &--content {
+        background-color: rgba(255, 255, 255, 0.86);
+        padding: 16px;
+    }
+
+    &--logo {
+        margin: 0 auto 32px auto;
+        width: 124px;
+        height: 52px;
+        background: url("../assets/logo-hp-enterprise.png") no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    form {
+        margin: 90px 0;
+    }
+
+    .shim {
+        height: 128px;
+    }
+}

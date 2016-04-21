@@ -22,3 +22,31 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.config(function ($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider) {
+
+  $stateProvider
+
+  .state('login', {
+    url: '/',
+    templateUrl: 'templates/host-login.html',
+  })
+
+  .state('menu', {
+    url: '/menu',
+    templateUrl: 'templates/host-menu.html',
+  })
+
+  .state('games', {
+    url: '/menu/games',
+    templateUrl: 'templates/host-game-list.html',
+  })
+
+  .state('contacts', {
+    url: '/menu/contacts',
+    templateUrl: 'templates/host-contact-list.html',
+  })
+
+  $urlRouterProvider.otherwise("/");
+
+})
