@@ -1,0 +1,21 @@
+.host-game-list
+{
+	
+	&--empty
+	{
+		padding: 128px 8px 0 8px;
+	}
+	
+	&--empty > div
+	{
+		text-align: center;	
+	}
+	
+	.icon-football
+	{
+		font-size: 116px;	
+		color: $bg-colour-1;
+	}
+	
+
+}

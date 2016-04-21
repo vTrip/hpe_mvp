@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html class="show-background">
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="http://code.jquery.com/jquery-1.12.2.min.js"></script>
+</head>
+
+<body>
+    <div class="host-login">
+        <script>
+        $(document).ready(function(event) {
+            $('form:first *:input[type!=hidden]:first').focus();
+        });
+        </script>
+        <div class="host-login--panel">
+            <div class="host-login--content">
+                <h2>Welcome to</h2>
+                <h1>The Chairman's Club</h1>
+                <form id="form-login" method="get" action="host-menu.html">
+                    <input id="form-login-password" type="password" placeholder="Password" autofocus>
+                    <input type="submit" style="position: absolute; left: -9999px" data-role="none" />
+                </form>
+                <div class="host-login--logo"></div>
+            </div>
+            <div class="shim"></div>
+        </div>
+        <!-- /content -->
+    </div>
+</body>
+
+</html>
