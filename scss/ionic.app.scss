@@ -28,10 +28,13 @@ $bg-colour-1: #BCBCBC;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+// Custom Fonts
+@import 'fonts';
+
 // Components
 
 @import 'button-add';
-
 @import 'host-login';
 @import 'host-menu';
 @import 'host-game-list';
