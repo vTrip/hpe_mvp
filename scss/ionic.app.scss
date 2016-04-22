@@ -43,6 +43,7 @@ $bg-colour-1: #BCBCBC;
 @import 'host-login';
 @import 'host-menu';
 @import 'host-game-list';
+@import 'host-game-detail';
 @import 'game-list';
 
 // Base
@@ -95,4 +96,10 @@ a:link, a:visited, a:hover, a:active
 .card
 {
   margin: $space;
+  padding: $space;
+}
+
+.row
+{
+  /*padding: 0;*/
 }
