@@ -21,6 +21,26 @@ angular.module('starter')
     value: [],
   };
 
+  var teams = $scope.teams = [
+    {name: 'Broncos'},
+    {name: 'Bulldogs'},
+    {name: 'Cowboys'},
+    {name: 'Dragons'},
+    {name: 'Eels'},
+    {name: 'Knights'},
+    {name: 'Panthers'},
+    {name: 'Rabbitohs'},
+    {name: 'Raiders'},
+    {name: 'Roosters'},
+    {name: 'Sea-Eagles'},
+    {name: 'Sharks'},
+    {name: 'Storm'},
+    {name: 'Tigers'},
+    {name: 'Titans'},
+    {name: 'Warriors'},
+  ];
+
+
   $scope.reload = function reload() {
     games.$loading = true;
     GamesListService.all().then(function(result) {
@@ -36,24 +56,23 @@ angular.module('starter')
 
   // Add game Modal
 
-  $scope.newGame = {
-    id: games.value.length,
-    date: null,
-    startTime: null,
-    finishTime: null,
-    homeTeam: 'Sea Eagles',
-    awayTeam: null,
-    invited: 0,
-    accepted: 0,
-    declined: 0,
-  }
-
   var addGameModalPromise = $ionicModal.fromTemplateUrl('templates/host-game-add-edit.html', {
     scope: $scope,
     animation: 'slide-in-up'
   });
 
   $scope.addGame = function addGame() {
+    $scope.newGame = {
+      id: games.value.length,
+      date: null,
+      startTime: null,
+      finishTime: null,
+      homeTeam: 'Sea Eagles',
+      awayTeam: null,
+      invited: 0,
+      accepted: 0,
+      declined: 0,
+    }
     addGameModalPromise.then(function(m) {
       m.show();
     });
@@ -61,6 +80,7 @@ angular.module('starter')
 
   $scope.saveGame = function saveGame() {
     GamesListService.create($scope.newGame).then(function() {
+      games.value.push($scope.newGame);
       addGameModalPromise.then(function(m) {
         m.hide();
       });

@@ -15,7 +15,6 @@ angular.module('starter')
   }
 })
 
-
 .factory('GamesListService', function(FakeValue) {
   var games = [
     {
