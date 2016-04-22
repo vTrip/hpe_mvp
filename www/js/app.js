@@ -41,6 +41,11 @@ angular.module('starter', ['ionic'])
     url: '/menu/games',
     templateUrl: 'templates/host-game-list.html',
   })
+  
+  .state('game-detail', {
+      url: '/menu/games/detail',
+      templateUrl: 'templates/host-game-detail.html',
+    })
 
   .state('contacts', {
     url: '/menu/contacts',
