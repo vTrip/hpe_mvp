@@ -9923,6 +9923,19 @@ a.button {
   font-size: 116px;
   color: #BCBCBC; }
 
+.game-list--item {
+  border: 1px solid #95989A;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18); }
+
+.game-list--date {
+  font-size: 24px; }
+
+.game-list--logo-souths {
+  display: inline-block;
+  width: 136px;
+  height: 75px;
+  background: url("../assets/team-logos/logo-souths.png") no-repeat; }
+
 html,
 body {
   margin: 0;
