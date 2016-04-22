@@ -12,3 +12,26 @@ angular.module('starter')
   }
 
 })
+
+.controller('GamesListCtrl', function($scope, GamesListService) {
+
+  var games = $scope.games = {
+    $loading: false,
+    $error: false,
+    value: [],
+  };
+
+  $scope.reload = function reload() {
+    games.$loading = true;
+    GamesListService.all().then(function(result) {
+      games.value = result;
+      games.$loading = false;
+    }).catch(function(err) {
+      games.$error = true;
+      games.$loading = false;
+      console.log(err);
+    })
+  }
+  $scope.reload();
+
+})
