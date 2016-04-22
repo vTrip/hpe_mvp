@@ -10,7 +10,7 @@ angular.module('starter')
 
   return function FakeValue(val) {
     return $timeout(function() {
-      return $q.when(_.cloneDeep(val));
+      return $q.when(val);
     }, delay);
   }
 })
@@ -21,8 +21,8 @@ angular.module('starter')
     {
       id: 0,
       date: '31 Mar',
-      home-team: 'Sea Eagles',
-      away-team: 'Rabbitohs',
+      homeTeam: 'Sea Eagles',
+      awayTeam: 'Rabbitohs',
       invited: 0,
       accepted: 0,
       declined: 0,
