@@ -1,67 +1,69 @@
 <ion-view class="host-game-detail" ng-controller="">
-    <ion-content>
-        <div class="">
-            <div class="ui-bar ui-bar-a" style="height:60px">
-                <div>31 Mar</div>
-                <div>Sea Eagles v Rabbitohs</div>
-            </div>
+  <ion-nav-title>
+    Sea Eagles vs XX
+  </ion-nav-title>
+  <ion-content>
+    <div class="card">
+      <div class="row">
+        <div class="col">
+          <div class="game-list--date">{{formatDate(game.date)}}</div>
+          <div>{{game.homeTeam}}</div>
+          <div>v {{game.awayTeam}}</div>
         </div>
-        <div class="card">
-            <div class="row">
-                <div class="col">
-                    <div class="game-list--date">{{formatDate(game.date)}}</div>
-                    <div>{{game.homeTeam}}</div>
-                    <div>v {{game.awayTeam}}</div>
-                </div>
-                <div class="col">
-                    <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
-                </div>
-                <div class="col">
-                    <div class="game-list--ticket-stat">{{game.invited}} Invited</div>
-                    <div class="game-list--ticket-stat">{{game.accepted}} Accepted</div>
-                    <div class="game-list--ticket-stat">{{game.declined}} Declined</div>
-                </div>
-            </div>
+        <div class="col">
+          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
         </div>
-        <div class="card">
-            <div class="ui-bar">
-                Guest List
-                <div class="ui-bar ui-bar-a" style="height:60px">
-                    <div>No Tickets Found</div>
-                    <div>Please add tickets via 'Manage Tickets' before inviting guests. </div>
-                </div>
-                <div class="ui-grid-b">
-                    <div class="ui-block-a">Gary One
-                        <br>Ticket #1234</div>
-                    <div class="ui-block-b">Accepted</div>
-                    <div class="ui-block-c"><a href="">UNINVITE</a></div>
-                    <div class="ui-block-a">Gary Two
-                        <br>Ticket #1235</div>
-                    <div class="ui-block-b">Declined</div>
-                    <div class="ui-block-c"><a href="">RE-INVITE</a></div>
-                    <div class="ui-block-a">Gary Three
-                        <br>Ticket #1235</div>
-                    <div class="ui-block-b">Pending</div>
-                    <div class="ui-block-c"><a href="">UNINVITE</a></div>
-                    <div class="ui-block-a">Gary Four
-                        <br>Ticket #1235</div>
-                    <div class="ui-block-b">Accepted</div>
-                    <div class="ui-block-c"><a href="">UNINVITE</a></div>
-                    <div class="ui-block-a">Gary Five
-                        <br>Ticket #1235</div>
-                    <div class="ui-block-b"><a href="">REMOVE</a></div>
-                    <div class="ui-block-c"><a href="">INVITE</a></div>
-                </div>
-            </div>
-            <!-- </div> -->
-            <!-- /grid-a -->
+        <div class="col">
+          <div class="game-list--ticket-stat">{{game.invited}} Invited</div>
+          <div class="game-list--ticket-stat">{{game.accepted}} Accepted</div>
+          <div class="game-list--ticket-stat">{{game.declined}} Declined</div>
         </div>
-        <!-- /content -->
-        <div class="button-add" ng-click="addGuest()">
-            <div class="button-add--label">Add Guest</div>
-            <div class="button-add--icon">
-                <i class="icon ion-plus"></i>
-            </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ui-bar">
+        <h1>Guest List</h1>
+        <div class="row" style="height:60px">
+          <div>No Tickets Found</div>
+          <div>Please add tickets via 'Manage Tickets' before inviting guests. </div>
         </div>
-    </ion-content>
+        <div class="row">
+          <div class="col">Gary One
+            <br>Ticket #1234</div>
+          <div class="col">Accepted</div>
+          <div class="col"><a href="">UNINVITE</a></div>
+        </div>
+        <div class="row">
+          <div class="col">Gary Two
+            <br>Ticket #1235</div>
+          <div class="col">Declined</div>
+          <div class="col"><a href="">RE-INVITE</a></div>
+        </div>
+        <div class="row">
+          <div class="col">Gary Three
+            <br>Ticket #1235</div>
+          <div class="col">Pending</div>
+          <div class="col"><a href="">UNINVITE</a></div>
+        </div>
+        <div class="row">
+          <div class="col">Gary Four
+            <br>Ticket #1235</div>
+          <div class="col">Accepted</div>
+          <div class="col"><a href="">UNINVITE</a></div>
+        </div>
+        <div class="row">
+          <div class="col">Gary Five
+            <br>Ticket #1235</div>
+          <div class="col"><a href="">REMOVE</a></div>
+          <div class="col"><a href="">INVITE</a></div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="button-add" ng-click="addGuest()">
+    <div class="button-add--label">Add Guest</div>
+    <div class="button-add--icon">
+      <i class="icon ion-plus"></i>
+    </div>
+  </div>
 </ion-view>
