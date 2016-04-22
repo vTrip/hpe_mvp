@@ -1,0 +1,75 @@
+.team-logo {
+    height: 64px;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    &--broncos {
+    	
+        background-image: url("../assets/team-logos/broncos.png");
+        @extend .team-logo;
+    }
+    &--bulldogs {
+        background-image: url("../assets/team-logos/bulldogs.png");
+        @extend .team-logo;
+    }
+    &--cowboys {
+        background-image: url("../assets/team-logos/cowboys.png");
+        @extend .team-logo;
+    }
+    &--dragons {
+    	
+        background-image: url("../assets/team-logos/dragons.png");
+        @extend .team-logo;
+    }
+    &--eels {
+        background-image: url("../assets/team-logos/eels.png");
+        @extend .team-logo;
+    }
+    &--knights {
+        background-image: url("../assets/team-logos/knights.png");
+        @extend .team-logo;
+    }
+    &--panthers {
+        background-image: url("../assets/team-logos/panthers.png");
+        @extend .team-logo;
+    }
+    &--rabbitohs {
+        background-image: url("../assets/team-logos/rabbitohs.png");
+        @extend .team-logo;
+    }
+    &--raiders {
+        background-image: url("../assets/team-logos/raiders.png");
+        @extend .team-logo;
+    }
+    &--roosters {
+        background-image: url("../assets/team-logos/roosters.png");
+        @extend .team-logo;
+    }
+    &--sea-eagles {
+        background-image: url("../assets/team-logos/sea.png");
+        @extend .team-logo;
+    }
+    &--sharks {
+        background-image: url("../assets/team-logos/sharks.png");
+        @extend .team-logo;
+    }
+    &--storm {
+        background-image: url("../assets/team-logos/storm.png");
+        @extend .team-logo;
+    }
+    &--tigers {
+        background-image: url("../assets/team-logos/tigers.png");
+        @extend .team-logo;
+    }
+    &--titans {
+        background-image: url("../assets/team-logos/titans.png");
+        @extend .team-logo;
+    }
+    &--warriors {
+        background-image: url("../assets/team-logos/warriors.png");
+        @extend .team-logo;
+    }
+}
