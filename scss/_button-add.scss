@@ -1,15 +1,20 @@
 .button-add {
     // Inherit from button?
     position: fixed;
+    z-index: 100;
     bottom: 32px;
     right: 32px;
     height: 56px;
     
     &--label {
-        display: inline-block;
+        display: none;
       	vertical-align: middle;
       	margin-right: $space;
     }
+    
+    &:active &--label {
+    	display: inline-block;
+    };
     
     &--icon {
     	display: inline-block;
