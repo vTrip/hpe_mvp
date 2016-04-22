@@ -34,4 +34,17 @@ angular.module('starter')
   }
   $scope.reload();
 
+  // Add game Modal
+
+  var addGameModalPromise = $ionicModal.fromTemplateUrl('templates/host-game-add-edit.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  $scope.addGame = function addGame() {
+    addGameModalPromise.then(function(m) {
+      m.show();
+    });
+  }
+
 })
