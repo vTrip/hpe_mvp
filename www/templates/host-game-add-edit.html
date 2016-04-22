@@ -1,0 +1,45 @@
+<div id="host-game-add-edit" data-role="page">
+<?php
+    $header_data = ["Add/Edit Game","#host-game-detail","#host-game-detail",2,2];
+    include '_header.php';
+?>
+    <!-- /header -->
+    <div role="main" class="ui-content">
+        <div>
+            <div class="ui-bar">Sea Eagles v</div>
+            <div class="ui-body">
+                <select>
+                    <option>Bulldogs</option>
+                    <option>Sharks</option>
+                    <option>Tigers</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div class="ui-bar">Date</div>
+            <div class="ui-body">
+                <form>
+                    <input type="date" data-clear-btn="false" name="date-1" id="date-1" value="">
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="ui-bar">Time</div>
+            <div class="ui-body">
+                <form>
+                    <input type="time" data-clear-btn="false" name="time-1" id="time-1" value="">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
+        <div role="main" class="ui-content">
+            <h1>Game not saved</h1>
+            <h3 class="ui-title">Continue without saving?</h3>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Yes</a>
+        </div>
+    </div>
+    <!-- /content -->
+</div>
+<!-- /page -->
