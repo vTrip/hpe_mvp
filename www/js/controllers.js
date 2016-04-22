@@ -15,7 +15,7 @@ angular.module('starter')
 
 .controller('GamesListCtrl', function($scope, GamesListService, $ionicModal) {
 
-  var games = $scope.games = {
+  $scope.games = {
     $loading: false,
     $error: false,
     value: [],
@@ -42,17 +42,22 @@ angular.module('starter')
 
 
   $scope.reload = function reload() {
-    games.$loading = true;
+    $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
-      games.value = result;
-      games.$loading = false;
+      $scope.games.value = result;
+      $scope.games.$loading = false;
     }).catch(function(err) {
-      games.$error = true;
-      games.$loading = false;
+      $scopegames.$error = true;
+      $scope.games.$loading = false;
       console.log(err);
     })
   }
   $scope.reload();
+
+  $scope.formatDate = function formatDate(date) {
+    var momentDate = moment(date);
+    return momentDate.format('DD MMM');
+  }
 
   // Add game Modal
 
@@ -63,7 +68,7 @@ angular.module('starter')
 
   $scope.addGame = function addGame() {
     $scope.newGame = {
-      id: games.value.length,
+      id: $scope.games.value.length,
       date: null,
       startTime: null,
       finishTime: null,
@@ -79,8 +84,9 @@ angular.module('starter')
   }
 
   $scope.saveGame = function saveGame() {
-    GamesListService.create($scope.newGame).then(function() {
-      games.value.push($scope.newGame);
+    GamesListService.create($scope.newGame).then(function(obj) {
+      console.log(obj);
+      $scope.games.value.push(obj);
       addGameModalPromise.then(function(m) {
         m.hide();
       });

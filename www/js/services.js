@@ -19,7 +19,7 @@ angular.module('starter')
   var games = [
     {
       id: 0,
-      date: '25 Apr',
+      date: '25/04/2016',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Knights',
       invited: 8,
@@ -30,7 +30,7 @@ angular.module('starter')
     },
     {
       id: 1,
-      date: '30 Apr',
+      date: '25/04/2016',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Cowboys',
       invited: 6,
@@ -157,7 +157,6 @@ angular.module('starter')
 
     create: function(game) {
       var obj = FakeValue(game);
-      games.push(obj);
       return obj;
     },
 

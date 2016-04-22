@@ -11,7 +11,7 @@
       <ion-item class="game-list--item card" ng-repeat="game in games.value track by $index" ng-click="host-game-detail">
         <div class="row">
           <div class="col">
-            <div class="game-list--date">{{game.date}}</div>
+            <div class="game-list--date">{{formatDate(game.date)}}</div>
             <div>{{game.homeTeam}}</div>
             <div>v {{game.awayTeam}}</div>
           </div>

@@ -18,8 +18,8 @@
       <div class="col list">
         <label class="item item-input item-select">
           <div class="input-label">Sea Eagles v</div>
-          <select>
-            <option ng-repeat="team in teams" ng-model="newGame.awayTeam">{{team.name}}</option>
+          <select ng-model="newGame.awayTeam">
+            <option ng-repeat="team in teams">{{team.name}}</option>
           </select>
         </label>
       </div>
