@@ -1,8 +1,11 @@
-<div id="host-game-detail" data-role="page">
-<?php
-    $header_data = ["Sea Eagles v Rabitohs","#host-game-list","#host-game-add-edit",1,1,0,0,1];
-    include '_header.php';
-?>
+<ion-view class="host-game-detail" ng-controller="">
+    <ion-content>
+    <div class="ui-body">
+        <div class="ui-bar ui-bar-a" style="height:60px">
+            <div>31 Mar</div>
+            <div>Sea Eagles v Rabbitohs</div>
+        </div>
+    </div>
     <div role="main" class="ui-content">
         <div class="ui-bar">
             Guest List
@@ -37,9 +40,12 @@
         <!-- /grid-a -->
     </div>
     <!-- /content -->
-<?php
-    $footer_data = ["#host-game-guest-add"];
-    include '_footer.php';
-?>
-</div>
-<!-- /page -->
+    <div class="button-add" ng-click="addGuest()">
+        <div class="button-add--label">Add Guest</div>
+        <div class="button-add--icon">
+            <i class="icon ion-plus"></i>
+        </div>
+    </div>
+    </ion-content>
+</ion-view>
+
