@@ -1,30 +1,33 @@
 <ion-view class="host-game-list">
-  <ion-content>
-    <div class="host-game-list--empty">
-      <div class="icon-football"></div>
-      <div>Click + below to add a new game</div>
-    </div>
-    <ion-list class="game-list">
-      <ion-item class="game-list--item" ng-click="host-game-detail">
-        <div class="row">
-          <div class="col">
-            <div class="game-list--date">31 Mar</div>
-            <div>Sea Eagles</div>
-            <div>v Rabbitohs</div>
-          </div>
-          <div class="col">
-            <div class="game-list--logo-souths"></div>
-          </div>
-          <div class="col">
-            <div class="game-list--ticket-stat">0 Invited</div>
-            <div class="game-list--ticket-stat">0 Accepted</div>
-            <div class="game-list--ticket-stat">0 Declined</div>
-          </div>
+    <ion-content>
+        <div class="host-game-list--empty">
+            <div class="icon-football"></div>
+            <div>Click + below to add a new game</div>
         </div>
-      </ion-item>
-    </ion-list>
-    <a href="#host-game-add-edit" class="button-add">
-      <i class="material-icons">add</i>
-    </a>
-  </ion-content>
+        <ion-list class="game-list">
+            <ion-item class="game-list--item" ng-click="host-game-detail">
+                <div class="row">
+                    <div class="col">
+                        <div class="game-list--date">31 Mar</div>
+                        <div>Sea Eagles</div>
+                        <div>v Rabbitohs</div>
+                    </div>
+                    <div class="col">
+                        <div class="game-list--logo-souths"></div>
+                    </div>
+                    <div class="col">
+                        <div class="game-list--ticket-stat">0 Invited</div>
+                        <div class="game-list--ticket-stat">0 Accepted</div>
+                        <div class="game-list--ticket-stat">0 Declined</div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+        <a href="#host-game-add-edit" class="button-add">
+            <div class="button-add--label">Add Game</div>
+            <div class="button-add--icon">
+                <i class="icon ion-plus"></i>
+            </div>
+        </a>
+    </ion-content>
 </ion-view>
