@@ -1,126 +1,32 @@
-
-<ion-content class="host-game-list">
-  <div class="host-game-list--empty">
-    <div class="icon-football"></div>
-    <div>Click + below to add a new game</div>
-  </div>
-
-  <div role="main" class="ui-content">
-    <ul data-role="listview" class="ui-listview">
-      <li class="ui-first-child">
-        <a data-transition="slide" href="#host-game-detail" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-          <div class="ui-grid-a">
-            <div class="ui-block-a">
-              <div class="ui-bar ui-bar-a">
-                <div class="game-date">31 Mar</div>
-                <div>Sea Eagles</div>
-                <div>v Rabbitohs</div>
-                <!-- <div><a class="ui-btn">Manage Tickets</a></div> -->
-              </div>
-            </div>
-            <div class="ui-block-b">
-              <div class="ui-bar ui-bar-a">
-                <div class="ticket-stat">0 Invited</div>
-                <div class="ticket-stat">0 Accepted</div>
-                <div class="ticket-stat">0 Declined</div>
-              </div>
-            </div>
-          </div>
-          <!-- /grid-a -->
+<ion-view class="host-game-list">
+    <ion-content>
+        <div class="host-game-list--empty">
+            <div class="icon-football"></div>
+            <div>Click + below to add a new game</div>
+        </div>
+        <ul class="game-list">
+            <li class="game-list--item">
+                <a href="host-game-detail.html">
+                    <div class="row">
+                        <div class="col">
+                            <div class="game-list--date">31 Mar</div>
+                            <div>Sea Eagles</div>
+                            <div>v Rabbitohs</div>
+                        </div>
+                        <div class="col">
+                            <div class="game-list--logo-souths"></div>
+                        </div>
+                        <div class="col">
+                            <div class="game-list--ticket-stat">0 Invited</div>
+                            <div class="game-list--ticket-stat">0 Accepted</div>
+                            <div class="game-list--ticket-stat">0 Declined</div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <a href="#host-game-add-edit" class="button-add">
+            <i class="material-icons">add</i>
         </a>
-      </li>
-      <li class="ui-last-child">
-        <a data-transition="slide" href="#host-game-detail" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-          <div class="ui-grid-a">
-            <div class="ui-block-a">
-              <div class="ui-bar ui-bar-a">
-                <div class="game-date">31 Mar</div>
-                <div>Sea Eagles</div>
-                <div>v Rabbitohs</div>
-                <!-- <div><a class="ui-btn">Manage Tickets</a></div> -->
-              </div>
-            </div>
-            <div class="ui-block-b">
-              <div class="ui-bar ui-bar-a">
-                <div class="ticket-stat">0 Invited</div>
-                <div class="ticket-stat">0 Accepted</div>
-                <div class="ticket-stat">0 Declined</div>
-              </div>
-            </div>
-          </div>
-          <!-- /grid-a -->
-        </a>
-      </li>
-      <li class="ui-last-child">
-        <a data-transition="slide" href="#host-game-detail" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-          <div class="ui-grid-a">
-            <div class="ui-block-a">
-              <div class="ui-bar ui-bar-a">
-                <div class="game-date">31 Mar</div>
-                <div>Sea Eagles</div>
-                <div>v Rabbitohs</div>
-                <!-- <div><a class="ui-btn">Manage Tickets</a></div> -->
-              </div>
-            </div>
-            <div class="ui-block-b">
-              <div class="ui-bar ui-bar-a">
-                <div class="ticket-stat">0 Invited</div>
-                <div class="ticket-stat">0 Accepted</div>
-                <div class="ticket-stat">0 Declined</div>
-              </div>
-            </div>
-          </div>
-          <!-- /grid-a -->
-        </a>
-      </li>
-      <li class="ui-last-child">
-        <a data-transition="slide" href="#host-game-detail" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-          <div class="ui-grid-a">
-            <div class="ui-block-a">
-              <div class="ui-bar ui-bar-a">
-                <div class="game-date">31 Mar</div>
-                <div>Sea Eagles</div>
-                <div>v Rabbitohs</div>
-                <!-- <div><a class="ui-btn">Manage Tickets</a></div> -->
-              </div>
-            </div>
-            <div class="ui-block-b">
-              <div class="ui-bar ui-bar-a">
-                <div class="ticket-stat">0 Invited</div>
-                <div class="ticket-stat">0 Accepted</div>
-                <div class="ticket-stat">0 Declined</div>
-              </div>
-            </div>
-          </div>
-          <!-- /grid-a -->
-        </a>
-      </li>
-      <li class="ui-last-child">
-        <a data-transition="slide" href="#host-game-detail" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-          <div class="ui-grid-a">
-            <div class="ui-block-a">
-              <div class="ui-bar ui-bar-a">
-                <div class="game-date">31 Mar</div>
-                <div>Sea Eagles</div>
-                <div>v Rabbitohs</div>
-                <!-- <div><a class="ui-btn">Manage Tickets</a></div> -->
-              </div>
-            </div>
-            <div class="ui-block-b">
-              <div class="ui-bar ui-bar-a">
-                <div class="ticket-stat">0 Invited</div>
-                <div class="ticket-stat">0 Accepted</div>
-                <div class="ticket-stat">0 Declined</div>
-              </div>
-            </div>
-          </div>
-          <!-- /grid-a -->
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="button-add">
-    <a href="#host-game-add-edit" class="button-add" ><i class="material-icons">add</i></a>
-  </div>
-</ion-content>
+    </ion-content>
+</ion-view>
