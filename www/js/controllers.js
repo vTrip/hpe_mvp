@@ -13,7 +13,7 @@ angular.module('starter')
 
 })
 
-.controller('GamesListCtrl', function($scope, GamesListService) {
+.controller('GamesListCtrl', function($scope, GamesListService, $ionicModal) {
 
   var games = $scope.games = {
     $loading: false,
