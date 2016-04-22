@@ -36,6 +36,18 @@ angular.module('starter')
 
   // Add game Modal
 
+  $scope.newGame = {
+    id: games.value.length,
+    date: null,
+    startTime: null,
+    finishTime: null,
+    homeTeam: 'Sea Eagles',
+    awayTeam: null,
+    invited: 0,
+    accepted: 0,
+    declined: 0,
+  }
+
   var addGameModalPromise = $ionicModal.fromTemplateUrl('templates/host-game-add-edit.html', {
     scope: $scope,
     animation: 'slide-in-up'
@@ -44,6 +56,22 @@ angular.module('starter')
   $scope.addGame = function addGame() {
     addGameModalPromise.then(function(m) {
       m.show();
+    });
+  }
+
+  $scope.saveGame = function saveGame() {
+    GamesListService.create($scope.newGame).then(function() {
+      addGameModalPromise.then(function(m) {
+        m.hide();
+      });
+    }).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  $scope.cancelAddGame = function cancelAddGame() {
+    addGameModalPromise.then(function(m) {
+      m.hide();
     });
   }
 

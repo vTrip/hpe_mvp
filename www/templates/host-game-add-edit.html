@@ -2,12 +2,12 @@
 
   <ion-header-bar class="nav-bar-custom">
     <div class="buttons">
-      <button class="button button-clear">
+      <button class="button button-clear" ng-click="cancelAddGame()">
         <i class="ion-android-close"></i>
       </button>
     </div>
     <h1 class="title">Add Game</h1>
-    <div class="buttons">
+    <div class="buttons" ng-click="saveGame()">
       <button class="button button-clear">Save</button>
     </div>
   </ion-header-bar>
@@ -19,26 +19,26 @@
         <label class="item item-input item-select">
           <div class="input-label">Sea Eagles v</div>
           <select>
-            <option ng-repeat="team in teams">team.name</option>
+            <option ng-repeat="team in teams" ng-model="newGame.awayTeam">{{team.name}}</option>
           </select>
         </label>
       </div>
       <div class="col list">
         <label class="item item-input item-select">
           <div class="input-label">Date</div>
-          <input type="date" data-clear-btn="false" name="date-1" id="date-1" value="">
+          <input type="date" data-clear-btn="false" name="date-1" id="date-1" ng-model="newGame.date">
         </label>
       </div>
       <div class="col-50 list">
         <label class="item item-input item-select">
           <div class="input-label">Start Time</div>
-          <input type="time" data-clear-btn="false" name="date-1" id="date-1" value="">
+          <input type="time" data-clear-btn="false" name="date-1" id="date-1" ng-model="newGame.startTime">
         </label>
       </div>
       <div class="col-50 list">
         <label class="item item-input item-select">
           <div class="input-label">Finish Time</div>
-          <input type="time" data-clear-btn="false" name="time-1" id="time-1" value="">
+          <input type="time" data-clear-btn="false" name="time-1" id="time-1" ng-model="newGame.finishTime">
         </label>
       </div>
     </div>

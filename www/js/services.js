@@ -26,6 +26,8 @@ angular.module('starter')
       invited: 8,
       accepted: 2,
       declined: 2,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 1,
@@ -35,6 +37,8 @@ angular.module('starter')
       invited: 6,
       accepted: 3,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 2,
@@ -44,6 +48,8 @@ angular.module('starter')
       invited: 8,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 3,
@@ -53,6 +59,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 4,
@@ -62,6 +70,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 5,
@@ -71,6 +81,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 6,
@@ -80,6 +92,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     }
     ,
     {
@@ -90,6 +104,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     }
     ,
     {
@@ -100,6 +116,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 9,
@@ -109,6 +127,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     },
     {
       id: 10,
@@ -118,6 +138,8 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+      startTime: null,
+      finishTime: null,
     }
   ];
 
