@@ -26,6 +26,15 @@ angular.module('starter')
       invited: 0,
       accepted: 0,
       declined: 0,
+    },
+    {
+      id: 1,
+      date: '12 Apr',
+      homeTeam: 'Sea Eagles',
+      awayTeam: 'Eels',
+      invited: 8,
+      accepted: 2,
+      declined: 2,
     }
   ];
 
