@@ -1,8 +1,28 @@
-<ion-view class="host-game-list">
-    <ion-content>
-        <div class="host-game-list--empty">
-            <div class="icon-football"></div>
-            <div>Click + below to add a new game</div>
+<ion-view class="host-game-list" ng-controller="GamesListCtrl">
+  <ion-nav-title>
+    All Games
+  </ion-nav-title>
+  <ion-content>
+    <div class="host-game-list--empty" ng-hide="games.value.length != 0">
+      <div class="icon-football"></div>
+      <div>Click + below to add a new game</div>
+    </div>
+    <ion-list class="game-list" ng-repeat="game in games.value track by $index" ng-show="!games.$loading">
+      <ion-item class="game-list--item" ng-click="host-game-detail">
+        <div class="row">
+          <div class="col">
+            <div class="game-list--date">{{game.date}}</div>
+            <div>{{game.home-team}}</div>
+            <div>v {{game.away-team}}</div>
+          </div>
+          <div class="col">
+            <div class="game-list--logo-souths"></div>
+          </div>
+          <div class="col">
+            <div class="game-list--ticket-stat">{{game.invited}} Invited</div>
+            <div class="game-list--ticket-stat">{{game.accepted}} Accepted</div>
+            <div class="game-list--ticket-stat">{{game.declined}} Declined</div>
+          </div>
         </div>
         <ion-list class="game-list">
             <ion-item class="game-list--item" ng-click="host-game-detail">
