@@ -37,7 +37,8 @@
     a.btn-menu:active {
         background-color: #1E7F64;
     }
-    a.btn-menu .label {
+    a.btn-menu .host-menu--label {
+        font-family: $font-stack;
         position: absolute;
         bottom: 0;
         padding: $space;
