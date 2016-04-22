@@ -1,6 +1,15 @@
 <ion-modal-view class="add-destination">
 
   <ion-header-bar class="nav-bar-custom">
+    <div class="buttons">
+      <button class="button button-clear">
+        <i class="ion-android-close"></i>
+      </button>
+    </div>
+    <h1 class="title">Add Game</h1>
+    <div class="buttons">
+      <button class="button button-clear">Save</button>
+    </div>
   </ion-header-bar>
 
   <ion-content>
@@ -16,21 +25,21 @@
           </select>
         </label>
       </div>
+      <div class="col list">
+        <label class="item item-input item-select">
+          <div class="input-label">Date</div>
+          <input type="date" data-clear-btn="false" name="date-1" id="date-1" value="">
+        </label>
+      </div>
       <div class="col-50 list">
         <label class="item item-input item-select">
           <div class="input-label">Start Time</div>
-          <input type="date" data-clear-btn="false" name="date-1" id="date-1" value="">
+          <input type="time" data-clear-btn="false" name="date-1" id="date-1" value="">
         </label>
       </div>
       <div class="col-50 list">
         <label class="item item-input item-select">
           <div class="input-label">Finish Time</div>
-          <input type="date" data-clear-btn="false" name="date-1" id="date-1" value="">
-        </label>
-      </div>
-      <div class="col list">
-        <label class="item item-input item-select">
-          <div class="input-label">Time</div>
           <input type="time" data-clear-btn="false" name="time-1" id="time-1" value="">
         </label>
       </div>
