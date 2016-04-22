@@ -8,7 +8,8 @@
       <div>Click + below to add a new game</div>
     </div>
     <ion-list class="game-list" ng-repeat="game in games.value track by $index" ng-show="!games.$loading">
-      <ion-item class="game-list--item" ng-click="host-game-detail">
+    
+      <ion-item class="game-list--item card" ng-click="host-game-detail">
         <div class="row">
           <div class="col">
             <div class="game-list--date">{{game.date}}</div>
@@ -25,6 +26,7 @@
           </div>
         </div>
       </ion-item>
+      
     </ion-list>
     <a href="#host-game-add-edit" class="button-add">
       <div class="button-add--label">Add Game</div>
