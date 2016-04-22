@@ -27,8 +27,14 @@ $bg-colour-1: #BCBCBC;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-@import "host-menu";
-@import "host-login";
+
+// Components
+
+@import 'button-add';
+
+@import 'host-login';
+@import 'host-menu';
+@import 'host-game-list';
 
 // Base
 
@@ -48,15 +54,3 @@ body {
 .scroll {
   height: 100%;
 }
-
-// ion-content.host-lgin {
-//     background: url("../assets/background-login.jpg") no-repeat center center fixed;
-//     -webkit-background-size: cover;
-//     -moz-background-size: cover;
-//     -o-background-size: cover;
-//     background-size: cover;
-//     height: 100%;
-//     & body {
-//         height: 100%;
-//     }
-// }
