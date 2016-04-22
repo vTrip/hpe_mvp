@@ -49,14 +49,24 @@ body {
   height: 100%;
 }
 
-// ion-content.host-lgin {
-//     background: url("../assets/background-login.jpg") no-repeat center center fixed;
-//     -webkit-background-size: cover;
-//     -moz-background-size: cover;
-//     -o-background-size: cover;
-//     background-size: cover;
-//     height: 100%;
-//     & body {
-//         height: 100%;
-//     }
-// }
+.item.item-input.item-floating-label {
+  color: black;
+  border: none;
+  border-bottom: solid $dark 1px;
+  padding: 0;
+  width: 95%;
+  margin: auto;
+  input {
+    color: $dark;
+  }
+
+  *::-webkit-input-placeholder {
+  color: $dark;
+  }
+  *:-moz-placeholder {
+    color: $dark;
+  }
+  *:-ms-input-placeholder { /* IE10+ */
+    color: $dark;
+  }
+}

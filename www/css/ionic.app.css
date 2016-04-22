@@ -9833,3 +9833,20 @@ body {
 
 .scroll {
   height: 100%; }
+
+.item.item-input.item-floating-label {
+  color: black;
+  border: none;
+  border-bottom: solid #444 1px;
+  padding: 0;
+  width: 95%;
+  margin: auto; }
+  .item.item-input.item-floating-label input {
+    color: #444; }
+  .item.item-input.item-floating-label *::-webkit-input-placeholder {
+    color: #444; }
+  .item.item-input.item-floating-label *:-moz-placeholder {
+    color: #444; }
+  .item.item-input.item-floating-label *:-ms-input-placeholder {
+    /* IE10+ */
+    color: #444; }
