@@ -27,8 +27,14 @@ $bg-colour-1: #BCBCBC;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-@import "host-menu";
-@import "host-login";
+
+// Components
+
+@import 'button-add';
+
+@import 'host-login';
+@import 'host-menu';
+@import 'host-game-list';
 
 // Base
 
@@ -47,6 +53,7 @@ body {
 
 .scroll {
   height: 100%;
+<<<<<<< HEAD
 }
 
 .item.item-input.item-floating-label {
@@ -70,3 +77,6 @@ body {
     color: $dark;
   }
 }
+=======
+}
+>>>>>>> 9f97dc6646a06bc4320b8a6eb22c8db23d1650fd

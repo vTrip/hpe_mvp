@@ -1,0 +1,26 @@
+.game-list
+{
+	&--item
+	{
+		border: 1px solid #95989A;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.18);
+	}
+	
+	&--date
+	{
+		font-size: 24px;
+	}
+	
+	&--logo-souths
+	{
+		display: inline-block;
+		width: 136px;
+		height: 75px;
+		background: url('../assets/team-logos/logo-souths.png') no-repeat;
+	}
+	
+	&--ticket-stat
+	{
+		
+	}
+}
