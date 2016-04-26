@@ -101,4 +101,12 @@ angular.module('starter')
     });
   }
 
+  $scope.deleteGame = function deleteGame($index) {
+    GamesListService.delete($index).then(function() {
+      
+    }).catch(function(err) {
+
+    });
+  }
+
 })
