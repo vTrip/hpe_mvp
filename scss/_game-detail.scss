@@ -1,0 +1,29 @@
+.game-detail
+{
+	&--date
+	{
+		font-size: 24px;
+		margin-bottom: 0.2em;
+	}
+	
+	&--ticket-stat
+	{
+		margin-bottom: 0.2em;
+			
+	}
+	
+	&--stat-group
+	{
+		display: inline-block;
+	}
+	
+	&--manage-ticket
+	{
+		margin-top: 1em;
+	}
+	
+	&--info
+	{
+		text-align: right;
+	}
+}

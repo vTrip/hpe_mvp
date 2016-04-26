@@ -1,0 +1,46 @@
+<ion-view class="host-contact-list">
+  <ion-nav-title>
+    Contacts
+  </ion-nav-title>
+  <ion-content>
+    <ion-list class="contacts-list" ng-show="!contacts.$loading">
+      <ion-item class="contact-list--item card">
+        <div class="row">
+          <div class="col">
+            <div>#TODO FILTER SEARCH HERE</div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item class="contact-list--item card">
+        <div class="row">
+          <div class="col">
+            <div class="contact-list--name">Gary One</div>
+            <div class="contact-list--email">garyone@guest.com</div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item class="contact-list--item card">
+        <div class="row">
+          <div class="col">
+            <div class="contact-list--name">Gary Two</div>
+            <div class="contact-list--email">garytwo@guest.com</div>
+          </div>
+        </div>
+      </ion-item>
+      <ion-item class="contact-list--item card">
+        <div class="row">
+          <div class="col">
+            <div class="contact-list--name">Gary Three</div>
+            <div class="contact-list--email">garythree@guest.com</div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <div class="button-add" ng-click="addContact()">
+    <div class="button-add--label">Add Contact</div>
+    <div class="button-add--icon">
+      <i class="icon ion-plus"></i>
+    </div>
+  </div>
+</ion-view>

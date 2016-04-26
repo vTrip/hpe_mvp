@@ -1,0 +1,10 @@
+.ticket-list
+{
+	margin: $space * 2;
+	
+	&--action
+	{
+		text-align: right;
+		margin-bottom: $space;
+	}
+}

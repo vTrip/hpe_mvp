@@ -45,6 +45,15 @@ $bg-colour-1: #BCBCBC;
 @import 'host-game-list';
 @import 'host-game-detail';
 @import 'game-list';
+@import 'game-detail';
+@import 'guest-list';
+@import 'contact-list';
+@import 'contact-item';
+@import 'ticket-list';
+
+@import 'guest-ticket-list';
+
+
 
 // Base
 
@@ -59,6 +68,11 @@ body {
     & body {
         height: 100%;
     }
+}
+
+html, body, h1, h2, h3, h4, h5, h6
+{
+  font-family: $font-stack;
 }
 
 .scroll {
@@ -101,5 +115,5 @@ a:link, a:visited, a:hover, a:active
 
 .row
 {
-  /*padding: 0;*/
+  padding: 0;
 }

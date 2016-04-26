@@ -1,0 +1,50 @@
+<ion-view class="host-game-ticket-list">
+  <ion-nav-title>
+    Gary One
+  </ion-nav-title>
+  <ion-content>
+    <div class="game-detail card">
+      <div class="row">
+        <div class="col">
+          <div class="game-detail--date">24 Jul {{formatDate(game.date)}}</div>
+          <div>Sea Eagles{{game.homeTeam}}</div>
+          <div>v Tigers{{game.awayTeam}}</div>
+        </div>
+        <div class="col">
+          <div class="team-logo--tigers{{game.awayTeam | lowercase}}"></div>
+        </div>
+        <div class="col">
+          <!-- <div class="game-detail--stat-group"> -->
+          <div class="game-detail--info">Brookvale Oval</div>
+          <div class="game-detail--info">Start 07:30 PM</div>
+          <div class="game-detail--info">Finish 09:00 PM</div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="ticket-list">
+      <div class="row">
+        <div class="col">
+          <div class="ticket-list--number">12-3456-7890-1234</div>
+        </div>
+        <div class="col">
+          <div class="ticket-list--action">VIEW</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="ticket-list--number">12-3456-7890-1234</div>
+        </div>
+        <div class="col">
+          <div class="ticket-list--action">VIEW</div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="button-add" ng-click="addTicket()">
+    <div class="button-add--label">Add Ticket</div>
+    <div class="button-add--icon">
+      <i class="icon ion-plus"></i>
+    </div>
+  </div>
+</ion-view>

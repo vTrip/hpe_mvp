@@ -1,0 +1,13 @@
+.contact-list
+{
+	&--name
+	{
+		padding-bottom: $space / 2;	
+	}
+	
+	&--email
+	{
+		color: #737373;
+		font-size: 14px;
+	}
+}
