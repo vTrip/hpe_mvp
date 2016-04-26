@@ -1,0 +1,27 @@
+.contact-item
+{
+	
+	&--label
+	{
+		color: #737373;
+		font-size: 12px;
+		margin-bottom: $space / 2 ;
+	}
+	
+	&--value
+	{
+		margin-bottom: $space * 3;
+	}
+	
+	&--icon
+	{
+		display: inline-block;
+		font-size: 24px;
+		margin: 0 $space * 2;
+	}
+	
+	&--icon-group
+	{
+		text-align: right;
+	}
+}
