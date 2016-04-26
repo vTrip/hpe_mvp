@@ -8,7 +8,7 @@ angular.module('starter')
   });
 
   $scope.login = function login() {
-    $state.go('menu');
+    $state.go('game-list');
   }
 
 })
@@ -61,7 +61,7 @@ angular.module('starter')
 
   // Add game Modal
 
-  var addGameModalPromise = $ionicModal.fromTemplateUrl('templates/host-game-add-edit.html', {
+  var addGameModalPromise = $ionicModal.fromTemplateUrl('templates/game-add-edit.html', {
     scope: $scope,
     animation: 'slide-in-up'
   });

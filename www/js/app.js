@@ -29,28 +29,49 @@ angular.module('starter', ['ionic'])
 
   .state('login', {
     url: '/',
-    templateUrl: 'templates/host-login.html',
+    templateUrl: 'templates/login.html',
   })
 
   .state('menu', {
     url: '/menu',
-    templateUrl: 'templates/host-menu.html',
+    templateUrl: 'templates/menu.html',
   })
 
-  .state('games', {
-    url: '/menu/games',
-    templateUrl: 'templates/host-game-list.html',
+  .state('game-list', {
+    url: '/games',
+    templateUrl: 'templates/game-list.html',
   })
   
-  .state('game-detail', {
-      url: '/menu/games/detail',
-      templateUrl: 'templates/host-game-detail.html',
+  .state('game-item', {
+      url: '/games/item',
+      templateUrl: 'templates/game-detail.html',
     })
-
-  .state('contacts', {
-    url: '/menu/contacts',
-    templateUrl: 'templates/host-contact-list.html',
+  
+  .state('ticket-list', {
+    url: '/games/item/tickets',
+    templateUrl: 'templates/game-ticket-list.html',
   })
+
+  .state('contact-list', {
+    url: '/contacts',
+    templateUrl: 'templates/contact-list.html',
+  })
+  
+  .state('contact-item', {
+    url: '/contacts/item',
+    templateUrl: 'templates/contact-item.html',
+  })
+  
+
+  
+  
+  // #TODO move guest screens into seperate app for production
+  
+  .state('guest-ticket-list', {
+    url: '/guest/tickets',
+    templateUrl: 'templates/guest-ticket-list.html',
+  })
+
 
   $urlRouterProvider.otherwise("/");
 
