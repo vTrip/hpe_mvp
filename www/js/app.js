@@ -41,12 +41,12 @@ angular.module('starter', ['ionic'])
     url: '/games',
     templateUrl: 'templates/game-list.html',
   })
-  
+
   .state('game-item', {
-      url: '/games/item',
+      url: '/games/:gameId',
       templateUrl: 'templates/game-detail.html',
     })
-  
+
   .state('ticket-list', {
     url: '/games/item/tickets',
     templateUrl: 'templates/game-ticket-list.html',
@@ -56,17 +56,17 @@ angular.module('starter', ['ionic'])
     url: '/contacts',
     templateUrl: 'templates/contact-list.html',
   })
-  
+
   .state('contact-item', {
     url: '/contacts/item',
     templateUrl: 'templates/contact-item.html',
   })
-  
 
-  
-  
+
+
+
   // #TODO move guest screens into seperate app for production
-  
+
   .state('guest-ticket-list', {
     url: '/guest/tickets',
     templateUrl: 'templates/guest-ticket-list.html',

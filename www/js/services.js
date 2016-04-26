@@ -169,9 +169,9 @@ angular.module('starter')
       games[index] = game;
     },
 
-    delete: function(id) {
-      var index = find(id);
+    delete: function(index) {
       games.splice(index, 1);
+      return FakeValue();
     },
   }
 })

@@ -13,7 +13,7 @@ angular.module('starter')
 
 })
 
-.controller('GamesListCtrl', function($scope, GamesListService, $ionicModal) {
+.controller('GamesListCtrl', function($scope, GamesListService, $ionicModal, $stateParams, $state) {
 
   $scope.games = {
     $loading: false,
@@ -103,10 +103,27 @@ angular.module('starter')
 
   $scope.deleteGame = function deleteGame($index) {
     GamesListService.delete($index).then(function() {
-      
+      //TODO - reset state of ion list items by rehiding option btns
     }).catch(function(err) {
 
     });
   }
+
+})
+
+.controller('GameDetailCtrl', function($scope, $stateParams, GamesListService, $state) {
+  $scope.game = null;
+
+  $scope.reload = function reload() {
+    console.log($stateParams.gameId);
+    GamesListService.read($stateParams.gameId).then(function(res) {
+      console.log(res);
+      $scope.game = res;
+    }).catch(function(err) {
+      // any error catching here
+      console.log(err);
+    });
+  }
+  $scope.reload();
 
 })
