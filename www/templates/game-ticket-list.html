@@ -1,6 +1,6 @@
 <ion-view class="host-game-ticket-list" ng-controller="ManageTicketsCtrl">
   <ion-nav-title>
-    Manage Tickets
+    Tickets ({{game.tickets.length}}/8)
   </ion-nav-title>
   <ion-content id="game-card">
     <div class="game-detail card">
@@ -30,7 +30,7 @@
               <div class="ticket-list--number">{{ticket.number}}</div>
             </div>
             <div class="col">
-              <div class="ticket-list--action">VIEW</div>
+              <a class="ticket-list--action" href="#/games/{{gameId}}/manage-tickets/{{ticket.number}}">VIEW</a>
             </div>
           </div>
         </div>

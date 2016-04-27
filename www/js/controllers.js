@@ -87,6 +87,30 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
 
 })
 
+angular.module('starter').controller('TicketCtrl', function($scope, $stateParams) {
+  $scope.getBarcode = function getBarcode() {
+    JsBarcode("#barcode", $stateParams.barcode, {
+      format: "ITF",
+      width:2,
+      height:100,
+      format: "auto",
+      displayValue: true,
+      font: "monospace",
+      textAlign: "center",
+      textPosition: "bottom",
+      textMargin: 5,
+      fontSize: 20,
+      background: "#ffffff",
+      lineColor: "#000000",
+    });
+  }
+  $scope.getBarcode();
+
+  $scope.getBarcodeNumber = function getBarcodeNumber() {
+    return $stateParams.barcode;
+  }
+});
+
 angular.module('starter').controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListService, $ionicModal) {
 
   $scope.contacts = {

@@ -50,9 +50,16 @@ angular.module('starter', ['ionic'])
     templateUrl: 'templates/game-add-guest.html'
   })
 
+  // list of all tickets
   .state('manage-tickets', {
     url: '/games/:gameId/manage-tickets',
     templateUrl: 'templates/game-ticket-list.html',
+  })
+
+  // view of selected ticket
+  .state('ticket-detail', {
+    url: '/games/:gameId/manage-tickets/:barcode',
+    templateUrl: 'templates/ticket-detail.html',
   })
 
   .state('contact-list', {
