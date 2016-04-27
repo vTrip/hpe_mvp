@@ -32,20 +32,23 @@ angular.module('starter', ['ionic'])
     templateUrl: 'templates/login.html',
   })
 
-  .state('menu', {
-    url: '/menu',
-    templateUrl: 'templates/menu.html',
-  })
-
+  // list of games
   .state('game-list', {
     url: '/games',
     templateUrl: 'templates/game-list.html',
   })
 
+  // detail of selected game
   .state('game-item', {
-      url: '/games/:gameId',
-      templateUrl: 'templates/game-detail.html',
-    })
+    url: '/games/:gameId',
+    templateUrl: 'templates/game-detail.html',
+  })
+
+  // add guest to game
+  .state('add-guest', {
+    url: '/games/:gameId/add-guest',
+    templateUrl: 'templates/game-add-guest.html'
+  })
 
   .state('ticket-list', {
     url: '/games/item/tickets',

@@ -1,0 +1,26 @@
+<ion-view class="host-contact-list">
+  <ion-nav-title>
+    Contacts
+  </ion-nav-title>
+  <ion-content>
+    <div class="contact-list--item card">
+      <div class="row">
+        <div class="col">
+          <label class="input input-label" style="border: solid #ddd 1px;">
+            <input type="search">
+          </label>
+        </div>
+      </div>
+    </div>
+    <ion-list class="contacts-list" ng-show="!contacts.$loading">
+      <ion-item class="contact-list--item card" ng-repeat="contact in contacts.value">
+        <div class="row">
+          <div class="col">
+            <div class="contact-list--name">{{contact.name}}</div>
+            <div class="contact-list--email">{{contact.email}}</div>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

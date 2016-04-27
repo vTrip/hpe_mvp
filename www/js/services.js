@@ -175,3 +175,62 @@ angular.module('starter')
     },
   }
 })
+
+.factory('ContactsService', function(FakeValue) {
+  var contacts = [
+    {
+      id: 0,
+      name: "Gary One",
+      email: "garyone@guest.com",
+    },
+    {
+      id: 1,
+      name: "Gary Two",
+      email: "garytwo@guest.com",
+    },
+    {
+      id: 2,
+      name: "Gary Three",
+      email: "garythree@guest.com",
+    },
+    {
+      id: 3,
+      name: "Gary Four",
+      email: "garyfour@guest.com",
+    },
+
+  ];
+
+  return {
+    all: function() {
+      return FakeValue(contacts);
+    },
+
+    find: function(id) {
+      contacts.forEach(function(item, index) {
+        if (item.id == id) {
+          return index;
+        }
+      });
+    },
+
+    create: function(contact) {
+      var obj = FakeValue(contact);
+      return obj;
+    },
+
+    read: function(id) {
+      return FakeValue(contacts[id]);
+    },
+
+    update: function(contact) {
+      var index = find(contact.id);
+      contacts[index] = contact;
+    },
+
+    delete: function(index) {
+      contacts.splice(index, 1);
+      return FakeValue();
+    },
+  }
+})

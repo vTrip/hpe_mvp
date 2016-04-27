@@ -115,9 +115,7 @@ angular.module('starter')
   $scope.game = null;
 
   $scope.reload = function reload() {
-    console.log($stateParams.gameId);
     GamesListService.read($stateParams.gameId).then(function(res) {
-      console.log(res);
       $scope.game = res;
     }).catch(function(err) {
       // any error catching here
@@ -129,6 +127,10 @@ angular.module('starter')
   $scope.formatDate = function formatDate(date) {
     var momentDate = moment(date);
     return momentDate.format('DD MMM');
+  }
+
+  $scope.addGuest = function addGuest() {
+    $state.go('add-guest');
   }
 
 })
