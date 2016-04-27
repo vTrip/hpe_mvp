@@ -6,7 +6,7 @@ angular.module('starter')
  */
 .factory("FakeValue", function FakeValueFactory($q, $timeout) {
   // change this during testing to simulate different server response times
-  var delay = 1500;
+  var delay = 1000;
 
   return function FakeValue(val) {
     return $timeout(function() {

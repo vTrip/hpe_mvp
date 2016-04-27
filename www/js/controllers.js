@@ -67,9 +67,12 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   }
 
   $scope.saveTicket = function saveTicket() {
-    var newTicket = $scope.ticket;
+    var newTicket = {
+      number: $scope.ticket.number,
+    };
     $scope.game.tickets.push(newTicket);
     GamesListService.update($scope.game);
+    $scope.reload();
     $scope.resetTicket();
   }
 
