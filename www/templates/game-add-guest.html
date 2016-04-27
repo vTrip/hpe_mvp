@@ -7,13 +7,13 @@
       <div class="row">
         <div class="col">
           <label class="input input-label" style="border: solid #ddd 1px;">
-            <input type="search">
+            <input type="search" ng-model="contacts.$search" ng-change="filterUsers()" autofocus="true">
           </label>
         </div>
       </div>
     </div>
     <ion-list class="contacts-list" ng-show="!contacts.$loading">
-      <ion-item class="contact-list--item card" ng-repeat="contact in contacts.value">
+      <ion-item class="contact-list--item card" ng-repeat="contact in filteredUsers">
         <div class="row">
           <div class="col">
             <div class="contact-list--name">{{contact.name}}</div>
@@ -22,5 +22,10 @@
         </div>
       </ion-item>
     </ion-list>
+    <div class="row">
+      <div class="col">
+        <label ng-click="addContact()">Add contact</label>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

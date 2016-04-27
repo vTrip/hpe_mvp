@@ -135,7 +135,7 @@ angular.module('starter')
 
 })
 
-.controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListCtrl) {
+.controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListService) {
 
   $scope.contacts = {
     $loading: false,
