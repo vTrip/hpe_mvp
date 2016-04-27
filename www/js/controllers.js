@@ -126,4 +126,9 @@ angular.module('starter')
   }
   $scope.reload();
 
+  $scope.formatDate = function formatDate(date) {
+    var momentDate = moment(date);
+    return momentDate.format('DD MMM');
+  }
+
 })
