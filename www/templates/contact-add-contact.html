@@ -1,0 +1,40 @@
+<ion-modal-view class="add-destination">
+
+  <ion-header-bar class="nav-bar-custom">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="cancelAddContact()">
+        <i class="ion-android-close"></i>
+      </button>
+    </div>
+    <h1 class="title">Add Contact</h1>
+    <div class="buttons" ng-click="saveContact()">
+      <button class="button button-clear">Save</button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content>
+    <div role="main" class="col">
+      <div class="col list">
+        <label class="item item-input item-select">
+          <div class="input-label">Name</div>
+          <input type="text" data-clear-btn="false" placeholder="Name">
+        </label>
+      </div>
+      <div class="col list">
+        <label class="item item-input item-select">
+          <div class="input-label">Mobile</div>
+          <input type="tel" data-clear-btn="false" placeholder="Mobile">
+        </label>
+      </div>
+      <div class="col list">
+        <label class="item item-input item-select">
+          <div class="input-label">Email</div>
+          <input type="email" data-clear-btn="false" placeholder="Email">
+        </label>
+      </div>
+    </div>
+
+    <!-- TODO Popup if needed -->
+  </ion-content>
+
+</ion-modal-view>

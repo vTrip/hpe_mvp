@@ -135,7 +135,7 @@ angular.module('starter')
 
 })
 
-.controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListService) {
+.controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListService, $ionicModal) {
 
   $scope.contacts = {
     $loading: false,
@@ -165,5 +165,10 @@ angular.module('starter')
     }
     $scope.filteredUsers = array;
   }
+
+  var addContactModalPromise = $ionicModal.fromTemplateUrl('templates/contact-add-contact.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
 
 })
