@@ -32,41 +32,51 @@ angular.module('starter', ['ionic'])
     templateUrl: 'templates/login.html',
   })
 
-  .state('menu', {
-    url: '/menu',
-    templateUrl: 'templates/menu.html',
-  })
-
+  // list of games
   .state('game-list', {
     url: '/games',
     templateUrl: 'templates/game-list.html',
   })
-  
+
+  // detail of selected game
   .state('game-item', {
-      url: '/games/item',
-      templateUrl: 'templates/game-detail.html',
-    })
-  
-  .state('ticket-list', {
-    url: '/games/item/tickets',
+    url: '/games/:gameId',
+    templateUrl: 'templates/game-detail.html',
+  })
+
+  // add guest to game
+  .state('add-guest', {
+    url: '/games/:gameId/add-guest',
+    templateUrl: 'templates/game-add-guest.html'
+  })
+
+  // list of all tickets
+  .state('manage-tickets', {
+    url: '/games/:gameId/manage-tickets',
     templateUrl: 'templates/game-ticket-list.html',
+  })
+
+  // view of selected ticket
+  .state('ticket-detail', {
+    url: '/games/:gameId/manage-tickets/:barcode',
+    templateUrl: 'templates/ticket-detail.html',
   })
 
   .state('contact-list', {
     url: '/contacts',
     templateUrl: 'templates/contact-list.html',
   })
-  
+
   .state('contact-item', {
     url: '/contacts/item',
     templateUrl: 'templates/contact-item.html',
   })
-  
 
-  
-  
+
+
+
   // #TODO move guest screens into seperate app for production
-  
+
   .state('guest-ticket-list', {
     url: '/guest/tickets',
     templateUrl: 'templates/guest-ticket-list.html',

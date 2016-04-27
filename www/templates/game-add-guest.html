@@ -1,4 +1,4 @@
-<ion-view class="host-contact-list">
+<ion-view class="host-contact-list" ng-controller="AddGuestCtrl">
   <ion-nav-title>
     Contacts
   </ion-nav-title>
@@ -22,11 +22,10 @@
         </div>
       </ion-item>
     </ion-list>
-  </ion-content>
-  <div class="button-add" ng-click="addContact()">
-    <div class="button-add--label">Add Contact</div>
-    <div class="button-add--icon">
-      <i class="icon ion-plus"></i>
+    <div class="row">
+      <div class="col">
+        <label ng-click="showAddContact()">Add contact</label>
+      </div>
     </div>
-  </div>
+  </ion-content>
 </ion-view>

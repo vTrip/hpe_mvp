@@ -1,177 +1,110 @@
 angular.module('starter')
 
-/**
- * Promise which returns a fake value (after cloning), with a globally
- * configurable timeout
- */
-.factory("FakeValue", function FakeValueFactory($q, $timeout) {
-  // change this during testing to simulate different server response times
-  var delay = 0;
-
-  return function FakeValue(val) {
-    return $timeout(function() {
-      return $q.when(val);
-    }, delay);
-  }
-})
-
-.factory('GamesListService', function(FakeValue) {
-  var games = [
-    {
-      id: 0,
-      date: '25/04/2016',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Knights',
-      invited: 8,
-      accepted: 2,
-      declined: 2,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 1,
-      date: '25/04/2016',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Cowboys',
-      invited: 6,
-      accepted: 3,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 2,
-      date: '14 May',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Broncos',
-      invited: 8,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 3,
-      date: '21 May',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Sharks',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 4,
-      date: '3 Jun',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Raiders',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 5,
-      date: '12 Jun',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Panthers',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 6,
-      date: '20 Jun',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Titans',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    }
-    ,
-    {
-      id: 7,
-      date: '27 Jun',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Cowboys',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    }
-    ,
-    {
-      id: 8,
-      date: '4 Jul',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Dragons',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 9,
-      date: '16 Jul',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Warriors',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    },
-    {
-      id: 10,
-      date: '25 Jul',
-      homeTeam: 'Sea Eagles',
-      awayTeam: 'Rabbitohs',
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-      startTime: null,
-      finishTime: null,
-    }
-  ];
+.factory('GamesListService', function($http) {
+  var endpoint = 'http://10.0.1.12/api/game';
 
   return {
     all: function() {
-      return FakeValue(games);
-    },
-
-    find: function(id) {
-      games.forEach(function(item, index) {
-        if (item.id == id) {
-          return index;
-        }
+      return $http ({
+        method: 'GET',
+        url: endpoint,
       });
     },
 
-    create: function(game) {
-      var obj = FakeValue(game);
-      return obj;
+    // get a selection of contacts
+    // @param (ids) - array of ids to GET
+    selection: function(ids) {
+      var params = ids.join(',');
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + params,
+      });
     },
 
     read: function(id) {
-      return FakeValue(games[id]);
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + id,
+      });
     },
 
-    update: function(game) {
-      var index = find(game.id);
-      games[index] = game;
+    create: function(contact) {
+      return $http.post(endpoint, contact);
+    },
+
+    update: function(contact) {
+      return $http({
+        method: 'PUT',
+        data: contact,
+        url: endpoint + '/' + contact.id
+      });
+    },
+
+    // Update a field of an object
+    // @param (id) - id of the object
+    // @param (data) - field / data to be updated
+    updateAttribute: function(id, data) {
+      return $http({
+        method: 'PATCH',
+        data: data,
+        url: endpoint + '/' + id
+      });
+    }
+
+    delete: function(id) {
+      return $http({
+          method: 'DELETE',
+          url : endpoint + '/' + id
+      });
+    },
+  }
+})
+
+.factory('ContactsService', function($http) {
+  var endpoint = 'http://10.0.1.12/api/contact';
+
+  return {
+    all: function() {
+      return $http ({
+        method: 'GET',
+        url: endpoint,
+      });
+    },
+
+    // get a selection of contacts
+    // @param (ids) - array of ids to GET
+    selection: function(ids) {
+      var params = ids.join(',');
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + params,
+      });
+    },
+
+    read: function(id) {
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + id,
+      });
+    },
+
+    create: function(contact) {
+      return $http.post(endpoint, contact);
+    },
+
+    update: function(contact) {
+      return $http({
+        method: 'PUT',
+        data: contact,
+        url: endpoint + '/' + contact.id
+      })
     },
 
     delete: function(id) {
-      var index = find(id);
-      games.splice(index, 1);
+      return $http({
+          method: 'DELETE',
+          url : endpoint + '/' + id
+      });
     },
   }
 })

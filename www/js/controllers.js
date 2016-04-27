@@ -1,6 +1,6 @@
-angular.module('starter')
+angular.module('starter');
 
-.controller('LoginCtrl', function($scope, $state) {
+angular.module('starter').controller('LoginCtrl', function($scope, $state) {
 
   $scope.$on("$ionicView.loaded", function(scopes, states, element) {
     //focus on the input field once the view is loaded
@@ -11,46 +11,18 @@ angular.module('starter')
     $state.go('game-list');
   }
 
-})
+});
 
-.controller('GamesListCtrl', function($scope, GamesListService, $ionicModal) {
-
-  $scope.games = {
-    $loading: false,
-    $error: false,
-    value: [],
-  };
-
-  var teams = $scope.teams = [
-    {name: 'Broncos'},
-    {name: 'Bulldogs'},
-    {name: 'Cowboys'},
-    {name: 'Dragons'},
-    {name: 'Eels'},
-    {name: 'Knights'},
-    {name: 'Panthers'},
-    {name: 'Rabbitohs'},
-    {name: 'Raiders'},
-    {name: 'Roosters'},
-    {name: 'Sea-Eagles'},
-    {name: 'Sharks'},
-    {name: 'Storm'},
-    {name: 'Tigers'},
-    {name: 'Titans'},
-    {name: 'Warriors'},
-  ];
-
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, $state) {
+  $scope.game = null;
 
   $scope.reload = function reload() {
-    $scope.games.$loading = true;
-    GamesListService.all().then(function(result) {
-      $scope.games.value = result;
-      $scope.games.$loading = false;
+    GamesListService.read($stateParams.gameId).then(function(res) {
+      $scope.game = res;
     }).catch(function(err) {
-      $scopegames.$error = true;
-      $scope.games.$loading = false;
+      // any error catching here
       console.log(err);
-    })
+    });
   }
   $scope.reload();
 
@@ -59,46 +31,170 @@ angular.module('starter')
     return momentDate.format('DD MMM');
   }
 
-  // Add game Modal
+  $scope.prepareForSegue = function prepareForSegue(view) {
+    $location.path("/games/" + $scope.game.id + "/" + view);
+  }
 
-  var addGameModalPromise = $ionicModal.fromTemplateUrl('templates/game-add-edit.html', {
+})
+
+angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, $location, $ionicScrollDelegate, GamesListService) {
+
+  $scope.game = null;
+
+  $scope.reload = function reload() {
+    GamesListService.read($stateParams.gameId).then(function(res) {
+      $scope.game = res;
+    }).catch(function(err) {
+      // any error catching here
+      console.log(err);
+    });
+  }
+  $scope.reload();
+
+  $scope.formatDate = function formatDate(date) {
+    var momentDate = moment(date);
+    return momentDate.format('DD MMM');
+  }
+
+  $scope.ticket = {
+    $input: null,
+    $show: false,
+    number: null,
+  };
+
+  $scope.addTicket = function addTicket() {
+    $scope.ticket.$show = true;
+    $location.hash("ticket-input");
+    $ionicScrollDelegate.anchorScroll(true);
+  }
+
+  $scope.saveTicket = function saveTicket() {
+    var newTicket = {
+      number: $scope.ticket.number,
+    };
+    $scope.game.tickets.push(newTicket);
+    GamesListService.update($scope.game);
+    $scope.reload();
+    $scope.resetTicket();
+  }
+
+  $scope.resetTicket = function resetTicket() {
+    $scope.ticket.$show = false;
+    $scope.ticket.number = null;
+    $location.hash("game-card");
+    $ionicScrollDelegate.anchorScroll(true);
+  }
+
+})
+
+angular.module('starter').controller('TicketCtrl', function($scope, $stateParams, GamesListService) {
+
+  $scope.game = null;
+
+  $scope.reload = function reload() {
+    GamesListService.read($stateParams.gameId).then(function(res) {
+      $scope.game = res;
+      $scope.getBarcode();
+    }).catch(function(err) {
+      // any error catching here
+      console.log(err);
+    });
+  }
+  $scope.reload();
+
+  $scope.getBarcode = function getBarcode() {
+    JsBarcode("#barcode", $stateParams.barcode, {
+      format: "ITF",
+      width:2,
+      height:100,
+      format: "auto",
+      displayValue: true,
+      font: "monospace",
+      textAlign: "center",
+      textPosition: "bottom",
+      textMargin: 5,
+      fontSize: 20,
+      background: "#ffffff",
+      lineColor: "#000000",
+    });
+  }
+
+  $scope.formatDate = function formatDate(date) {
+    var momentDate = moment(date);
+    return momentDate.format('DD MMM');
+  }
+});
+
+angular.module('starter').controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListService, $ionicModal) {
+
+  $scope.contacts = {
+    $loading: false,
+    $error: false,
+    value: [],
+    $search: '',
+  };
+
+  $scope.reload = function reload() {
+    ContactsService.all().then(function(result) {
+      $scope.contacts.value = result.data;
+    }).catch(function(err) {
+      console.log("Error loading contacts");
+      console.log(err);
+    });
+  }
+  $scope.reload();
+
+  $scope.filteredUsers = [];
+
+  $scope.filterUsers = function filterUsers() {
+    var array = [];
+    for (var i = 0; i < $scope.contacts.value.length; ++i) {
+      var obj = $scope.contacts.value[i].email;
+      if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
+      array.push($scope.contacts.value[i]);
+    }
+    $scope.filteredUsers = array;
+  }
+
+  var addContactModalPromise = $ionicModal.fromTemplateUrl('templates/contact-add-contact.html', {
     scope: $scope,
     animation: 'slide-in-up'
   });
 
-  $scope.addGame = function addGame() {
-    $scope.newGame = {
-      id: $scope.games.value.length,
-      date: null,
-      startTime: null,
-      finishTime: null,
-      homeTeam: 'Sea Eagles',
-      awayTeam: null,
-      invited: 0,
-      accepted: 0,
-      declined: 0,
-    }
-    addGameModalPromise.then(function(m) {
-      m.show();
-    });
+  $scope.newContact = {
+    name: null,
+    mobile: null,
+    email: null,
   }
 
-  $scope.saveGame = function saveGame() {
-    GamesListService.create($scope.newGame).then(function(obj) {
-      console.log(obj);
-      $scope.games.value.push(obj);
-      addGameModalPromise.then(function(m) {
+  $scope.showAddContact = function showAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.show();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.cancelAddContact = function cancelAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.hide();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.saveContact = function saveContact() {
+    //TODO - create a new contact add add to service
+    ContactsService.create($scope.newContact).then(function() {
+      addContactModalPromise.then(function(m) {
         m.hide();
+      }).catch(function(err) {
+        //TODO - catch any errors here
       });
     }).catch(function(err) {
       console.log(err);
     });
-  }
 
-  $scope.cancelAddGame = function cancelAddGame() {
-    addGameModalPromise.then(function(m) {
-      m.hide();
-    });
   }
 
 })

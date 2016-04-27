@@ -1,17 +1,17 @@
-<ion-view class="host-game-ticket-list">
+<ion-view class="host-game-ticket-list" ng-controller="ManageTicketsCtrl">
   <ion-nav-title>
-    Gary One
+    Tickets ({{game.tickets.length}}/8)
   </ion-nav-title>
-  <ion-content>
+  <ion-content id="game-card">
     <div class="game-detail card">
       <div class="row">
         <div class="col">
-          <div class="game-detail--date">24 Jul {{formatDate(game.date)}}</div>
-          <div>Sea Eagles{{game.homeTeam}}</div>
-          <div>v Tigers{{game.awayTeam}}</div>
+          <div class="game-detail--date">{{formatDate(game.date)}}</div>
+          <div>{{game.homeTeam}}</div>
+          <div>v {{game.awayTeam}}</div>
         </div>
         <div class="col">
-          <div class="team-logo--tigers{{game.awayTeam | lowercase}}"></div>
+          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
         </div>
         <div class="col">
           <!-- <div class="game-detail--stat-group"> -->
@@ -22,23 +22,27 @@
         </div>
       </div>
     </div>
-    <div class="ticket-list">
-      <div class="row">
-        <div class="col">
-          <div class="ticket-list--number">12-3456-7890-1234</div>
+    <ion-list ng-repeat="ticket in game.tickets track by $index">
+      <ion-item>
+        <div class="ticket-list">
+          <div class="row">
+            <div class="col">
+              <div class="ticket-list--number">{{ticket.number}}</div>
+            </div>
+            <div class="col">
+              <a class="ticket-list--action" href="#/games/{{game.id}}/manage-tickets/{{ticket.number}}">VIEW</a>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <div class="ticket-list--action">VIEW</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="ticket-list--number">12-3456-7890-1234</div>
-        </div>
-        <div class="col">
-          <div class="ticket-list--action">VIEW</div>
-        </div>
-      </div>
+      </ion-item>
+    </ion-list>
+    <div ng-show="ticket.$show" id="ticket-input" style="height:250px;">
+      <form ng-submit="saveTicket()">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Enter barcode</span>
+          <input type="tel" placeholder="Enter barcode" ng-model="ticket.number" autofocus="true"/>
+        </label>
+      </form>
     </div>
   </ion-content>
   <div class="button-add" ng-click="addTicket()">

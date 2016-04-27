@@ -1,23 +1,24 @@
-<ion-view class="host-game-detail">
+<ion-view class="host-game-detail" ng-controller="GameDetailCtrl">
   <ion-nav-title>
-    Sea Eagles vs XX
+    Sea Eagles vs {{game.awayTeam}}
   </ion-nav-title>
   <ion-content>
     <div class="game-detail card">
       <div class="row">
         <div class="col">
-          <div class="game-detail--date">24 Jul {{formatDate(game.date)}}</div>
-          <div class="game-detail--manage-ticket" ng-click="manageTickets()">MANAGE
-            <br>TICKETS (1/8)</div>
+          <div class="game-detail--date">{{formatDate(game.date)}}</div>
+          <div class="game-detail--manage-ticket" ng-click="prepareForSegue('manage-tickets')">MANAGE
+            <br>TICKETS ({{game.tickets.length}}/8)
+          </div>
         </div>
         <div class="col">
-          <div class="team-logo--tigers{{game.awayTeam | lowercase}}"></div>
+          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
         </div>
         <div class="col">
           <div class="game-detail--stat-group">
-            <div class="game-detail--ticket-stat">3{{game.invited}} Invited</div>
-            <div class="game-detail--ticket-stat">2{{game.accepted}} Accepted</div>
-            <div class="game-detail--ticket-stat">1{{game.declined}} Declined</div>
+            <div class="game-detail--ticket-stat">{{game.invited}} Invited</div>
+            <div class="game-detail--ticket-stat">{{game.accepted}} Accepted</div>
+            <div class="game-detail--ticket-stat">{{game.declined}} Declined</div>
           </div>
         </div>
       </div>
@@ -27,80 +28,33 @@
         <h1 class="col">Guest List</h1>
         <div class="guest-list--right-action col">INVITE ALL</div>
       </div>
-<!--       <div class="guest-list--item row">
+      <div class="guest-list--item row" ng-hide="game.tickets.length != 0">
         <div class="col">
           <div>No Tickets Found</div>
           <div>Please add tickets via 'Manage Tickets' before inviting guests. </div>
         </div>
-      </div> -->
-      <div class="guest-list--item row">
-        <div class="col">
-          <div class="guest-list--name">Gary One</div>
-          <div class="guest-list--ticket">Ticket #1234</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--accepted">Accepted</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--right-action">UNINVITE</div>
-        </div>
       </div>
-        <div class="guest-list--contact row">
-          <div class="col"><a href="sms:0414 123 123" class="ion-android-textsms"></a></div>
-          <div class="col"><a href="tel:0414 123 123" class="ion-android-call"></a></div>
-          <div class="col"><a href="mailto:guest@example.com" class="ion-android-mail"></a></div>
-        </div>
-      <div class="guest-list--item row">
-        <div class="col">
-          <div class="guest-list--name">Gary Two</div>
-          <div class="guest-list--ticket">Ticket #1235</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--declined">Declined</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--right-action">RE-INVITE</div>
-        </div>
+      <ion-list class="guest-list--item row">
+        <ion-item ng-repeat="guest in game.guests track by $index">
+          <div class="col">
+            <div class="guest-list--name">{{guest.name}}</div>
+            <div class="guest-list--ticket">{{guest.ticketnumber}}</div>
+          </div>
+          <div class="col">
+            <div class="guest-list--accepted">{{guest.status}}</div>
+          </div>
+          <div class="col">
+            <div class="guest-list--right-action">UNINVITE</div>
+          </div>
+        </ion-item>
+      </ion-list>
+      <div class="guest-list--contact row" ng-hide="true">
+        <div class="col"><a href="sms:0414 123 123" class="ion-android-textsms"></a></div>
+        <div class="col"><a href="tel:0414 123 123" class="ion-android-call"></a></div>
+        <div class="col"><a href="mailto:guest@example.com" class="ion-android-mail"></a></div>
       </div>
-      <div class="guest-list--item row">
-        <div class="col">
-          <div class="guest-list--name">Gary Three</div>
-          <div class="guest-list--ticket">Ticket #1235</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--pending">Pending</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--right-action">UNINVITE</div>
-        </div>
-      </div>
-      <div class="guest-list--item row">
-        <div class="col">
-          <div class="guest-list--name">Gary Four</div>
-          <div class="guest-list--ticket">Ticket #1235</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--accepted">Accepted</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--right-action">UNINVITE</div>
-        </div>
-      </div>
-      <div class="guest-list--item row">
-        <div class="col">
-          <div class="guest-list--name">Gary Five</div>
-          <div class="guest-list--ticket">Ticket #1235</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--right-action">REMOVE</div>
-        </div>
-        <div class="col">
-          <div class="guest-list--right-action">INVITE</div>
-        </div>
-      </div>
-    </div>
   </ion-content>
-  <div class="button-add" ng-click="addGuest()">
+  <div class="button-add"  ng-click="prepareForSegue('add-guest')">
     <div class="button-add--label">Add Guest</div>
     <div class="button-add--icon">
       <i class="icon ion-plus"></i>

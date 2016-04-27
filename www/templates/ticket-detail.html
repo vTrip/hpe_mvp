@@ -1,0 +1,44 @@
+<ion-view ng-controller="TicketCtrl">
+  <ion-nav-title class="nav-title-custom">Ticket</ion-nav-title>
+
+  <ion-content>
+    <div class="detail card">
+      <div class="row">
+        <div class="col">
+          <div class="game-detail--date col">{{formatDate(game.date)}}</div>
+          <div class="col">{{game.homeTeam}}
+            <br/>V {{game.awayTeam}}
+          </div>
+        </div>
+        <div class="col">
+          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
+        </div>
+        <div class="col">
+          <div class="game-detail--stat-group">
+            <div class="game-detail--info">Start 07:30 PM</div>
+            <div class="game-detail--info">Finish 09:00 PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="col barcode">
+        <canvas id="barcode" class="col">
+      </div>
+    </div>
+    <div class="detail card">
+      <div class="row">
+        <div class="col">
+          <label class="col" style="font-size: 16px;">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
+          <label class="col" style="font-weight:500; font-size:16px;">Pre and Post Game Events</label>
+          <div class="row">
+            <label class="col-20">5:00 PM</label>
+            <label style="padding-top:0;" class="col">Meet at Ship Inn at for a pre game Cinammon Whiskey</label>
+          </div>
+          <div class="row">
+            <label class="col-20">9:15 PM</label>
+            <label style="padding-top:0" class="col">Post Game cocktail at The Marquee</label>
+          </div>
+        </div>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>
