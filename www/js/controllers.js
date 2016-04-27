@@ -129,9 +129,25 @@ angular.module('starter')
     return momentDate.format('DD MMM');
   }
 
-  $scope.segueToAddGuest = function segueToAddGuest() {
-    $location.path("/games/" + $scope.game.id + "/add-guest");
+  $scope.prepareForSegue = function prepareForSegue(view) {
+    $location.path("/games/" + $scope.game.id + "/" + view);
   }
+
+})
+
+.controller('ManageTicketsCtrl', function($scope, $stateParams, GamesListService) {
+
+  $scope.game = null;
+
+  $scope.reload = function reload() {
+    GamesListService.read($stateParams.gameId).then(function(res) {
+      $scope.game = res;
+    }).catch(function(err) {
+      // any error catching here
+      console.log(err);
+    });
+  }
+  $scope.reload();
 
 })
 

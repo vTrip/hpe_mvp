@@ -50,8 +50,8 @@ angular.module('starter', ['ionic'])
     templateUrl: 'templates/game-add-guest.html'
   })
 
-  .state('ticket-list', {
-    url: '/games/item/tickets',
+  .state('manage-tickets', {
+    url: '/games/:gameId/manage-tickets',
     templateUrl: 'templates/game-ticket-list.html',
   })
 

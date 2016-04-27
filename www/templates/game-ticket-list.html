@@ -1,4 +1,4 @@
-<ion-view class="host-game-ticket-list">
+<ion-view class="host-game-ticket-list" ng-controller="ManageTicketsCtrl">
   <ion-nav-title>
     Gary One
   </ion-nav-title>
@@ -6,12 +6,12 @@
     <div class="game-detail card">
       <div class="row">
         <div class="col">
-          <div class="game-detail--date">24 Jul {{formatDate(game.date)}}</div>
-          <div>Sea Eagles{{game.homeTeam}}</div>
-          <div>v Tigers{{game.awayTeam}}</div>
+          <div class="game-detail--date">{{formatDate(game.date)}}</div>
+          <div>{{game.homeTeam}}</div>
+          <div>v {{game.awayTeam}}</div>
         </div>
         <div class="col">
-          <div class="team-logo--tigers{{game.awayTeam | lowercase}}"></div>
+          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
         </div>
         <div class="col">
           <!-- <div class="game-detail--stat-group"> -->
@@ -22,24 +22,19 @@
         </div>
       </div>
     </div>
-    <div class="ticket-list">
-      <div class="row">
-        <div class="col">
-          <div class="ticket-list--number">12-3456-7890-1234</div>
-        </div>
-        <div class="col">
-          <div class="ticket-list--action">VIEW</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="ticket-list--number">12-3456-7890-1234</div>
-        </div>
-        <div class="col">
-          <div class="ticket-list--action">VIEW</div>
-        </div>
-      </div>
-    </div>
+    <ion-list ng-repeat="ticket in game.tickets">
+      <ion-item>
+        <div class="ticket-list">
+          <div class="row">
+            <div class="col">
+              <div class="ticket-list--number">ticket.number</div>
+            </div>
+            <div class="col">
+              <div class="ticket-list--action">VIEW</div>
+            </div>
+          </div>
+      </ion-item>
+    </ion-list>
   </ion-content>
   <div class="button-add" ng-click="addTicket()">
     <div class="button-add--label">Add Ticket</div>

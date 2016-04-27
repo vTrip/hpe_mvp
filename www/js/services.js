@@ -27,6 +27,7 @@ angular.module('starter')
       declined: 2,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 1,
@@ -38,6 +39,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 2,
@@ -49,6 +51,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 3,
@@ -60,6 +63,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 4,
@@ -71,6 +75,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 5,
@@ -82,6 +87,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 6,
@@ -93,6 +99,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     }
     ,
     {
@@ -105,6 +112,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     }
     ,
     {
@@ -117,6 +125,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 9,
@@ -128,6 +137,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     },
     {
       id: 10,
@@ -139,6 +149,7 @@ angular.module('starter')
       declined: 0,
       startTime: null,
       finishTime: null,
+      tickets: [],
     }
   ];
 
