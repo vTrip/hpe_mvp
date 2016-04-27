@@ -1,0 +1,3 @@
+rewriteengine on
+rewritebase /api 
+rewriterule .* handler.php
