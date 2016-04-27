@@ -171,4 +171,29 @@ angular.module('starter')
     animation: 'slide-in-up'
   });
 
+  $scope.showAddContact = function showAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.show();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.cancelAddContact = function cancelAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.hide();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.saveContact = function saveContact() {
+    //TODO - create a new contact add add to service
+    addContactModalPromise.then(function(m) {
+      m.hide();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
 })
