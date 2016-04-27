@@ -49,7 +49,7 @@ angular.module('starter')
         data: data,
         url: endpoint + '/' + id
       });
-    }
+    },
 
     delete: function(id) {
       return $http({
