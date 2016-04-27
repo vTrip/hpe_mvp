@@ -87,7 +87,21 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
 
 })
 
-angular.module('starter').controller('TicketCtrl', function($scope, $stateParams) {
+angular.module('starter').controller('TicketCtrl', function($scope, $stateParams, GamesListService) {
+
+  $scope.game = null;
+
+  $scope.reload = function reload() {
+    GamesListService.read($stateParams.gameId).then(function(res) {
+      $scope.game = res;
+      $scope.getBarcode();
+    }).catch(function(err) {
+      // any error catching here
+      console.log(err);
+    });
+  }
+  $scope.reload();
+
   $scope.getBarcode = function getBarcode() {
     JsBarcode("#barcode", $stateParams.barcode, {
       format: "ITF",
@@ -104,10 +118,10 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
       lineColor: "#000000",
     });
   }
-  $scope.getBarcode();
 
-  $scope.getBarcodeNumber = function getBarcodeNumber() {
-    return $stateParams.barcode;
+  $scope.formatDate = function formatDate(date) {
+    var momentDate = moment(date);
+    return momentDate.format('DD MMM');
   }
 });
 

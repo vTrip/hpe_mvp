@@ -5,18 +5,20 @@
     <div class="detail card">
       <div class="row">
         <div class="col">
-          <label>
-            <span style="font-size:24px;">14 April</span> <br/>
-            <span style="font-size:16px;">Sea Eagles <br/>
-            v Eels</span>
-          </label>
-        </div>
-        <div class="col" id="club-logo">
+          <div class="game-detail--date col">{{formatDate(game.date)}}</div>
+          <div class="col">{{game.homeTeam}}
+            <br/>V {{game.awayTeam}}
+          </div>
         </div>
         <div class="col">
-          <label class="col" style="font-size:16px;">Brookvale Oval</label>
-          <label class="col" style="font-size:16px;">Start 07:30pm</label>
-          <label class="col" style="font-size:16px;">End 9:00pm</label>
+          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
+        </div>
+        <div class="col">
+          <div class="game-detail--stat-group">
+            <div class="game-detail--ticket-stat">{{game.invited}} Invited</div>
+            <div class="game-detail--ticket-stat">{{game.accepted}} Accepted</div>
+            <div class="game-detail--ticket-stat">{{game.declined}} Declined</div>
+          </div>
         </div>
       </div>
       <div class="col barcode">
