@@ -2,7 +2,7 @@
   <ion-nav-title>
     Manage Tickets
   </ion-nav-title>
-  <ion-content>
+  <ion-content id="game-card">
     <div class="game-detail card">
       <div class="row">
         <div class="col">
@@ -36,11 +36,11 @@
         </div>
       </ion-item>
     </ion-list>
-    <div ng-show="ticket.$show">
+    <div ng-show="ticket.$show" id="ticket-input" style="height:250px;">
       <form ng-submit="saveTicket()">
         <label class="item item-input item-floating-label">
           <span class="input-label">Enter barcode</span>
-          <input type="tel" placeholder="Enter barcode" ng-model="ticket.number"/>
+          <input type="tel" placeholder="Enter barcode" ng-model="ticket.number" autofocus="true"/>
         </label>
       </form>
     </div>

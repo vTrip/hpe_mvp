@@ -37,7 +37,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
 })
 
-angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, GamesListService) {
+angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, $location, $ionicScrollDelegate, GamesListService) {
 
   $scope.game = null;
 
@@ -64,6 +64,8 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
 
   $scope.addTicket = function addTicket() {
     $scope.ticket.$show = true;
+    $location.hash("ticket-input");
+    $ionicScrollDelegate.anchorScroll(true);
   }
 
   $scope.saveTicket = function saveTicket() {
@@ -79,6 +81,8 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   $scope.resetTicket = function resetTicket() {
     $scope.ticket.$show = false;
     $scope.ticket.number = null;
+    $location.hash("game-card");
+    $ionicScrollDelegate.anchorScroll(true);
   }
 
 })
