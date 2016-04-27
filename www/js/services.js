@@ -6,7 +6,7 @@ angular.module('starter')
  */
 .factory("FakeValue", function FakeValueFactory($q, $timeout) {
   // change this during testing to simulate different server response times
-  var delay = 0;
+  var delay = 1500;
 
   return function FakeValue(val) {
     return $timeout(function() {
@@ -150,6 +150,7 @@ angular.module('starter')
       startTime: null,
       finishTime: null,
       tickets: [],
+      guests: [],
     }
   ];
 
@@ -167,8 +168,8 @@ angular.module('starter')
     },
 
     create: function(game) {
-      var obj = FakeValue(game);
-      return obj;
+      games.push(game);
+      return FakeValue();
     },
 
     read: function(id) {
