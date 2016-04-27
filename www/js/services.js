@@ -216,6 +216,7 @@ angular.module('starter')
 
     create: function(contact) {
       var obj = FakeValue(contact);
+      contacts.push(contact);
       return obj;
     },
 

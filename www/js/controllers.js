@@ -171,6 +171,12 @@ angular.module('starter')
     animation: 'slide-in-up'
   });
 
+  $scope.newContact = {
+    name: null,
+    mobile: null,
+    email: null,
+  }
+
   $scope.showAddContact = function showAddContact() {
     addContactModalPromise.then(function(m) {
       m.show();
@@ -189,11 +195,16 @@ angular.module('starter')
 
   $scope.saveContact = function saveContact() {
     //TODO - create a new contact add add to service
-    addContactModalPromise.then(function(m) {
-      m.hide();
+    ContactsService.create($scope.newContact).then(function() {
+      addContactModalPromise.then(function(m) {
+        m.hide();
+      }).catch(function(err) {
+        //TODO - catch any errors here
+      });
     }).catch(function(err) {
-      //TODO - catch any errors here
-    })
+      console.log(err);
+    });
+
   }
 
 })
