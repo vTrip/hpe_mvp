@@ -19,7 +19,7 @@ angular.module('starter')
   var games = [
     {
       id: 0,
-      date: '25/04/2016',
+      date: '2016/04/25',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Knights',
       invited: 8,
@@ -30,7 +30,7 @@ angular.module('starter')
     },
     {
       id: 1,
-      date: '25/04/2016',
+      date: '2016/04/25',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Cowboys',
       invited: 6,
@@ -41,7 +41,7 @@ angular.module('starter')
     },
     {
       id: 2,
-      date: '14 May',
+      date: '2016/05/05',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Broncos',
       invited: 8,
@@ -52,7 +52,7 @@ angular.module('starter')
     },
     {
       id: 3,
-      date: '21 May',
+      date: '2016/05/21',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Sharks',
       invited: 0,
@@ -63,7 +63,7 @@ angular.module('starter')
     },
     {
       id: 4,
-      date: '3 Jun',
+      date: '2016/06/03',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Raiders',
       invited: 0,
@@ -74,7 +74,7 @@ angular.module('starter')
     },
     {
       id: 5,
-      date: '12 Jun',
+      date: '2016/06/12',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Panthers',
       invited: 0,
@@ -85,7 +85,7 @@ angular.module('starter')
     },
     {
       id: 6,
-      date: '20 Jun',
+      date: '2016/06/20',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Titans',
       invited: 0,
@@ -97,7 +97,7 @@ angular.module('starter')
     ,
     {
       id: 7,
-      date: '27 Jun',
+      date: '2016/06/27',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Cowboys',
       invited: 0,
@@ -109,7 +109,7 @@ angular.module('starter')
     ,
     {
       id: 8,
-      date: '4 Jul',
+      date: '2016/07/04',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Dragons',
       invited: 0,
@@ -120,7 +120,7 @@ angular.module('starter')
     },
     {
       id: 9,
-      date: '16 Jul',
+      date: '2016/07/16',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Warriors',
       invited: 0,
@@ -131,7 +131,7 @@ angular.module('starter')
     },
     {
       id: 10,
-      date: '25 Jul',
+      date: '2016/07/25',
       homeTeam: 'Sea Eagles',
       awayTeam: 'Rabbitohs',
       invited: 0,
