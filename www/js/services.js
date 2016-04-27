@@ -178,6 +178,7 @@ angular.module('starter')
     update: function(game) {
       var index = find(game.id);
       games[index] = game;
+      return FakeValue();
     },
 
     delete: function(index) {

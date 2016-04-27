@@ -22,12 +22,12 @@
         </div>
       </div>
     </div>
-    <ion-list ng-repeat="ticket in game.tickets">
+    <ion-list ng-repeat="ticket in game.tickets track by $index">
       <ion-item>
         <div class="ticket-list">
           <div class="row">
             <div class="col">
-              <div class="ticket-list--number">ticket.number</div>
+              <div class="ticket-list--number">{{ticket.number}}</div>
             </div>
             <div class="col">
               <div class="ticket-list--action">VIEW</div>
@@ -36,6 +36,14 @@
         </div>
       </ion-item>
     </ion-list>
+    <div ng-show="ticket.$show">
+      <form ng-submit="saveTicket()">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Enter barcode</span>
+          <input type="tel" placeholder="Enter barcode" ng-model="ticket.number"/>
+        </label>
+      </form>
+    </div>
   </ion-content>
   <div class="button-add" ng-click="addTicket()">
     <div class="button-add--label">Add Ticket</div>

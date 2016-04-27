@@ -154,6 +154,28 @@ angular.module('starter')
     return momentDate.format('DD MMM');
   }
 
+  $scope.ticket = {
+    $input: null,
+    $show: false,
+    number: null,
+  };
+
+  $scope.addTicket = function addTicket() {
+    $scope.ticket.$show = true;
+  }
+
+  $scope.saveTicket = function saveTicket() {
+    var newTicket = $scope.ticket;
+    $scope.game.tickets.push(newTicket);
+    GamesListService.update($scope.game);
+    $scope.resetTicket();
+  }
+
+  $scope.resetTicket = function resetTicket() {
+    $scope.ticket.$show = false;
+    $scope.ticket.number = null;
+  }
+
 })
 
 .controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListService, $ionicModal) {
