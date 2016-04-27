@@ -134,3 +134,36 @@ angular.module('starter')
   }
 
 })
+
+.controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListCtrl) {
+
+  $scope.contacts = {
+    $loading: false,
+    $error: false,
+    value: [],
+    $search: '',
+  };
+
+  $scope.reload = function reload() {
+    ContactsService.all().then(function(result) {
+      $scope.contacts.value = result;
+    }).catch(function(err) {
+      console.log("Error loading contacts");
+      console.log(err);
+    });
+  }
+  $scope.reload();
+
+  $scope.filteredUsers = [];
+
+  $scope.filterUsers = function filterUsers() {
+    var array = [];
+    for (var i = 0; i < $scope.contacts.value.length; ++i) {
+      var obj = $scope.contacts.value[i].email;
+      if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
+      array.push($scope.contacts.value[i]);
+    }
+    $scope.filteredUsers = array;
+  }
+
+})
