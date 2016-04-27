@@ -111,7 +111,7 @@ angular.module('starter')
 
 })
 
-.controller('GameDetailCtrl', function($scope, $stateParams, GamesListService, $state) {
+.controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, $state) {
   $scope.game = null;
 
   $scope.reload = function reload() {
@@ -129,8 +129,8 @@ angular.module('starter')
     return momentDate.format('DD MMM');
   }
 
-  $scope.addGuest = function addGuest() {
-    $state.go('add-guest');
+  $scope.segueToAddGuest = function segueToAddGuest() {
+    $location.path("/games/" + $scope.game.id + "/add-guest");
   }
 
 })
