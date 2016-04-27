@@ -136,7 +136,7 @@ angular.module('starter').controller('AddGuestCtrl', function($scope, $statePara
 
   $scope.reload = function reload() {
     ContactsService.all().then(function(result) {
-      $scope.contacts.value = result;
+      $scope.contacts.value = result.data;
     }).catch(function(err) {
       console.log("Error loading contacts");
       console.log(err);

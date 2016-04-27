@@ -189,41 +189,21 @@ angular.module('starter')
   }
 })
 
-.factory('ContactsService', function(FakeValue) {
-  var contacts = [
-    {
-      id: 0,
-      name: "Gary One",
-      email: "garyone@guest.com",
-    },
-    {
-      id: 1,
-      name: "Gary Two",
-      email: "garytwo@guest.com",
-    },
-    {
-      id: 2,
-      name: "Gary Three",
-      email: "garythree@guest.com",
-    },
-    {
-      id: 3,
-      name: "Gary Four",
-      email: "garyfour@guest.com",
-    },
-
-  ];
+.factory('ContactsService', function(FakeValue, $http) {
+  var endpoint = 'http://10.0.1.12/api/contact';
 
   return {
     all: function() {
-      return FakeValue(contacts);
+      return $http ({
+        method: 'GET',
+        url: endpoint,
+      });
     },
 
     find: function(id) {
-      contacts.forEach(function(item, index) {
-        if (item.id == id) {
-          return index;
-        }
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + id,
       });
     },
 
