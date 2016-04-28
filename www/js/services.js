@@ -11,7 +11,7 @@ angular.module('starter')
       });
     },
 
-    // get a selection of contacts
+    // get a selection of games
     // @param (ids) - array of ids to GET
     selection: function(ids) {
       var params = ids.join(',');
@@ -49,7 +49,7 @@ angular.module('starter')
         data: data,
         url: endpoint + '/' + id
       });
-    }
+    },
 
     delete: function(id) {
       return $http({

@@ -13,12 +13,12 @@ angular.module('starter').controller('LoginCtrl', function($scope, $state) {
 
 });
 
-angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, $state) {
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal) {
   $scope.game = null;
 
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game = res;
+      $scope.game = res.data;
     }).catch(function(err) {
       // any error catching here
       console.log(err);
@@ -35,6 +35,118 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     $location.path("/games/" + $scope.game.id + "/" + view);
   }
 
+  // Contact search modal
+  var searchContactModalPromise = $ionicModal.fromTemplateUrl('templates/game-add-guest.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  $scope.showSearchContact = function showSearchContact() {
+    searchContactModalPromise.then(function(m) {
+      $scope.getContacts();
+      m.show();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.cancelSearchContact = function cancelSearchContact() {
+    searchContactModalPromise.then(function(m) {
+      m.hide();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.saveSearchContact = function saveSearchContact(contact) {
+    var guests = $scope.game.guests.slice();
+    searchContactModalPromise.then(function(m) {
+      guests.push(contact.id);
+      GamesListService.updateAttribute($scope.game.id, guests).then(function() {
+        m.hide();
+        $scope.reload();
+      }).catch(function(err) {
+        console.log(err);
+      });
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.contacts = {
+    $loading: false,
+    $error: false,
+    value: [],
+    $search: '',
+  };
+
+  var game = null;
+
+  $scope.getContacts = function getContacts() {
+    ContactsService.all().then(function(result) {
+      $scope.contacts.value = result.data;
+    }).catch(function(err) {
+      console.log("Error loading contacts");
+      console.log(err);
+    });
+  }
+
+  $scope.filteredUsers = [];
+
+  $scope.filterUsers = function filterUsers() {
+    var array = [];
+    for (var i = 0; i < $scope.contacts.value.length; ++i) {
+      var obj = $scope.contacts.value[i].email;
+      if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
+      array.push($scope.contacts.value[i]);
+    }
+    $scope.filteredUsers = array;
+  }
+  // end of contact search modal
+
+  // Add contact Modal
+  var addContactModalPromise = $ionicModal.fromTemplateUrl('templates/contact-add-contact.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  $scope.newContact = {
+    name: null,
+    mobile: null,
+    email: null,
+  }
+
+  $scope.showAddContact = function showAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.show();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.cancelAddContact = function cancelAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.hide();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.saveContact = function saveContact() {
+    //TODO - create a new contact add add to service
+    ContactsService.create($scope.newContact).then(function() {
+      addContactModalPromise.then(function(m) {
+        m.hide();
+      }).catch(function(err) {
+        //TODO - catch any errors here
+      });
+    }).catch(function(err) {
+      console.log(err);
+    });
+
+  }
+  // end of add contact modal
+
 })
 
 angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, $location, $ionicScrollDelegate, GamesListService) {
@@ -43,7 +155,7 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
 
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game = res;
+      $scope.game = res.data;
     }).catch(function(err) {
       // any error catching here
       console.log(err);
@@ -73,7 +185,7 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
       number: $scope.ticket.number,
     };
     $scope.game.tickets.push(newTicket);
-    GamesListService.update($scope.game);
+    GamesListService.updateAttribute($scope.game);
     $scope.reload();
     $scope.resetTicket();
   }
@@ -124,77 +236,3 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     return momentDate.format('DD MMM');
   }
 });
-
-angular.module('starter').controller('AddGuestCtrl', function($scope, $stateParams, ContactsService, GamesListService, $ionicModal) {
-
-  $scope.contacts = {
-    $loading: false,
-    $error: false,
-    value: [],
-    $search: '',
-  };
-
-  $scope.reload = function reload() {
-    ContactsService.all().then(function(result) {
-      $scope.contacts.value = result.data;
-    }).catch(function(err) {
-      console.log("Error loading contacts");
-      console.log(err);
-    });
-  }
-  $scope.reload();
-
-  $scope.filteredUsers = [];
-
-  $scope.filterUsers = function filterUsers() {
-    var array = [];
-    for (var i = 0; i < $scope.contacts.value.length; ++i) {
-      var obj = $scope.contacts.value[i].email;
-      if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
-      array.push($scope.contacts.value[i]);
-    }
-    $scope.filteredUsers = array;
-  }
-
-  var addContactModalPromise = $ionicModal.fromTemplateUrl('templates/contact-add-contact.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  });
-
-  $scope.newContact = {
-    name: null,
-    mobile: null,
-    email: null,
-  }
-
-  $scope.showAddContact = function showAddContact() {
-    addContactModalPromise.then(function(m) {
-      m.show();
-    }).catch(function(err) {
-      //TODO - catch any errors here
-    })
-  }
-
-  $scope.cancelAddContact = function cancelAddContact() {
-    addContactModalPromise.then(function(m) {
-      m.hide();
-    }).catch(function(err) {
-      //TODO - catch any errors here
-    })
-  }
-
-  $scope.saveContact = function saveContact() {
-    //TODO - create a new contact add add to service
-    ContactsService.create($scope.newContact).then(function() {
-      addContactModalPromise.then(function(m) {
-        m.hide();
-      }).catch(function(err) {
-        //TODO - catch any errors here
-      });
-    }).catch(function(err) {
-      console.log(err);
-    });
-
-  }
-
-})

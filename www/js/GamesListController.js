@@ -29,7 +29,7 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
   $scope.reload = function reload() {
     $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
-      $scope.games.value = result;
+      $scope.games.value = result.data;
       $scope.games.$loading = false;
     }).catch(function(err) {
       $scopegames.$error = true;
@@ -70,11 +70,9 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
 
   $scope.saveGame = function saveGame() {
     GamesListService.create($scope.newGame).then(function(obj) {
-      GamesListService.all().catch(function(err) {
-        console.log(err);
-      });
       addGameModalPromise.then(function(m) {
         m.hide();
+        $scope.reload();
       });
     }).catch(function(err) {
       console.log(err);
@@ -90,8 +88,9 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
   $scope.deleteGame = function deleteGame($index) {
     GamesListService.delete($index).then(function() {
       //TODO - reset state of ion list items by rehiding option btns
+      $scope.reload();
     }).catch(function(err) {
-
+      console.log(err);
     });
   }
 
