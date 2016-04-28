@@ -186,7 +186,7 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
       number: $scope.ticket.number,
     };
     $scope.game.tickets.push(newTicket);
-    GamesListService.updateAttribute($scope.game);
+    GamesListService.updateAttribute($scope.game.id, $scope.game.tickets);
     $scope.reload();
     $scope.resetTicket();
   }

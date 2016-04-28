@@ -48,6 +48,8 @@ angular.module('starter')
         method: 'PATCH',
         data: data,
         url: endpoint + '/' + id
+      }).catch(function(err) {
+        console.error(err);
       });
     },
 
