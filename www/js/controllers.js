@@ -156,6 +156,7 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game = res.data;
+      console.log(res.data);
     }).catch(function(err) {
       // any error catching here
       console.log(err);
@@ -205,7 +206,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
 
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game = res;
+      $scope.game = res.data;
       $scope.getBarcode();
     }).catch(function(err) {
       // any error catching here
