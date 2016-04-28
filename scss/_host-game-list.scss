@@ -3,6 +3,10 @@
 	.item-content
 	{
 		padding: 0;
+		&.activated
+		{
+			background: inherit;
+		}
 	}
 	
 	&--empty

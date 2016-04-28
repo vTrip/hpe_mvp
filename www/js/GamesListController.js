@@ -29,7 +29,7 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
   $scope.reload = function reload() {
     $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
-      $scope.games.value = result;
+      $scope.games.value = result.data;
       $scope.games.$loading = false;
     }).catch(function(err) {
       $scopegames.$error = true;
