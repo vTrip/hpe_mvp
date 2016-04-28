@@ -1,7 +1,12 @@
-<ion-view class="host-contact-list" ng-controller="AddGuestCtrl">
-  <ion-nav-title>
-    Contacts
-  </ion-nav-title>
+<ion-modal-view class="host-contact-list">
+  <ion-header-bar class="nav-bar-custom">
+    <div class="buttons">
+      <button class="button button-clear" ng-click="cancelSearchContact()">
+        <i class="ion-android-close"></i>
+      </button>
+    </div>
+    <h1 class="title">Add Contact</h1>
+  </ion-header-bar>
   <ion-content>
     <div class="contact-list--item card">
       <div class="row">
@@ -13,7 +18,7 @@
       </div>
     </div>
     <ion-list class="contacts-list" ng-show="!contacts.$loading">
-      <ion-item class="contact-list--item card" ng-repeat="contact in filteredUsers">
+      <ion-item class="contact-list--item card" ng-repeat="contact in filteredUsers" ng-click="saveSearchContact(contact)">
         <div class="row">
           <div class="col">
             <div class="contact-list--name">{{contact.name}}</div>
@@ -28,4 +33,4 @@
       </div>
     </div>
   </ion-content>
-</ion-view>
+</ion-modal-view>
