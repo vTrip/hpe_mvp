@@ -8,3 +8,4 @@ plugins/
 .DS_Store
 www/css/ionic.app.css
 www/css/ionic.app.min.css
+www/api/*.json
