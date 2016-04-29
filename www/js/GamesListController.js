@@ -48,6 +48,7 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
   }
 
   // Add game Modal
+  $scope.modalTitle = "Add Game";
 
   var addGameModalPromise = $ionicModal.fromTemplateUrl('templates/game-add-edit.html', {
     scope: $scope,
