@@ -38,6 +38,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game = res.data;
+      console.log($scope.game);
       ContactsService.selection($scope.game.guests).then(function(guests) {
         $scope.guests = guests.data;
       });
@@ -188,10 +189,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.saveGame = function saveGame() {
-    GamesListService.updateAttribute($scope.newGame).then(function(obj) {
+    GamesListService.updateAttribute($scope.game.id, $scope.newGame).then(function() {
       editGameModalPromise.then(function(m) {
-        m.hide();
         $scope.reload();
+        m.hide();
       });
     }).catch(function(err) {
       console.log(err);

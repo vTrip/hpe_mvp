@@ -29,15 +29,15 @@ angular.module('starter')
       });
     },
 
-    create: function(contact) {
-      return $http.post(endpoint, contact);
+    create: function(game) {
+      return $http.post(endpoint, game);
     },
 
-    update: function(contact) {
+    update: function(game) {
       return $http({
         method: 'PUT',
-        data: contact,
-        url: endpoint + '/' + contact.id
+        data: game,
+        url: endpoint + '/' + game.id
       });
     },
 
