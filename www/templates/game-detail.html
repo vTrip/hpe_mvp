@@ -1,5 +1,5 @@
 <ion-view class="host-game-detail" ng-controller="GameDetailCtrl">
-  <ion-nav-title>
+  <ion-nav-title ng-show="!game.$loading">
     Sea Eagles vs {{game.value.awayTeam}}
   </ion-nav-title>
   <ion-nav-buttons side="right">
