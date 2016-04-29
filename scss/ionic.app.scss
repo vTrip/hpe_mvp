@@ -79,7 +79,7 @@ html, body, h1, h2, h3, h4, h5, h6
   height: 100%;
 }
 
-.bar.bar-stable, 
+.bar.bar-stable,
 .bar.bar-stable .title,
 .bar-stable .button.button-clear
 {
@@ -125,4 +125,24 @@ a:link, a:visited, a:hover, a:active
 .row
 {
   padding: 0;
+}
+
+.custom-loading-popup {
+  .popup {
+    background: none;
+
+    .popup-head {
+      border: none;
+    }
+
+    .popup-body {
+      .icon-refreshing.loading-placeholder {
+        text-align: center;
+        ion-spinner {
+          stroke: #fff;
+          fill: #fff;
+        }
+      }
+    }
+  }
 }

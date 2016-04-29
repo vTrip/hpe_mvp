@@ -1,15 +1,10 @@
 <ion-view class="host-game-list" ng-controller="GamesListCtrl" title="All games">
   <ion-content>
-    <ion-refresher
-      pulling-text="Pull to refresh..."
-      on-refresh="reload()">
-    </ion-refresher>
-
-    <div class="host-game-list--empty" ng-show="games.value.length == 0 && !games.$loading">
+    <div class="host-game-list--empty" ng-show="showEmptyState()">
       <div class="icon-football"></div>
       <div>Click + below to add a new game</div>
     </div>
-    <ion-list class="game-list" >
+    <ion-list class="game-list">
       <ion-item class="game-list--item card" ng-repeat="game in games.value track by $index" ng-href="#/menu/games/{{game.id}}">
         <div class="row">
           <div class="col">

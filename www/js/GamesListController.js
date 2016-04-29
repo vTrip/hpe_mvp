@@ -1,4 +1,4 @@
-angular.module('starter').controller('GamesListCtrl', function($scope, GamesListService, $ionicModal, $stateParams, $state) {
+angular.module('starter').controller('GamesListCtrl', function($scope, GamesListService, $ionicPopup, $ionicModal, $stateParams, $state) {
 
   $scope.games = {
     $loading: false,
@@ -30,6 +30,10 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
   });
 
   $scope.reload = function reload() {
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
     $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
       $scope.games.value = result.data;
@@ -37,9 +41,15 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
       $scopegames.$error = true;
       console.log(err);
     }).finally(function() {
+      loadingPopup.close();
       $scope.games.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
     });
+  }
+
+
+  $scope.isEmptyState = function isEmptyState() {
+    return $scope.games.length = 0 && !$scope.games.$loading;
   }
 
   $scope.formatDate = function formatDate(date) {

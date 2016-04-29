@@ -40,6 +40,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   ];
 
   $scope.reload = function reload() {
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
     $scope.game.$loading = true;
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game.value = res.data;
@@ -51,6 +55,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       $scope.game.$error = true;
       console.log(err);
     }).finally(function() {
+      loadingPopup.close();
       $scope.game.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
     });
@@ -230,7 +235,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
 })
 
-angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, $location, $ionicScrollDelegate, GamesListService) {
+angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, $location, $ionicScrollDelegate, $ionicPopup, GamesListService) {
 
   $scope.game = {
     $loading: false,
@@ -239,6 +244,10 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   };
 
   $scope.reload = function reload() {
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
     $scope.game.$loading = true;
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game.value = res.data;
@@ -247,6 +256,7 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
       $scope.game.$error = true;
       console.log(err);
     }).finally(function() {
+      loadingPopup.close();
       $scope.game.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
     });
@@ -291,17 +301,28 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
 
 })
 
-angular.module('starter').controller('TicketCtrl', function($scope, $stateParams, GamesListService) {
+angular.module('starter').controller('TicketCtrl', function($scope, $stateParams, $ionicPopup, GamesListService) {
 
-  $scope.game = null;
+  $scope.game = {
+    $loading: false,
+    value: null,
+  };
 
   $scope.reload = function reload() {
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
+    $scope.game.$loading = true;
     GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game = res.data;
+      $scope.game.value = res.data;
       $scope.getBarcode();
     }).catch(function(err) {
       // any error catching here
       console.log(err);
+    }).finally(function() {
+      loadingPopup.close();
+      $scope.game.$loading = false;
     });
   }
   $scope.reload();
@@ -329,7 +350,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   }
 })
 
-.controller('ContactsCtrl', function($scope, ContactsService, $ionicModal) {
+.controller('ContactsCtrl', function($scope, ContactsService, $ionicModal, $ionicPopup) {
   $scope.contacts = {
     $loading: false,
     $error: false,
@@ -344,6 +365,10 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   });
 
   $scope.reload = function reload() {
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
     $scope.contacts.$loading = true;
     ContactsService.all().then(function(result) {
       $scope.contacts.value = $scope.filteredUsers = result.data;
@@ -351,6 +376,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
       console.log("Error loading contacts");
       console.log(err);
     }).finally(function() {
+      loadingPopup.close();
       $scope.contacts.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
     });
@@ -424,12 +450,17 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   };
 
   $scope.reload = function reload() {
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
     $scope.contact.$loading = true;
     ContactsService.read($stateParams.contactId).then(function(contact) {
       $scope.contact.value = contact.data;
     }).catch(function() {
       $scope.contact.$error = true;
     }).finally(function() {
+      loadingPopup.close();
       $scope.contact.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
     });;

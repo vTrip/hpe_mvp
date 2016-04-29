@@ -1,17 +1,17 @@
 <ion-view ng-controller="TicketCtrl">
   <ion-nav-title class="nav-title-custom">Ticket</ion-nav-title>
 
-  <ion-content>
+  <ion-content ng-show="!game.$loading">
     <div class="detail card">
       <div class="row">
         <div class="col">
-          <div class="game-detail--date col">{{formatDate(game.date)}}</div>
-          <div class="col">{{game.homeTeam}}
-            <br/>V {{game.awayTeam}}
+          <div class="game-detail--date col">{{formatDate(game.value.date)}}</div>
+          <div class="col">{{game.value.homeTeam}}
+            <br/>V {{game.value.awayTeam}}
           </div>
         </div>
         <div class="col">
-          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
+          <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
         </div>
         <div class="col">
           <div class="game-detail--stat-group">
