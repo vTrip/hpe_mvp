@@ -82,11 +82,11 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.cancelSearchContact = function cancelSearchContact() {
+    // TODO - popup to go here
+
     searchContactModalPromise.then(function(m) {
       m.hide();
-    }).catch(function(err) {
-      //TODO - catch any errors here
-    })
+    });
   }
 
   $scope.saveSearchContact = function saveSearchContact(contact) {
@@ -102,9 +102,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       }).catch(function(err) {
         console.log(err);
       });
-    }).catch(function(err) {
-      //TODO - catch any errors here
-    })
+    });
   }
 
   $scope.contacts = {
@@ -153,17 +151,13 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.showAddContact = function showAddContact() {
     addContactModalPromise.then(function(m) {
       m.show();
-    }).catch(function(err) {
-      //TODO - catch any errors here
-    })
+    });
   }
 
   $scope.cancelAddEditContact = function cancelAddContact() {
     addContactModalPromise.then(function(m) {
       m.hide();
-    }).catch(function(err) {
-      //TODO - catch any errors here
-    })
+    });
   }
 
   $scope.saveContact = function saveContact() {
@@ -171,8 +165,6 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     ContactsService.create($scope.newContact).then(function() {
       addContactModalPromise.then(function(m) {
         m.hide();
-      }).catch(function(err) {
-        //TODO - catch any errors here
       });
     }).catch(function(err) {
       console.log(err);
