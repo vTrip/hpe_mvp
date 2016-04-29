@@ -25,6 +25,10 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     {name: 'Warriors'},
   ];
 
+  $scope.$on( "$ionicView.enter", function( scopes, states ) {
+    $scope.reload();
+  });
+
   $scope.reload = function reload() {
     $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
@@ -36,7 +40,6 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
       console.log(err);
     })
   }
-  $scope.reload();
 
   $scope.formatDate = function formatDate(date) {
     var momentDate = moment(date);

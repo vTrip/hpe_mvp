@@ -306,6 +306,10 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
 
   var game = null;
 
+  $scope.$on( "$ionicView.enter", function( scopes, states ) {
+    $scope.reload();
+  });
+
   $scope.reload = function reload() {
     ContactsService.all().then(function(result) {
       $scope.contacts.value = $scope.filteredUsers = result.data;
@@ -314,7 +318,6 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
       console.log(err);
     });
   }
-  $scope.reload();
 
   $scope.filteredUsers = [];
 
