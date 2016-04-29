@@ -98,7 +98,7 @@ angular.module('starter')
 
     update: function(contact) {
       return $http({
-        method: 'PUT',
+        method: 'PATCH',
         data: contact,
         url: endpoint + '/' + contact.id
       })
