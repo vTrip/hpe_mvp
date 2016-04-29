@@ -1,14 +1,11 @@
-<ion-view class="host-game-list" ng-controller="GamesListCtrl">
-  <ion-nav-title>
-    All Games
-  </ion-nav-title>
+<ion-view class="host-game-list" ng-controller="GamesListCtrl" title="All games">
   <ion-content>
     <div class="host-game-list--empty" ng-hide="games.value.length != 0">
       <div class="icon-football"></div>
       <div>Click + below to add a new game</div>
     </div>
     <ion-list class="game-list" ng-show="!games.$loading">
-      <ion-item class="game-list--item card" ng-repeat="game in games.value track by $index" ng-href="#/games/{{game.id}}">
+      <ion-item class="game-list--item card" ng-repeat="game in games.value track by $index" ng-href="#/menu/games/{{game.id}}">
         <div class="row">
           <div class="col">
             <div class="game-list--date">{{formatDate(game.date)}}</div>

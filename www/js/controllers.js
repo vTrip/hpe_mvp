@@ -8,7 +8,7 @@ angular.module('starter').controller('LoginCtrl', function($scope, $state) {
   });
 
   $scope.login = function login() {
-    $state.go('game-list');
+    $state.go('menu.game-list');
   }
 
 });
@@ -36,7 +36,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.prepareForSegue = function prepareForSegue(view) {
-    $location.path("/games/" + $scope.game.id + "/" + view);
+    $location.path("/menu/games/" + $scope.game.id + "/" + view);
   }
 
   // Contact search modal
