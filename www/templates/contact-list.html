@@ -18,7 +18,7 @@
       </div>
     </div>
     <ion-list class="contacts-list" ng-show="!contacts.$loading">
-      <ion-item class="contact-list--item card" ng-repeat="contact in filteredUsers" href="#/menu/contacts/{{contact.id}}">
+      <ion-item class="contact-list--item" ng-repeat="contact in filteredUsers" href="#/menu/contacts/{{contact.id}}">
         <div class="row">
           <div class="col">
             <div class="contact-list--name">{{contact.name}}</div>
