@@ -5,9 +5,10 @@
 	$call = explode('/',$_SERVER["REQUEST_URI"]);
 	$object = $call[2];
 	
-	header('Access-Control-Allow-Methods: GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS');
 	header('Access-Control-Allow-Origin: *');
-	
+	header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+    header('Access-Control-Allow-Methods: GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS');
+
 	if ($_SERVER['REQUEST_METHOD']=="GET")
 	{
 		header('Content-Type: application/json');
