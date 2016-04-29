@@ -244,4 +244,81 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     var momentDate = moment(date);
     return momentDate.format('DD MMM');
   }
-});
+})
+
+.controller('ContactsCtrl', function($scope, ContactsService, $ionicModal) {
+  $scope.contacts = {
+    $loading: false,
+    $error: false,
+    value: [],
+    $search: '',
+  };
+
+  var game = null;
+
+  $scope.reload = function reload() {
+    ContactsService.all().then(function(result) {
+      $scope.contacts.value = $scope.filteredUsers = result.data;
+    }).catch(function(err) {
+      console.log("Error loading contacts");
+      console.log(err);
+    });
+  }
+  $scope.reload();
+
+  $scope.filteredUsers = [];
+
+  $scope.filterUsers = function filterUsers() {
+    var array = [];
+    for (var i = 0; i < $scope.contacts.value.length; ++i) {
+      var obj = $scope.contacts.value[i].email;
+      if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
+      array.push($scope.contacts.value[i]);
+    }
+    $scope.filteredUsers = array;
+  }
+  // end of contact search modal
+
+  // Add contact Modal
+  var addContactModalPromise = $ionicModal.fromTemplateUrl('templates/contact-add-contact.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  $scope.newContact = {
+    name: null,
+    mobile: null,
+    email: null,
+  }
+
+  $scope.showAddContact = function showAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.show();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.cancelAddContact = function cancelAddContact() {
+    addContactModalPromise.then(function(m) {
+      m.hide();
+    }).catch(function(err) {
+      //TODO - catch any errors here
+    })
+  }
+
+  $scope.saveContact = function saveContact() {
+    //TODO - create a new contact add add to service
+    ContactsService.create($scope.newContact).then(function() {
+      addContactModalPromise.then(function(m) {
+        m.hide();
+      }).catch(function(err) {
+        //TODO - catch any errors here
+      });
+    }).catch(function(err) {
+      console.log(err);
+    });
+
+  }
+  // end of add contact modal
+})

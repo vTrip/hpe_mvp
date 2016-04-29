@@ -1,4 +1,4 @@
-<ion-view class="host-contact-list">
+<ion-view class="host-contact-list" ng-controller="ContactsCtrl">
   <ion-nav-title>
     Contacts
   </ion-nav-title>
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <ion-list class="contacts-list" ng-show="!contacts.$loading">
+    <ion-list class="contacts-list">
       <ion-item class="contact-list--item card" ng-repeat="contact in filteredUsers">
         <div class="row">
           <div class="col">
@@ -23,7 +23,7 @@
       </ion-item>
     </ion-list>
   </ion-content>
-  <div class="button-add" ng-click="addContact()">
+  <div class="button-add" ng-click="showAddContact()">
     <div class="button-add--label">Add Contact</div>
     <div class="button-add--icon">
       <i class="icon ion-plus"></i>
