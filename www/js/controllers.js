@@ -375,6 +375,8 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     animation: 'slide-in-up'
   });
 
+  $scope.modalTitle = "Add Contact"
+
   $scope.newContact = {
     name: null,
     mobile: null,
@@ -413,7 +415,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   // end of add contact modal
 })
 
-.controller('ContactsDetailCtrl', function($scope, $stateParams, $ionicModal, ContactsService) {
+.controller('ContactsDetailCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, ContactsService) {
 
   $scope.contact = {
     $loading: false,
@@ -440,6 +442,13 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     animation: 'slide-in-up'
   });
 
+  $scope.modalTitle = "Edit Contact"
+  $scope.didMakeChanges = false;
+
+  $scope.changesMade = function changesMade() {
+    $scope.didMakeChanges = true;
+  }
+
   $scope.showEditContact = function showAddContact() {
     $scope.newContact = $scope.contact.value;
     editContactModalPromise.then(function(m) {
@@ -449,12 +458,27 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     })
   }
 
-  $scope.cancelAddEditContact = function cancelAddContact() {
-    editContactModalPromise.then(function(m) {
-      m.hide();
-    }).catch(function(err) {
-      //TODO - catch any errors here
-    })
+  $scope.cancelAddEditContact = function cancelAddEditContact() {
+    if ($scope.didMakeChanges) {
+      var confirmPopup = $ionicPopup.confirm({
+        template: 'Exit without saving?',
+        cssClass: 'custom-popup',
+      });
+      confirmPopup.then(function(res) {
+        if(res) {
+          confirmPopup.close();
+          editContactModalPromise.then(function(m) {
+            m.hide();
+          });
+        } else {
+          confirmPopup.close();
+        }
+      });
+    } else {
+      editContactModalPromise.then(function(m) {
+        m.hide();
+      });
+    }
   }
 
   $scope.saveContact = function saveContact() {

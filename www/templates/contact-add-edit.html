@@ -6,7 +6,7 @@
         <i class="ion-android-close"></i>
       </button>
     </div>
-    <h1 class="title">Add Contact</h1>
+    <h1 class="title">{{modalTitle}}</h1>
     <div class="buttons" ng-click="saveContact()">
       <button class="button button-clear">Save</button>
     </div>
@@ -17,19 +17,19 @@
       <div class="col">
         <label class="item item-input item-floating-label">
           <div class="input-label">Name</div>
-          <input type="text" data-clear-btn="false" placeholder="Name" ng-model="newContact.name">
+          <input type="text" data-clear-btn="false" placeholder="Name" ng-model="newContact.name" ng-change="changesMade()">
         </label>
       </div>
       <div class="col">
         <label class="item item-input item-floating-label">
           <div class="input-label">Mobile</div>
-          <input type="tel" data-clear-btn="false" placeholder="Mobile" ng-model="newContact.mobile">
+          <input type="tel" data-clear-btn="false" placeholder="Mobile" ng-model="newContact.mobile" ng-change="changesMade()">
         </label>
       </div>
       <div class="col">
         <label class="item item-input item-floating-label">
           <div class="input-label">Email</div>
-          <input type="email" data-clear-btn="false" placeholder="Email" ng-model="newContact.email">
+          <input type="email" data-clear-btn="false" placeholder="Email" ng-model="newContact.email" ng-change="changesMade()">
         </label>
       </div>
     </div>
