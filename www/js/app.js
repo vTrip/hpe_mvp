@@ -27,10 +27,10 @@ angular.module('starter', ['ionic'])
 
   $stateProvider
 
-  // .state('login', {
-  //   url: '/',
-  //   templateUrl: 'templates/login.html',
-  // })
+  .state('login', {
+    url: '/',
+    templateUrl: 'templates/login.html',
+  })
 
   .state('menu', {
     url: '/menu',
@@ -117,6 +117,6 @@ angular.module('starter', ['ionic'])
   })
 
 
-  $urlRouterProvider.otherwise("/menu/games");
+  $urlRouterProvider.otherwise("/");
 
 })
