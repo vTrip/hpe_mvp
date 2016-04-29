@@ -46,7 +46,7 @@ angular.module('starter')
     // @param (data) - field / data to be updated
     updateAttribute: function(id, data) {
       return $http({
-        method: 'PUT',
+        method: 'PATCH',
         data: data,
         url: endpoint + '/' + id
       }).catch(function(err) {

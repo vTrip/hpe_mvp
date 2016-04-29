@@ -35,10 +35,9 @@
         </div>
       </div>
       <ion-list class="guest-list--item row">
-        <ion-item ng-repeat="guest in game.guests track by $index">
+        <ion-item ng-repeat="guest in guests track by $index">
           <div class="col">
-            <div class="guest-list--name">{{guest}}</div>
-            <div class="guest-list--ticket">{{guest.ticketnumber}}</div>
+            <div class="guest-list--name">{{guest.name}}</div>
           </div>
           <div class="col">
             <div class="guest-list--accepted">{{guest.status}}</div>

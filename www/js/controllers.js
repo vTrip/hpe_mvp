@@ -15,10 +15,14 @@ angular.module('starter').controller('LoginCtrl', function($scope, $state) {
 
 angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal) {
   $scope.game = null;
+  $scope.guests = [];
 
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game = res.data;
+      ContactsService.selection($scope.game.guests).then(function(guests) {
+        $scope.guests = guests.data;
+      });
     }).catch(function(err) {
       // any error catching here
       console.log(err);
@@ -62,7 +66,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     var guests = $scope.game.guests.slice();
     searchContactModalPromise.then(function(m) {
       guests.push(contact.id);
-      GamesListService.updateAttribute($scope.game.id, guests).then(function() {
+      var updated = {
+        "guests": guests,
+      }
+      GamesListService.updateAttribute($scope.game.id, updated).then(function() {
         m.hide();
         $scope.reload();
       }).catch(function(err) {
@@ -156,7 +163,6 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game = res.data;
-      console.log(res.data);
     }).catch(function(err) {
       // any error catching here
       console.log(err);
@@ -182,13 +188,15 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   }
 
   $scope.saveTicket = function saveTicket() {
-    var newTicket = {
-      number: $scope.ticket.number,
-    };
+    var newTicket = parseInt($scope.ticket.number);
     $scope.game.tickets.push(newTicket);
-    GamesListService.updateAttribute($scope.game.id, $scope.game.tickets);
-    $scope.reload();
-    $scope.resetTicket();
+    var updated = {
+      tickets: $scope.game.tickets,
+    };
+    GamesListService.updateAttribute($scope.game.id, updated).then(function() {
+      $scope.reload();
+      $scope.resetTicket();
+    });
   }
 
   $scope.resetTicket = function resetTicket() {
