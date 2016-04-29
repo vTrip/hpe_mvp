@@ -208,14 +208,23 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
 angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, $location, $ionicScrollDelegate, GamesListService) {
 
-  $scope.game = null;
+  $scope.game = {
+    $loading: false,
+    $error: false,
+    value: null,
+  };
 
   $scope.reload = function reload() {
+    $scope.game.$loading = true;
     GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game = res.data;
+      $scope.game.value = res.data;
     }).catch(function(err) {
       // any error catching here
+      $scope.game.$error = true;
       console.log(err);
+    }).finally(function() {
+      $scope.game.$loading = false;
+      $scope.$broadcast('scroll.refreshComplete');
     });
   }
   $scope.reload();

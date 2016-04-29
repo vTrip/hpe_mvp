@@ -1,17 +1,17 @@
 <ion-view class="host-game-ticket-list" ng-controller="ManageTicketsCtrl">
-  <ion-nav-title>
-    Tickets ({{game.tickets.length}}/8)
+  <ion-nav-title ng-show="!game.$loading">
+    Tickets ({{game.value.tickets.length}}/8)
   </ion-nav-title>
-  <ion-content id="game-card">
+  <ion-content id="game-card" ng-show="!game.$loading">
     <div class="game-detail card">
       <div class="row">
         <div class="col">
-          <div class="game-detail--date">{{formatDate(game.date)}}</div>
-          <div>{{game.homeTeam}}</div>
-          <div>v {{game.awayTeam}}</div>
+          <div class="game-detail--date">{{formatDate(game.value.date)}}</div>
+          <div>{{game.value.homeTeam}}</div>
+          <div>v {{game.value.awayTeam}}</div>
         </div>
         <div class="col">
-          <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
+          <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
         </div>
         <div class="col">
           <!-- <div class="game-detail--stat-group"> -->
@@ -23,7 +23,7 @@
       </div>
     </div>
     <ion-list>
-      <ion-item ng-repeat="ticket in game.tickets track by $index">
+      <ion-item ng-repeat="ticket in game.value.tickets track by $index">
         <div class="ticket-list">
           <div class="row">
             <div class="col">
