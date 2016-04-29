@@ -1,4 +1,4 @@
-<ion-view class="host-contact-list">
+<ion-view class="contact-list">
   <ion-nav-title>
     Contacts
   </ion-nav-title>
@@ -6,9 +6,10 @@
     <div class="contact-list--item card">
       <div class="row">
         <div class="col">
-          <label class="input input-label" style="border: solid #ddd 1px;">
-            <input type="search" ng-model="contacts.$search" ng-change="filterUsers()" autofocus="true">
-          </label>
+          <div class="contact-list--search">
+            <i class="contact-list--search-icon ion-android-search"></i>
+            <input type="search" ng-model="contacts.$search" ng-change="filterUsers()" autofocus="true" placeholder="Search">
+          </div>
         </div>
       </div>
     </div>
