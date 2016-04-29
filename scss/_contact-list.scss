@@ -10,4 +10,29 @@
 		color: #737373;
 		font-size: 14px;
 	}
+	
+	&--search
+	{
+		position: relative;
+		margin: 16px 0;
+		padding: 0 8px 0 24px;
+	}
+	
+	&--search-icon
+	{
+		position: absolute;
+		top: 8px;
+    	left: 0;
+    	font-size: 20px;
+	}
+	
+	input[type="search"]
+	{
+		box-sizing: border-box;
+		line-height: 16px;
+		border: none;
+		border-bottom: 1px solid #B0C7D6;
+		width: 100%;
+		
+	}
 }
