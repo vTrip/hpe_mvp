@@ -3,7 +3,11 @@
     Contacts
   </ion-nav-title>
   <ion-content>
-    <div class="contact-list--item card">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="reload()">
+    </ion-refresher>
+    <div class="contact-list--item card" ng-show="!contacts.$loading">
       <div class="row">
         <div class="col">
           <label class="input input-label" style="border: solid #ddd 1px;">
@@ -12,7 +16,7 @@
         </div>
       </div>
     </div>
-    <ion-list class="contacts-list">
+    <ion-list class="contacts-list" ng-show="!contacts.$loading">
       <ion-item class="contact-list--item card" ng-repeat="contact in filteredUsers" href="#/menu/contacts/{{contact.id}}">
         <div class="row">
           <div class="col">
@@ -23,7 +27,7 @@
       </ion-item>
     </ion-list>
   </ion-content>
-  <div class="button-add" ng-click="showAddContact()">
+  <div class="button-add" ng-click="showAddContact()" ng-show="!contacts.$loading">
     <div class="button-add--label">Add Contact</div>
     <div class="button-add--icon">
       <i class="icon ion-plus"></i>

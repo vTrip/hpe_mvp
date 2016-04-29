@@ -319,11 +319,15 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   });
 
   $scope.reload = function reload() {
+    $scope.contacts.$loading = true;
     ContactsService.all().then(function(result) {
       $scope.contacts.value = $scope.filteredUsers = result.data;
     }).catch(function(err) {
       console.log("Error loading contacts");
       console.log(err);
+    }).finally(function() {
+      $scope.contacts.$loading = false;
+      $scope.$broadcast('scroll.refreshComplete');
     });
   }
 
@@ -386,12 +390,22 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
 
 .controller('ContactsDetailCtrl', function($scope, $stateParams, $ionicModal, ContactsService) {
 
-  $scope.contact = null;
+  $scope.contact = {
+    $loading: false,
+    $error: false,
+    value: null,
+  };
 
   $scope.reload = function reload() {
+    $scope.contact.$loading = true;
     ContactsService.read($stateParams.contactId).then(function(contact) {
-      $scope.contact = contact.data;
-    });
+      $scope.contact.value = contact.data;
+    }).catch(function() {
+      $scope.contact.$error = true;
+    }).finally(function() {
+      $scope.contact.$loading = false;
+      $scope.$broadcast('scroll.refreshComplete');
+    });;
   }
   $scope.reload();
 
@@ -402,7 +416,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   });
 
   $scope.showEditContact = function showAddContact() {
-    $scope.newContact = $scope.contact;
+    $scope.newContact = $scope.contact.value;
     editContactModalPromise.then(function(m) {
       m.show();
     }).catch(function(err) {

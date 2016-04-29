@@ -8,7 +8,11 @@
     </div>
   </ion-nav-buttons>
   <ion-content>
-    <div class="contact-item">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="reload()">
+    </ion-refresher>
+    <div class="contact-item" ng-show="!contact.$loading && !contact.$error">
       <div class="row">
         <div class="col">
           <div class="contact-item--label">Name</div>
@@ -16,7 +20,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <div class="contact-item--value">{{contact.name}}</div>
+          <div class="contact-item--value">{{contact.value.name}}</div>
         </div>
       </div>
       <div class="row">
@@ -26,7 +30,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <div class="contact-item--value">{{contact.mobile}}</div>
+          <div class="contact-item--value">{{contact.value.mobile}}</div>
         </div>
         <div class="col">
           <div class="contact-item--icon-group">
@@ -42,7 +46,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <div class="contact-item--value">{{contact.email}}</div>
+          <div class="contact-item--value">{{contact.value.email}}</div>
         </div>
         <div class="col">
           <div class="contact-item--icon-group">
