@@ -14,7 +14,11 @@ angular.module('starter').controller('LoginCtrl', function($scope, $state) {
 });
 
 angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal) {
-  $scope.game = null;
+  $scope.game = {
+    $loading: false,
+    $error: false,
+    value: null,
+  };
   $scope.guests = [];
   var teams = $scope.teams = [
     {name: 'Broncos'},
@@ -36,15 +40,19 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   ];
 
   $scope.reload = function reload() {
+    $scope.game.$loading = true;
     GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game = res.data;
-      console.log($scope.game);
-      ContactsService.selection($scope.game.guests).then(function(guests) {
+      $scope.game.value = res.data;
+      ContactsService.selection($scope.game.value.guests).then(function(guests) {
         $scope.guests = guests.data;
       });
     }).catch(function(err) {
       // any error catching here
+      $scope.game.$error = true;
       console.log(err);
+    }).finally(function() {
+      $scope.game.$loading = false;
+      $scope.$broadcast('scroll.refreshComplete');
     });
   }
   $scope.reload();
@@ -55,7 +63,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.prepareForSegue = function prepareForSegue(view) {
-    $location.path("/menu/games/" + $scope.game.id + "/" + view);
+    $location.path("/menu/games/" + $scope.game.value.id + "/" + view);
   }
 
   // Contact search modal
@@ -82,13 +90,13 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.saveSearchContact = function saveSearchContact(contact) {
-    var guests = $scope.game.guests.slice();
+    var guests = $scope.game.value.guests.slice();
     searchContactModalPromise.then(function(m) {
       guests.push(contact.id);
       var updated = {
         "guests": guests,
       }
-      GamesListService.updateAttribute($scope.game.id, updated).then(function() {
+      GamesListService.updateAttribute($scope.game.value.id, updated).then(function() {
         m.hide();
         $scope.reload();
       }).catch(function(err) {
@@ -131,7 +139,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   // end of contact search modal
 
   // Add contact Modal
-  var addContactModalPromise = $ionicModal.fromTemplateUrl('templates/contact-add-contact.html', {
+  var addContactModalPromise = $ionicModal.fromTemplateUrl('templates/contact-add-edit.html', {
     scope: $scope,
     animation: 'slide-in-up'
   });
@@ -180,14 +188,14 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   });
 
   $scope.editGame = function editGame() {
-    $scope.newGame = $scope.game;
+    $scope.newGame = $scope.game.value;
     editGameModalPromise.then(function(m) {
       m.show();
     });
   }
 
   $scope.saveGame = function saveGame() {
-    GamesListService.updateAttribute($scope.game.id, $scope.newGame).then(function() {
+    GamesListService.updateAttribute($scope.game.value.id, $scope.newGame).then(function() {
       editGameModalPromise.then(function(m) {
         $scope.reload();
         m.hide();
