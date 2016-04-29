@@ -9,6 +9,8 @@
 	header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
     header('Access-Control-Allow-Methods: GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS');
 
+    sleep (1.5);	
+
 	if ($_SERVER['REQUEST_METHOD']=="GET")
 	{
 		header('Content-Type: application/json');
@@ -25,19 +27,36 @@
 				$filtered = [];	
 			}
 			
-			foreach ($model as $record) {
-				if (in_array($record['id'],$id))
-				{
-					if (count($id)>1)
+			foreach ($id as $an_id) 
+			{
+				foreach ($model as $record) {
+					if ($an_id==$record['id'])
 					{
-						array_push($filtered, $record);
-					}
-					else
-					{
-						$model = $record;
+						if (count($id)>1)
+						{
+							array_push($filtered, $record);
+						}
+						else
+						{
+							$model = $record;
+						}
 					}
 				}
-			} 
+			}
+			
+			// foreach ($model as $record) {
+			// 	if (in_array($record['id'],$id))
+			// 	{
+			// 		if (count($id)>1)
+			// 		{
+			// 			array_push($filtered, $record);
+			// 		}
+			// 		else
+			// 		{
+			// 			$model = $record;
+			// 		}
+			// 	}
+			// } 
 			
 			if (count($id)>1)
 			{
