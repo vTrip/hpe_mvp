@@ -13,7 +13,7 @@ angular.module('starter').controller('LoginCtrl', function($scope, $state) {
 
 });
 
-angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal) {
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal, $ionicPopup) {
   $scope.game = {
     $loading: false,
     $error: false,
@@ -82,8 +82,6 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.cancelSearchContact = function cancelSearchContact() {
-    // TODO - popup to go here
-
     searchContactModalPromise.then(function(m) {
       m.hide();
     });
@@ -179,6 +177,13 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     animation: 'slide-in-up'
   });
 
+  $scope.didMakeChanges = false;
+  $scope.modalTitle = "Edit Game";
+
+  $scope.changesMade = function changesMade() {
+    $scope.didMakeChanges = true;
+  }
+
   $scope.editGame = function editGame() {
     $scope.newGame = $scope.game.value;
     editGameModalPromise.then(function(m) {
@@ -198,9 +203,28 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.cancelAddEditGame = function cancelAddEditGame() {
-    editGameModalPromise.then(function(m) {
-      m.hide();
-    });
+    if ($scope.didMakeChanges) {
+      // A confirm dialog
+     var confirmPopup = $ionicPopup.confirm({
+       template: 'Exit without saving?',
+       cssClass: 'custom-popup',
+     });
+
+     confirmPopup.then(function(res) {
+       if(res) {
+         confirmPopup.close();
+         editGameModalPromise.then(function(m) {
+           m.hide();
+         });
+       } else {
+         confirmPopup.close();
+       }
+     });
+   } else {
+     editGameModalPromise.then(function(m) {
+       m.hide();
+     });
+   }
   }
   // end of edit game modal
 
