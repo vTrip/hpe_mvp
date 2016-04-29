@@ -1,6 +1,6 @@
-<ion-view class="host-contact-item">
+<ion-view class="host-contact-item" ng-controller="ContactsDetailCtrl">
   <ion-nav-title>
-    Gary One
+    {{contact.name}}
   </ion-nav-title>
   <ion-content>
     <div class="contact-item">
@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <div class="contact-item--value">David One</div>
+          <div class="contact-item--value">{{contact.name}}</div>
         </div>
       </div>
       <div class="row">
@@ -21,7 +21,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <div class="contact-item--value">0400 000 001</div>
+          <div class="contact-item--value">{{contact.mobile}}</div>
         </div>
         <div class="col">
           <div class="contact-item--icon-group">
@@ -37,7 +37,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <div class="contact-item--value">davidone@guest.com</div>
+          <div class="contact-item--value">{{contact.email}}</div>
         </div>
         <div class="col">
           <div class="contact-item--icon-group">

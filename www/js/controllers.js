@@ -16,6 +16,24 @@ angular.module('starter').controller('LoginCtrl', function($scope, $state) {
 angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal) {
   $scope.game = null;
   $scope.guests = [];
+  var teams = $scope.teams = [
+    {name: 'Broncos'},
+    {name: 'Bulldogs'},
+    {name: 'Cowboys'},
+    {name: 'Dragons'},
+    {name: 'Eels'},
+    {name: 'Knights'},
+    {name: 'Panthers'},
+    {name: 'Rabbitohs'},
+    {name: 'Raiders'},
+    {name: 'Roosters'},
+    {name: 'Sea-Eagles'},
+    {name: 'Sharks'},
+    {name: 'Storm'},
+    {name: 'Tigers'},
+    {name: 'Titans'},
+    {name: 'Warriors'},
+  ];
 
   $scope.reload = function reload() {
     GamesListService.read($stateParams.gameId).then(function(res) {
@@ -153,6 +171,39 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
   }
   // end of add contact modal
+
+  // Add game Modal
+  var editGameModalPromise = $ionicModal.fromTemplateUrl('templates/game-add-edit.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  $scope.editGame = function editGame() {
+    console.log($scope.game);
+    $scope.newGame = $scope.game;
+    console.log($scope.newGame);
+    editGameModalPromise.then(function(m) {
+      m.show();
+    });
+  }
+
+  $scope.saveGame = function saveGame() {
+    GamesListService.updateAttribute($scope.newGame).then(function(obj) {
+      editGameModalPromise.then(function(m) {
+        m.hide();
+        $scope.reload();
+      });
+    }).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  $scope.cancelAddEditGame = function cancelAddEditGame() {
+    editGameModalPromise.then(function(m) {
+      m.hide();
+    });
+  }
+  // end of edit game modal
 
 })
 
@@ -321,4 +372,17 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
 
   }
   // end of add contact modal
+})
+
+.controller('ContactsDetailCtrl', function($scope, $stateParams, ContactsService) {
+
+  $scope.contact = null;
+
+  $scope.reload = function reload() {
+    ContactsService.read($stateParams.contactId).then(function(contact) {
+      $scope.contact = contact.data;
+    });
+  }
+  $scope.reload();
+
 })

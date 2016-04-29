@@ -2,6 +2,11 @@
   <ion-nav-title>
     Sea Eagles vs {{game.awayTeam}}
   </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <div class="buttons" ng-click="editGame()">
+      <button class="button button-clear">Edit</button>
+    </div>
+  </ion-nav-buttons>
   <ion-content>
     <div class="game-detail card">
       <div class="row">

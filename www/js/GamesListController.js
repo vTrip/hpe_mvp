@@ -25,7 +25,6 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     {name: 'Warriors'},
   ];
 
-
   $scope.reload = function reload() {
     $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
@@ -79,7 +78,7 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     });
   }
 
-  $scope.cancelAddGame = function cancelAddGame() {
+  $scope.cancelAddEditGame = function cancelAddEditGame() {
     addGameModalPromise.then(function(m) {
       m.hide();
     });

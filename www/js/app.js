@@ -98,7 +98,7 @@ angular.module('starter', ['ionic'])
   })
 
   .state('menu.contact-item', {
-    url: '/contacts/item',
+    url: '/contacts/:contactId',
     views: {
       'menuContent' :{
         templateUrl: 'templates/contact-item.html',
