@@ -49,6 +49,8 @@ angular.module('starter')
         method: 'PUT',
         data: data,
         url: endpoint + '/' + id
+      }).catch(function(err) {
+        console.error(err);
       });
     },
 
