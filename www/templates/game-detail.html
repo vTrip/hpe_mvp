@@ -43,8 +43,8 @@
           <div>Please add tickets via 'Manage Tickets' before inviting guests. </div>
         </div>
       </div>
-      <ion-list class="guest-list--item row">
-        <ion-item ng-repeat="guest in guests track by $index">
+      <ion-list class="">
+        <ion-item class="guest-list--item row" ng-repeat="guest in guests track by $index">
           <div class="col">
             <div class="guest-list--name">{{guest.name}}</div>
           </div>
