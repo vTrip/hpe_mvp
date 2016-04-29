@@ -33,12 +33,13 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
       $scope.games.value = result.data;
-      $scope.games.$loading = false;
     }).catch(function(err) {
       $scopegames.$error = true;
-      $scope.games.$loading = false;
       console.log(err);
-    })
+    }).finally(function() {
+      $scope.games.$loading = false;
+      $scope.$broadcast('scroll.refreshComplete');
+    });
   }
 
   $scope.formatDate = function formatDate(date) {
