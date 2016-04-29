@@ -27,49 +27,83 @@ angular.module('starter', ['ionic'])
 
   $stateProvider
 
-  .state('login', {
-    url: '/',
-    templateUrl: 'templates/login.html',
+  // .state('login', {
+  //   url: '/',
+  //   templateUrl: 'templates/login.html',
+  // })
+
+  .state('menu', {
+    url: '/menu',
+    abstract: true,
+    templateUrl: 'templates/menu.html',
   })
 
   // list of games
-  .state('game-list', {
+  .state('menu.game-list', {
     url: '/games',
-    templateUrl: 'templates/game-list.html',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/game-list.html',
+      }
+    }
   })
 
   // detail of selected game
-  .state('game-item', {
+  .state('menu.game-item', {
     url: '/games/:gameId',
-    templateUrl: 'templates/game-detail.html',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/game-detail.html',
+      }
+    }
   })
 
   // add guest to game
-  .state('add-guest', {
+  .state('menu.add-guest', {
     url: '/games/:gameId/add-guest',
-    templateUrl: 'templates/game-add-guest.html'
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/game-add-guest.html'
+      }
+    }
   })
 
   // list of all tickets
-  .state('manage-tickets', {
+  .state('menu.manage-tickets', {
     url: '/games/:gameId/manage-tickets',
-    templateUrl: 'templates/game-ticket-list.html',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/game-ticket-list.html',
+      }
+    }
   })
 
   // view of selected ticket
-  .state('ticket-detail', {
+  .state('menu.ticket-detail', {
     url: '/games/:gameId/manage-tickets/:barcode',
-    templateUrl: 'templates/ticket-detail.html',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/ticket-detail.html',
+      }
+    }
   })
 
-  .state('contact-list', {
+  .state('menu.contact-list', {
     url: '/contacts',
-    templateUrl: 'templates/contact-list.html',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/contact-list.html',
+      }
+    }
   })
 
-  .state('contact-item', {
+  .state('menu.contact-item', {
     url: '/contacts/item',
-    templateUrl: 'templates/contact-item.html',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/contact-item.html',
+      }
+    }
   })
 
 
@@ -83,6 +117,6 @@ angular.module('starter', ['ionic'])
   })
 
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/menu/games");
 
 })
