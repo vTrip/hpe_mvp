@@ -180,9 +180,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   });
 
   $scope.editGame = function editGame() {
-    console.log($scope.game);
     $scope.newGame = $scope.game;
-    console.log($scope.newGame);
     editGameModalPromise.then(function(m) {
       m.show();
     });
