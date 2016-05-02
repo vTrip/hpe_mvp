@@ -39,6 +39,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     {name: 'Warriors'},
   ];
 
+  $scope.$on( "$ionicView.enter", function( scopes, states ) {
+    $scope.reload();
+  });
+
   $scope.reload = function reload() {
     var loadingPopup = $ionicPopup.show({
      template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
@@ -60,7 +64,6 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       $scope.$broadcast('scroll.refreshComplete');
     });
   }
-  $scope.reload();
 
   $scope.formatDate = function formatDate(date) {
     var momentDate = moment(date);
@@ -282,13 +285,18 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
 
   $scope.saveTicket = function saveTicket() {
     var newTicket = parseInt($scope.ticket.number);
-    $scope.game.tickets.push(newTicket);
+    $scope.game.value.tickets.push(newTicket);
     var updated = {
-      tickets: $scope.game.tickets,
+      tickets: $scope.game.value.tickets,
     };
-    GamesListService.updateAttribute($scope.game.id, updated).then(function() {
-      $scope.reload();
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
+    GamesListService.updateAttribute($scope.game.value.id, updated).then(function() {
+      loadingPopup.close();
       $scope.resetTicket();
+      $scope.reload();
     });
   }
 
