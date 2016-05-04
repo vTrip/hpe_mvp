@@ -1,8 +1,8 @@
 angular.module('starter')
 
 .factory('GamesListService', function($http) {
-   // var endpoint = 'http://10.0.1.12/api/game';
-  var endpoint = 'http://thebitspace.com.au/api/game';
+   var endpoint = 'http://10.0.1.10/api/game';
+  // var endpoint = 'http://thebitspace.com.au/api/game';
 
   return {
     all: function() {

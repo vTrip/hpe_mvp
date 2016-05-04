@@ -38,7 +38,7 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     GamesListService.all().then(function(result) {
       $scope.games.value = result.data;
     }).catch(function(err) {
-      $scopegames.$error = true;
+      $scope.games.$error = true;
       console.log(err);
     }).finally(function() {
       loadingPopup.close();
