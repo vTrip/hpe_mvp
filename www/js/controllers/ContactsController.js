@@ -65,7 +65,7 @@ angular.module('starter').controller('ContactsCtrl', function($scope, ContactsSe
     })
   }
 
-  $scope.cancelAddContact = function cancelAddContact() {
+  $scope.cancelAddEditContact = function cancelAddContact() {
     addContactModalPromise.then(function(m) {
       m.hide();
     }).catch(function(err) {
