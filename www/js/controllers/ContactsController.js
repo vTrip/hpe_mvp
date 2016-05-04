@@ -13,6 +13,10 @@ angular.module('starter').controller('ContactsCtrl', function($scope, ContactsSe
     $scope.reload();
   });
 
+  $scope.$on( "$ionicView.leave", function( scopes, states ) {
+    $scope.contacts.$loading = true;
+  });
+
   $scope.reload = function reload() {
     var loadingPopup = $ionicPopup.show({
      template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
