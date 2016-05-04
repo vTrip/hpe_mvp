@@ -8,4 +8,4 @@
 
 - Login: Add frosted glass
 
-
+- Think about spacing of margins for different device sizes

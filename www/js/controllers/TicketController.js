@@ -45,4 +45,9 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     var momentDate = moment(date);
     return momentDate.format('DD MMM');
   }
+
+  $scope.formatTime = function formatTime(time) {
+    var momentTime = moment(time);
+    return momentTime.format('hh:mm A');
+  }
 });

@@ -1,0 +1,27 @@
+.ticket-detail {
+  .detail.card {
+    .col {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .game-detail--info.time {
+      font-size: 24px;
+    }
+
+    .game-detail--info {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    .game-detail--activities {
+      label.subheading {
+        font-weight: bold;
+      }
+
+      .col-20 {
+        padding: 5px;
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
-<ion-view ng-controller="TicketCtrl">
-  <ion-nav-title class="nav-title-custom">Ticket</ion-nav-title>
+<ion-view class="ticket-detail" ng-controller="TicketCtrl">
+  <ion-nav-title>Ticket</ion-nav-title>
 
   <ion-content ng-show="!game.$loading">
     <div class="detail card">
@@ -15,8 +15,8 @@
         </div>
         <div class="col">
           <div class="game-detail--stat-group">
-            <div class="game-detail--info">Start 07:30 PM</div>
-            <div class="game-detail--info">Finish 09:00 PM</div>
+            <div class="game-detail--info time">{{formatTime(game.value.startTime)}}</div>
+            <div class="game-detail--info">Brookvale Oval</div>
           </div>
         </div>
       </div>
@@ -26,16 +26,16 @@
     </div>
     <div class="detail card">
       <div class="row">
-        <div class="col">
-          <label class="col" style="font-size: 16px;">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
-          <label class="col" style="font-weight:500; font-size:16px;">Pre and Post Game Events</label>
+        <div class="col game-detail--activities">
+          <label class="col">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
+          <label class="col subheading">Activities on the day</label>
           <div class="row">
             <label class="col-20">5:00 PM</label>
-            <label style="padding-top:0;" class="col">Meet at Ship Inn at for a pre game Cinammon Whiskey</label>
+            <label class="col">Meet at Ship Inn at for a pre game Cinammon Whiskey</label>
           </div>
           <div class="row">
             <label class="col-20">9:15 PM</label>
-            <label style="padding-top:0" class="col">Post Game cocktail at The Marquee</label>
+            <label class="col">Post Game cocktail at The Marquee</label>
           </div>
         </div>
       </label>

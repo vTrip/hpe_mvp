@@ -4,26 +4,26 @@
     	font-size: 20px;
         text-align: center;
     }
-       
+
     &--left, &--right
     {
-    	margin-bottom: $space;	
+    	margin-bottom: $space;
     }
-    
+
     &--right
     {
     	text-align: right;
     }
-    
+
     &--accept, &--decline
     {
     	margin: 0 $space;
-    	
+
     	&:first-child
     	{
     		margin-left: 0;
     	}
-    	
+
     	&:last-child
     	{
     		margin-right: 0;

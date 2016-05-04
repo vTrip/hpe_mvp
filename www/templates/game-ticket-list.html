@@ -1,4 +1,4 @@
-<ion-view class="host-game-ticket-list" ng-controller="ManageTicketsCtrl">
+<ion-view class="host-ticket-list" ng-controller="ManageTicketsCtrl">
   <ion-nav-title ng-show="!game.$loading">
     Tickets ({{game.value.tickets.length}}/8)
   </ion-nav-title>
@@ -22,20 +22,26 @@
         </div>
       </div>
     </div>
-    <ion-list>
-      <ion-item ng-repeat="ticket in game.value.tickets track by $index">
-        <div class="ticket-list">
-          <div class="row">
-            <div class="col">
-              <div class="ticket-list--number">{{ticket}}</div>
-            </div>
-            <div class="col">
-              <a class="ticket-list--action" href="#/menu/games/{{game.id}}/manage-tickets/{{ticket}}">VIEW</a>
+    <div class="ticket-list card">
+      <ion-list>
+        <ion-item ng-repeat="ticket in game.value.tickets track by $index">
+          <div class="ticket-list">
+            <div class="row">
+              <div class="col">
+                <div class="ticket-list--number">{{ticket}}</div>
+              </div>
+              <div class="col ticket-list--button">
+                REMOVE
+              </div>
+              <div class="col-20 ticket-list--button">
+                <a class="ticket-list--action" href="#/menu/games/{{game.id}}/manage-tickets/{{ticket}}">VIEW</a>
+              </div>
             </div>
           </div>
-        </div>
-      </ion-item>
-    </ion-list>
+        </ion-item>
+      </ion-list>
+    </div>
+
     <div ng-show="ticket.$show" id="ticket-input" style="height:250px;">
       <form ng-submit="saveTicket()">
         <label class="item item-input item-floating-label">
