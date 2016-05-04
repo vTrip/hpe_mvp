@@ -1,5 +1,31 @@
 .add-edit-destination {
   &--nav-bar {
-    background-color: black;
+    background-color: $manly-color;
+
+    h1, .button.button-clear {
+      color: white;
+    }
+
+    .button.button-clear {
+      font-family: $font-stack;
+      i {
+        font-size: 18px;
+      }
+    }
+
+    .button.button-clear.save {
+      font-size: 13px;
+      font-weight: 600;
+      vertical-align: baseline;
+    }
+
+  }
+
+  .item.item-input.item-select {
+    border: none;
+    border-bottom: solid 1px #ddd;
+    padding-left: 0;
+    margin-left: $space;
+    margin-right: $space;
   }
 }
