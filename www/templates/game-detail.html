@@ -7,8 +7,8 @@
       <button class="button button-clear">Edit</button>
     </div>
   </ion-nav-buttons>
-  <ion-content>
-    <div class="game-detail card" ng-show="!game.$loading">
+  <ion-content ng-hide="game.$loading">
+    <div class="game-detail card">
       <div class="row">
         <div class="col">
           <div class="game-detail--date">{{formatDate(game.value.date)}}</div>

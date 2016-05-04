@@ -1,6 +1,6 @@
 angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal, $ionicPopup) {
   $scope.game = {
-    $loading: false,
+    $loading: true,
     $error: false,
     value: null,
   };
@@ -24,9 +24,12 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     {name: 'Warriors'},
   ];
 
-  $scope.$on( "$ionicView.enter", function( scopes, states ) {
-    $scope.game.$loading = true;
+  $scope.$on("$ionicView.enter", function( scopes, states ) {
     $scope.reload();
+  });
+
+  $scope.$on("$ionicView.leave", function( scopes, states ) {
+    $scope.game.$loading = true;
   });
 
   $scope.reload = function reload() {

@@ -7,11 +7,11 @@ angular.module('starter').controller('ContactsDetailCtrl', function($scope, $sta
   };
 
   $scope.reload = function reload() {
+    $scope.contact.$loading = true;
     var loadingPopup = $ionicPopup.show({
      template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
      cssClass: 'custom-loading-popup',
     });
-    $scope.contact.$loading = true;
     ContactsService.read($stateParams.contactId).then(function(contact) {
       $scope.contact.value = contact.data;
     }).catch(function() {
