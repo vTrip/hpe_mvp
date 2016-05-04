@@ -1,19 +1,20 @@
-<ion-modal-view class="host-contact-list">
-  <ion-header-bar class="nav-bar-custom">
+<ion-modal-view class="contact-list">
+  <ion-header-bar class="contact-list--nav-bar">
     <div class="buttons">
       <button class="button button-clear" ng-click="cancelSearchContact()">
         <i class="ion-android-close"></i>
       </button>
     </div>
-    <h1 class="title">Add Contact</h1>
+    <h1 class="title">Add Guest</h1>
   </ion-header-bar>
   <ion-content>
     <div class="contact-list--item card">
       <div class="row">
         <div class="col">
-          <label class="input input-label" style="border: solid #ddd 1px;">
+          <div class="contact-list--search">
+            <i class="contact-list--search-icon ion-android-search"></i>
             <input type="search" ng-model="contacts.$search" ng-change="filterUsers()" autofocus="true">
-          </label>
+          </div>
         </div>
       </div>
     </div>
@@ -29,7 +30,7 @@
     </ion-list>
     <div class="row">
       <div class="col">
-        <label ng-click="showAddContact()">Add contact</label>
+        <label class="contact-list--add-contact" ng-click="showAddContact()">ADD CONTACT</label>
       </div>
     </div>
   </ion-content>

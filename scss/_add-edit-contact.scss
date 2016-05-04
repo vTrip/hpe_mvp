@@ -1,0 +1,40 @@
+.add-edit-contact {
+  &--nav-bar {
+    background-color: $manly-color;
+
+    h1, .button.button-clear {
+      color: white;
+    }
+
+    .button.button-clear {
+      font-family: $font-stack;
+      i {
+        font-size: 18px;
+      }
+    }
+
+    .button.button-clear.save {
+      font-size: 13px;
+      font-weight: 600;
+      vertical-align: baseline;
+    }
+  }
+
+  .item.item-input.item-floating-label {
+    border: none;
+    border-bottom: solid 1px #ddd;
+    padding-left: 0;
+    margin-left: $space;
+    margin-right: $space;
+
+    .input-label {
+      color: #737373;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    input::-webkit-input-placeholder {
+      color: #ddd;
+    }
+  }
+}

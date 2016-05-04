@@ -2,22 +2,22 @@
 {
 	&--name
 	{
-		padding-bottom: $space / 2;	
+		padding-bottom: $space / 2;
 	}
-	
+
 	&--email
 	{
 		color: #737373;
 		font-size: 14px;
 	}
-	
+
 	&--search
 	{
 		position: relative;
 		margin: 16px 0;
 		padding: 0 8px 0 24px;
 	}
-	
+
 	&--search-icon
 	{
 		position: absolute;
@@ -25,7 +25,7 @@
     	left: 0;
     	font-size: 20px;
 	}
-	
+
 	input[type="search"]
 	{
 		box-sizing: border-box;
@@ -33,11 +33,32 @@
 		border: none;
 		border-bottom: 1px solid #B0C7D6;
 		width: 100%;
-		
+
 	}
-	
+
 	&--item
 	{
 		border: none;
+	}
+
+	&--nav-bar {
+		background-color: $manly-color;
+
+    h1, .button.button-clear {
+      color: white;
+    }
+
+    .button.button-clear {
+      font-family: $font-stack;
+      i {
+        font-size: 18px;
+      }
+    }
+	}
+
+	&--add-contact {
+		color: #24B0CA;
+		font-weight: 800;
+		margin-left: $space;
 	}
 }

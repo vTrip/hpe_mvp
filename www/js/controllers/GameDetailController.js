@@ -33,10 +33,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   });
 
   $scope.reload = function reload() {
-    // var loadingPopup = $ionicPopup.show({
-    //  template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
-    //  cssClass: 'custom-loading-popup',
-    // });
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
 
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game.value = res.data;
