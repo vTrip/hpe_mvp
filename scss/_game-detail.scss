@@ -5,23 +5,27 @@
 		font-size: 24px;
 		margin-bottom: 0.2em;
 	}
-	
+
 	&--ticket-stat
 	{
 		margin-bottom: 0.2em;
-			
+
 	}
-	
+
 	&--stat-group
 	{
 		display: inline-block;
 	}
-	
+
 	&--manage-ticket
 	{
 		margin-top: 1em;
+		text-align: right;
+		padding-right: $space;
+		color: #24B0CA;
+		font-family: $font-stack-medium;
 	}
-	
+
 	&--info
 	{
 		text-align: right;

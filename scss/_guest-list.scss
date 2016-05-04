@@ -3,7 +3,7 @@
 	h1
 	{
 		font-size: 20px;
-		margin-bottom: 32px;
+		margin-bottom: 16px;
 	}
 
 	&--ticket
@@ -21,8 +21,20 @@
 	&--item
 	{
 		align-items: flex-end;
-		margin-bottom: 24px;
 		border: none;
+		margin-top: 4px;
+		margin-bottom: 4px;
+		padding: 0;
+		line-height: 30px;
+
+		& .item-content {
+			padding:0;
+		}
+	}
+
+	&--name
+	{
+		padding: 0;
 	}
 
 	&--contact
@@ -67,5 +79,9 @@
 	&--declined
 	{
 		color: #FF202F;
+	}
+
+	&--delete-button:before {
+		height: 30px;
 	}
 }

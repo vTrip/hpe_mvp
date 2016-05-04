@@ -1,9 +1,11 @@
 angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal, $ionicPopup) {
+
   $scope.game = {
     $loading: true,
     $error: false,
     value: null,
   };
+
   $scope.guests = [];
   var teams = $scope.teams = [
     {name: 'Broncos'},
@@ -42,6 +44,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       $scope.game.value = res.data;
       ContactsService.selection($scope.game.value.guests).then(function(guests) {
         $scope.guests = guests.data;
+        $scope.revealContactOptions = new Array(guests.data.length);
+        $scope.revealContactOptions.forEach(function(item, index) {
+          item = false;
+        });
       });
     }).catch(function(err) {
       // any error catching here
@@ -52,6 +58,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       $scope.game.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
     });
+  }
+
+  $scope.toggleShowContactOptions = function toggleShowContactOptions($index) {
+    $scope.revealContactOptions[$index] ^= true;
   }
 
   $scope.formatDate = function formatDate(date) {
