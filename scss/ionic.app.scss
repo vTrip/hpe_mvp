@@ -25,6 +25,8 @@ $font-size: 15px;
 
 $bg-colour-1: #BCBCBC;
 
+$manly-color: #510A23;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
@@ -50,7 +52,7 @@ $bg-colour-1: #BCBCBC;
 @import 'contact-list';
 @import 'contact-item';
 @import 'ticket-list';
-
+@import 'add-edit-destination';
 @import 'guest-ticket-list';
 
 
@@ -83,7 +85,7 @@ html, body, h1, h2, h3, h4, h5, h6
 .bar.bar-stable .title,
 .bar-stable .button.button-clear
 {
-  background-color: #510A23;
+  background-color: $manly-color;
   color: white;
   font-family: "robotoregular";
 }

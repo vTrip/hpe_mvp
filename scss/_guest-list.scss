@@ -5,66 +5,65 @@
 		font-size: 20px;
 		margin-bottom: 32px;
 	}
-	
-	
+
 	&--ticket
 	{
 		margin-bottom: -1px;
 		font-size: 14px;
 		color: #A9A9A9;
 	}
-		
+
 	&--right-action
 	{
 		text-align: right;
 	}
-	
-	&--item 
+
+	&--item
 	{
 		align-items: flex-end;
 		margin-bottom: 24px;
 		border: none;
 	}
-	
+
 	&--contact
 	{
 		margin-bottom: 24px;
 		font-size: 32px;
-		
+
 		& .col
 		{
 			text-align: center;
 		}
 	}
-	
+
 	&--item .col
 	{
-		
+
 		/*position: relative;*/
 	}
-	
+
 	&--bottom-block
 	{
 		/*position: absolute;*/
 		/*bottom: 0;*/
 	}
-	
+
 	&--pending, &--accepted, &--declined
 	{
 		/*position: absolute;*/
     	/*bottom: 0;*/
 	}
-		
+
 	&--pending
 	{
 		color: #FF740E;
 	}
-	
+
 	&--accepted
 	{
 		color: #539C4E;
 	}
-	
+
 	&--declined
 	{
 		color: #FF202F;
