@@ -43,7 +43,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
 
   $scope.formatDate = function formatDate(date) {
     var momentDate = moment(date);
-    return momentDate.format('DD MMM');
+    return momentDate.format('DD MMMM');
   }
 
   $scope.formatTime = function formatTime(time) {

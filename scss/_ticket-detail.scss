@@ -11,4 +11,12 @@
    margin-top: $space;
  }
 
+ &--padding
+ {
+   padding-top: 0;
+   padding-bottom: 0;
+   padding-left: $space;
+   padding-right: $space;
+ }
+
 }

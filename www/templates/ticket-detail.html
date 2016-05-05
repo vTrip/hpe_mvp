@@ -9,6 +9,11 @@
           <div class="ticket-detail--team-name">{{game.value.homeTeam}}</div>
         </div>
         <div class="col">
+          <div class="col">
+          </div>
+          <div class="col game-detail--info-center">
+            vs
+          </div>
         </div>
         <div class="col">
           <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
@@ -16,28 +21,38 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <div class="game-detail--info time">{{formatTime(game.value.startTime)}}</div>
+        <div class="col ticket-detail--padding">
+          <div class="game-detail--time">{{formatTime(game.value.startTime)}}</div>
         </div>
-        <div class="col">
-          <div class="game-detail--stat-group">
-            <div class="game-detail--date col">{{formatDate(game.value.date)}}</div>
-            <div class="game-detail--info">Brookvale Oval</div>
-          </div>
+        <div class="col ticket-detail--padding">
+          <div class="game-detail--date">{{formatDate(game.value.date)}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col ticket-detail--padding">
+          <div class="game-detail--location">Brookvale Oval</div>
         </div>
       </div>
       <div class="col barcode">
         <canvas id="barcode" class="col" style="padding: 1% 15%;">
       </div>
     </div>
-    <div class="detail card">
+    <div class="card">
       <div class="row">
         <div class="col game-detail--activities">
           <label class="col">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
-          <label class="col subheading">Activities on the day</label>
+          <label class="col game-detail--subheading">Activities on the day</label>
           <div class="row">
             <label class="col-20">5:00 PM</label>
-            <label class="col">Meet at Ship Inn at for a pre game Cinammon Whiskey</label>
+            <label class="col">Pre game whiskey at Ship Inn</label>
+          </div>
+          <div class="row">
+            <label class="col-20">7:30 PM</label>
+            <label class="col">Game starts</label>
+          </div>
+          <div class="row">
+            <label class="col-20">9:00 PM</label>
+            <label class="col">Game finishes</label>
           </div>
           <div class="row">
             <label class="col-20">9:15 PM</label>
