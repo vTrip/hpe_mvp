@@ -31,6 +31,11 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
     return momentDate.format('DD MMM');
   }
 
+  $scope.formatTime = function formatTime(time) {
+    var momentTime = moment(time);
+    return momentTime.format('hh:mm A');
+  }
+
   $scope.ticket = {
     $input: null,
     $show: false,

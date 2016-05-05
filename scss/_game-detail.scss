@@ -26,8 +26,15 @@
 		font-family: $font-stack-medium;
 	}
 
-	&--info
+	&--info-left
 	{
+		text-align: left;
+	}
+
+	&--info-right
+	{
+		margin-top: 45%;
 		text-align: right;
 	}
+
 }
