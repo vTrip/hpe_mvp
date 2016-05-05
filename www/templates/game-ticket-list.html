@@ -1,4 +1,4 @@
-<ion-view class="host-ticket-list" ng-controller="ManageTicketsCtrl">
+<ion-view ng-controller="ManageTicketsCtrl">
   <ion-nav-title ng-show="!game.$loading">
     Tickets ({{game.value.tickets.length}}/8)
   </ion-nav-title>
@@ -25,17 +25,12 @@
     <div class="ticket-list card">
       <ion-list>
         <ion-item ng-repeat="ticket in game.value.tickets track by $index">
-          <div class="ticket-list">
-            <div class="row">
-              <div class="col">
-                <div class="ticket-list--number">{{ticket}}</div>
-              </div>
-              <div class="col ticket-list--button">
-                REMOVE
-              </div>
-              <div class="col-20 ticket-list--button">
-                <a class="ticket-list--action" href="#/menu/games/{{game.id}}/manage-tickets/{{ticket}}">VIEW</a>
-              </div>
+          <div class="row">
+            <div class="col">
+              <div class="ticket-list--number">{{ticket}}</div>
+            </div>
+            <div class="col-20 ticket-list--button">
+              <a class="ticket-list--action" href="#/menu/games/{{game.id}}/manage-tickets/{{ticket}}">VIEW</a>
             </div>
           </div>
         </ion-item>
