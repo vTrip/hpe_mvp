@@ -5,9 +5,9 @@
     -o-background-size: contain;
     background-size: contain;
     background-repeat: no-repeat;
-    
+
     &--broncos {
-    	
+
         background-image: url("../assets/team-logos/broncos.png");
         @extend .team-logo;
     }
@@ -20,7 +20,7 @@
         @extend .team-logo;
     }
     &--dragons {
-    	
+
         background-image: url("../assets/team-logos/dragons.png");
         @extend .team-logo;
     }
@@ -49,7 +49,7 @@
         @extend .team-logo;
     }
     &--sea-eagles {
-        background-image: url("../assets/team-logos/sea.png");
+        background-image: url("../assets/team-logos/sea-eagles.png");
         @extend .team-logo;
     }
     &--sharks {
