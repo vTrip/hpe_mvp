@@ -2,6 +2,7 @@
 {
 	&--date
 	{
+		font-size: 20px;
 		margin-bottom: 0.2em;
 	}
 
@@ -25,14 +26,26 @@
 		font-family: $font-stack-medium;
 	}
 
-	&--info-left, &--date
+	&--info-left
 	{
 		text-align: left;
+		font-size: 13px;
 	}
 
-	&--info-right, &--time
+	&--info-right, &--time, &--number-tickets
 	{
 		text-align: right;
+	}
+
+	&--tickets-container
+	{
+		position: relative;
+	}
+
+	&--number-tickets {
+		position: absolute;
+		bottom: 0;
+		right: 0;
 	}
 
 	&--info-center, &--location
@@ -40,7 +53,7 @@
 		text-align: center;
 	}
 
-	&--location, &--time, &--date
+	&--location
 	{
 		font-family: $font-stack-medium;
 	}

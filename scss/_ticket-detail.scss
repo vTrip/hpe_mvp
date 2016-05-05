@@ -19,4 +19,19 @@
    padding-right: $space;
  }
 
+ &--date, &--time, &--location
+ {
+   font-family: $font-stack-medium;
+ }
+
+ &--time
+ {
+   text-align: right;
+ }
+
+ &--location
+ {
+   text-align: center;
+ }
+
 }
