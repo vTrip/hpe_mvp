@@ -1,0 +1,25 @@
+.help-detail
+{
+  padding-left: 0;
+  padding-right: 0;
+
+  &--info, &--button
+  {
+    padding: 0;
+    font-size: 13px;
+  }
+
+  &--button
+  {
+    font-size: 20px;
+    margin: auto;
+  }
+
+  &--decline
+  {
+    font-family: $font-stack-medium;
+    margin: auto;
+    font-size: 13px;
+    color: #24B0CA;
+  }
+}
