@@ -1,44 +1,94 @@
-<ion-view ng-controller="TicketCtrl">
-  <ion-nav-title class="nav-title-custom">Ticket</ion-nav-title>
+<ion-view class="ticket-detail" ng-controller="TicketCtrl">
+  <ion-nav-title>Ticket</ion-nav-title>
 
   <ion-content ng-show="!game.$loading">
     <div class="detail card">
       <div class="row">
         <div class="col">
-          <div class="game-detail--date col">{{formatDate(game.value.date)}}</div>
-          <div class="col">{{game.value.homeTeam}}
-            <br/>V {{game.value.awayTeam}}
+          <div class="team-logo--sea-eagles"></div>
+          <div class="ticket-detail--team-name">{{game.value.homeTeam}}</div>
+        </div>
+        <div class="col">
+          <div class="col">
+          </div>
+          <div class="col game-detail--info-center">
+            vs
           </div>
         </div>
         <div class="col">
           <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
+          <div class="ticket-detail--team-name">{{game.value.awayTeam}}</div>
         </div>
-        <div class="col">
-          <div class="game-detail--stat-group">
-            <div class="game-detail--info">Start 07:30 PM</div>
-            <div class="game-detail--info">Finish 09:00 PM</div>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col ticket-detail--padding">
+          <div class="ticket-detail--time">{{formatTime(game.value.startTime)}}</div>
+        </div>
+        <div class="col ticket-detail--padding">
+          <div class="ticket-detail--date">{{formatDate(game.value.date)}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col ticket-detail--padding">
+          <div class="ticket-detail--location">Brookvale Oval</div>
         </div>
       </div>
       <div class="col barcode">
         <canvas id="barcode" class="col" style="padding: 1% 15%;">
       </div>
     </div>
-    <div class="detail card">
+    <div class="card">
       <div class="row">
-        <div class="col">
-          <label class="col" style="font-size: 16px;">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
-          <label class="col" style="font-weight:500; font-size:16px;">Pre and Post Game Events</label>
+        <div class="col game-detail--activities">
+          <label class="col">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
+          <label class="col game-detail--subheading">Activities on the day</label>
           <div class="row">
             <label class="col-20">5:00 PM</label>
-            <label style="padding-top:0;" class="col">Meet at Ship Inn at for a pre game Cinammon Whiskey</label>
+            <label class="col">Pre game whiskey at Ship Inn</label>
+          </div>
+          <div class="row">
+            <label class="col-20">7:30 PM</label>
+            <label class="col">Game starts</label>
+          </div>
+          <div class="row">
+            <label class="col-20">9:00 PM</label>
+            <label class="col">Game finishes</label>
           </div>
           <div class="row">
             <label class="col-20">9:15 PM</label>
-            <label style="padding-top:0" class="col">Post Game cocktail at The Marquee</label>
+            <label class="col">Post Game cocktail at The Marquee</label>
           </div>
         </div>
-      </label>
+      </div>
     </div>
+    <div class="card">
+      <div class="col help-detail">
+        <div class="row">
+          <div class="col help-detail--info">Have a question?</div>
+        </div>
+      </div>
+      <div class="col help-detail">
+        <div class="row">
+          <div class="col help-detail--info">
+            Contact your host
+            <br/>
+            {{game.value.host_name}}
+          </div>
+          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
+          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-call"></a></div>
+        </div>
+      </div>
+      <div class="col help-detail">
+        <div class="row">
+          <div class="col help-detail--info">
+            Changed your mind? Dont worry
+            <br/>
+            click here to decline the invitation
+           </div>
+          <div class="col-20 help-detail--decline">DECLINE</div>
+        </div>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>

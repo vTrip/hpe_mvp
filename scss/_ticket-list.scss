@@ -1,10 +1,23 @@
 .ticket-list
 {
 	margin: $space * 2;
-	
+
 	&--action
 	{
 		text-align: right;
 		margin-bottom: $space;
+	}
+
+	ion-item, .item {
+		padding-left: 0;
+		padding-right: 0;
+		border: none;
+	}
+
+	&--button {
+		color: #24B0CA;
+		font-family: $font-stack-medium;
+		text-align: right;
+		padding: 5px;
 	}
 }

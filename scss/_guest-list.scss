@@ -3,70 +3,85 @@
 	h1
 	{
 		font-size: 20px;
-		margin-bottom: 32px;
+		margin-bottom: 16px;
 	}
-	
-	
+
 	&--ticket
 	{
 		margin-bottom: -1px;
 		font-size: 14px;
 		color: #A9A9A9;
 	}
-		
+
 	&--right-action
 	{
 		text-align: right;
 	}
-	
-	&--item 
+
+	&--item
 	{
 		align-items: flex-end;
-		margin-bottom: 24px;
 		border: none;
+		margin-top: 4px;
+		margin-bottom: 4px;
+		padding: 0;
+		line-height: 30px;
+
+		& .item-content {
+			padding:0;
+		}
 	}
-	
+
+	&--name
+	{
+		padding: 0;
+	}
+
 	&--contact
 	{
 		margin-bottom: 24px;
 		font-size: 32px;
-		
+
 		& .col
 		{
 			text-align: center;
 		}
 	}
-	
+
 	&--item .col
 	{
-		
+
 		/*position: relative;*/
 	}
-	
+
 	&--bottom-block
 	{
 		/*position: absolute;*/
 		/*bottom: 0;*/
 	}
-	
+
 	&--pending, &--accepted, &--declined
 	{
 		/*position: absolute;*/
     	/*bottom: 0;*/
 	}
-		
+
 	&--pending
 	{
 		color: #FF740E;
 	}
-	
+
 	&--accepted
 	{
 		color: #539C4E;
 	}
-	
+
 	&--declined
 	{
 		color: #FF202F;
+	}
+
+	&--delete-button:before {
+		height: 30px;
 	}
 }

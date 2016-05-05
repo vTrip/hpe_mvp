@@ -1,6 +1,6 @@
-<ion-modal-view class="add-destination">
+<ion-modal-view class="add-edit-contact">
 
-  <ion-header-bar class="nav-bar-custom">
+  <ion-header-bar class="add-edit-contact--nav-bar">
     <div class="buttons">
       <button class="button button-clear" ng-click="cancelAddEditContact()">
         <i class="ion-android-close"></i>
@@ -8,7 +8,7 @@
     </div>
     <h1 class="title">{{modalTitle}}</h1>
     <div class="buttons" ng-click="saveContact()">
-      <button class="button button-clear">Save</button>
+      <button class="button button-clear save">SAVE</button>
     </div>
   </ion-header-bar>
 
@@ -33,8 +33,6 @@
         </label>
       </div>
     </div>
-
-    <!-- TODO Popup if needed -->
   </ion-content>
 
 </ion-modal-view>

@@ -29,16 +29,20 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     $scope.reload();
   });
 
+  $scope.$on( "$ionicView.leave", function( scopes, states ) {
+    $scope.games.$loading = true;
+  });
+
   $scope.reload = function reload() {
+    $scope.games.$loading = true;
     var loadingPopup = $ionicPopup.show({
      template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
      cssClass: 'custom-loading-popup',
     });
-    $scope.games.$loading = true;
     GamesListService.all().then(function(result) {
       $scope.games.value = result.data;
     }).catch(function(err) {
-      $scopegames.$error = true;
+      $scope.games.$error = true;
       console.log(err);
     }).finally(function() {
       loadingPopup.close();

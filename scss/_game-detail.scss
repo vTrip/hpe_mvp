@@ -2,28 +2,82 @@
 {
 	&--date
 	{
-		font-size: 24px;
+		font-size: 20px;
 		margin-bottom: 0.2em;
 	}
-	
+
 	&--ticket-stat
 	{
 		margin-bottom: 0.2em;
-			
+
 	}
-	
+
 	&--stat-group
 	{
 		display: inline-block;
 	}
-	
+
 	&--manage-ticket
 	{
 		margin-top: 1em;
+		text-align: right;
+		padding-right: $space;
+		color: #24B0CA;
+		font-family: $font-stack-medium;
 	}
-	
-	&--info
+
+	&--info-left
+	{
+		text-align: left;
+		font-size: 13px;
+	}
+
+	&--info-right, &--time, &--number-tickets
 	{
 		text-align: right;
 	}
+
+	&--tickets-container
+	{
+		position: relative;
+	}
+
+	&--number-tickets {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+	&--info-center, &--location
+	{
+		text-align: center;
+	}
+
+	&--location
+	{
+		font-family: $font-stack-medium;
+	}
+
+	&--activities
+	{
+		padding: 0;
+
+		.col
+		{
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.col-20
+		{
+			padding-top: 5px;
+		}
+
+	}
+
+	&--subheading
+	{
+		font-family: $font-stack-medium;
+	}
+
 }

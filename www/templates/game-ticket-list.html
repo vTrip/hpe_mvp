@@ -1,41 +1,38 @@
-<ion-view class="host-game-ticket-list" ng-controller="ManageTicketsCtrl">
+<ion-view ng-controller="ManageTicketsCtrl">
   <ion-nav-title ng-show="!game.$loading">
-    Tickets ({{game.value.tickets.length}}/8)
+    Manage Tickets
   </ion-nav-title>
   <ion-content id="game-card" ng-show="!game.$loading">
     <div class="game-detail card">
       <div class="row">
         <div class="col">
           <div class="game-detail--date">{{formatDate(game.value.date)}}</div>
-          <div>{{game.value.homeTeam}}</div>
-          <div>v {{game.value.awayTeam}}</div>
+          <div class="game-detail--info-left">{{formatTime(game.value.startTime)}}</div>
+          <div class="game-detail--info-left">Brookvale Oval</div>
         </div>
         <div class="col">
           <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
         </div>
-        <div class="col">
-          <!-- <div class="game-detail--stat-group"> -->
-          <div class="game-detail--info">Brookvale Oval</div>
-          <div class="game-detail--info">Start 07:30 PM</div>
-          <div class="game-detail--info">Finish 09:00 PM</div>
-          <!-- </div> -->
+        <div class="col game-detail--tickets-container">
+          <div class="game-detail--number-tickets">{{game.value.tickets.length}} Tickets</div>
         </div>
       </div>
     </div>
-    <ion-list>
-      <ion-item ng-repeat="ticket in game.value.tickets track by $index">
-        <div class="ticket-list">
+    <div class="ticket-list card">
+      <ion-list>
+        <ion-item ng-repeat="ticket in game.value.tickets track by $index">
           <div class="row">
             <div class="col">
               <div class="ticket-list--number">{{ticket}}</div>
             </div>
-            <div class="col">
+            <div class="col-20 ticket-list--button">
               <a class="ticket-list--action" href="#/menu/games/{{game.id}}/manage-tickets/{{ticket}}">VIEW</a>
             </div>
           </div>
-        </div>
-      </ion-item>
-    </ion-list>
+        </ion-item>
+      </ion-list>
+    </div>
+
     <div ng-show="ticket.$show" id="ticket-input" style="height:250px;">
       <form ng-submit="saveTicket()">
         <label class="item item-input item-floating-label">

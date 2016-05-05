@@ -1,19 +1,18 @@
-<ion-modal-view class="add-destination">
+<ion-modal-view class="add-edit-destination">
 
-  <ion-header-bar class="nav-bar-custom">
+  <ion-header-bar class="add-edit-destination--nav-bar">
     <div class="buttons">
-      <button class="button button-clear" ng-click="cancelAddEditGame()">
+      <button class="button button-clear cancel" ng-click="cancelAddEditGame()">
         <i class="ion-android-close"></i>
       </button>
     </div>
     <h1 class="title">{{modalTitle}}</h1>
     <div class="buttons" ng-click="saveGame()">
-      <button class="button button-clear">Save</button>
+      <button class="button button-clear save">SAVE</button>
     </div>
   </ion-header-bar>
 
-  <ion-content>
-    <!-- /header -->
+  <ion-content class="add-edit-destination--content">
     <div role="main" class="col">
       <div class="col list">
         <label class="item item-input item-select">
@@ -30,18 +29,18 @@
         </label>
       </div>
       <div class="row">
-      <div class="col-50 list">
-        <label class="item item-input item-select">
-          <div class="input-label">Start Time</div>
-          <input type="time" data-clear-btn="false" name="date-1" id="date-1" ng-model="newGame.startTime" ng-change="changesMade()">
-        </label>
-      </div>
-      <div class="col-50 list">
-        <label class="item item-input item-select">
-          <div class="input-label">Finish Time</div>
-          <input type="time" data-clear-btn="false" name="time-1" id="time-1" ng-model="newGame.finishTime" ng-change="changesMade()">
-        </label>
-      </div>
+        <div class="col-50 list">
+          <label class="item item-input item-select">
+            <div class="input-label">Start Time</div>
+            <input type="time" data-clear-btn="false" name="date-1" id="date-1" ng-model="newGame.startTime" ng-change="changesMade()">
+          </label>
+        </div>
+        <div class="col-50 list">
+          <label class="item item-input item-select">
+            <div class="input-label">Finish Time</div>
+            <input type="time" data-clear-btn="false" name="time-1" id="time-1" ng-model="newGame.finishTime" ng-change="changesMade()">
+          </label>
+        </div>
       </div>
     </div>
 

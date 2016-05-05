@@ -1,10 +1,10 @@
 <ion-view class="host-game-list" ng-controller="GamesListCtrl" title="All games">
-  <ion-content>
+  <ion-content ng-hide="games.$loading">
     <div class="host-game-list--empty" ng-show="showEmptyState()">
       <div class="icon-football"></div>
       <div>Click + below to add a new game</div>
     </div>
-    <ion-list class="game-list">
+    <ion-list class="game-list" ng-hide="games.value.length == 0">
       <ion-item class="game-list--item card" ng-repeat="game in games.value track by $index" ng-href="#/menu/games/{{game.id}}">
         <div class="row">
           <div class="col">
@@ -21,7 +21,7 @@
             <div class="game-list--ticket-stat">{{game.declined}} Declined</div>
           </div>
         </div>
-        <ion-option-button class="ion-ios-trash delete-button" ng-click="deleteGame($index)"></ion-option-button>
+        <ion-option-button class="ion-android-trash delete-button" ng-click="deleteGame($index)"></ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>

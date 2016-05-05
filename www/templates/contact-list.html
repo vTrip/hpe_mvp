@@ -2,12 +2,8 @@
   <ion-nav-title>
     Contacts
   </ion-nav-title>
-  <ion-content>
-    <ion-refresher
-      pulling-text="Pull to refresh..."
-      on-refresh="reload()">
-    </ion-refresher>
-    <div class="contact-list--item card" ng-show="!contacts.$loading">
+  <ion-content ng-show="!contacts.$loading">
+    <div class="contact-list--item card">
       <div class="row">
         <div class="col">
           <div class="contact-list--search">

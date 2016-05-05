@@ -1,0 +1,37 @@
+.ticket-detail {
+
+  &--knights
+  {
+    margin-top: $space;
+  }
+
+  &--team-name
+ {
+   text-align: center;
+   margin-top: $space;
+ }
+
+ &--padding
+ {
+   padding-top: 0;
+   padding-bottom: 0;
+   padding-left: $space;
+   padding-right: $space;
+ }
+
+ &--date, &--time, &--location
+ {
+   font-family: $font-stack-medium;
+ }
+
+ &--time
+ {
+   text-align: right;
+ }
+
+ &--location
+ {
+   text-align: center;
+ }
+
+}
