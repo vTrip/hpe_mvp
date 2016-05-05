@@ -1,4 +1,4 @@
-.add-edit-destination {
+.add-edit-game {
   &--nav-bar {
     background-color: $manly-color;
 
@@ -21,11 +21,19 @@
 
   }
 
-  .item.item-input.item-select {
-    border: none;
-    border-bottom: solid 1px #ddd;
-    padding-left: 0;
-    margin-left: $space;
-    margin-right: $space;
+  &--content {
+    .item.item-input.item-select, .item.item-input.item-floating-label {
+      border: none;
+      border-bottom: solid 1px #ddd;
+      padding-left: 0;
+      margin-left: $space;
+      margin-right: $space;
+    }
   }
+
+  &--events-label {
+    margin-left: $space / 2;
+    margin-right: $space / 2;
+  }
+
 }

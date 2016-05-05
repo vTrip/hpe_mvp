@@ -12,6 +12,20 @@
     &--content {
         background-color: rgba(255, 255, 255, 0.86);
         padding: 16px;
+
+        .item.item-input.item-floating-label {
+          border-color: $dark;
+
+          *::-webkit-input-placeholder {
+            color: $dark;
+          }
+          *:-moz-placeholder {
+            color: $dark;
+          }
+          *:-ms-input-placeholder { /* IE10+ */
+            color: $dark;
+          }
+        }
     }
 
     &--logo {

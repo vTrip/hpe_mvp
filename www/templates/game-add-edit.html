@@ -1,6 +1,6 @@
-<ion-modal-view class="add-edit-destination">
+<ion-modal-view class="add-edit-game">
 
-  <ion-header-bar class="add-edit-destination--nav-bar">
+  <ion-header-bar class="add-edit-game--nav-bar">
     <div class="buttons">
       <button class="button button-clear cancel" ng-click="cancelAddEditGame()">
         <i class="ion-android-close"></i>
@@ -12,7 +12,7 @@
     </div>
   </ion-header-bar>
 
-  <ion-content class="add-edit-destination--content">
+  <ion-content class="add-edit-game--content">
     <div role="main" class="col">
       <div class="col list">
         <label class="item item-input item-select">
@@ -23,38 +23,58 @@
         </label>
       </div>
       <div class="col list">
-        <label class="item item-input item-select">
+        <label class="item item-input item-floating-label">
           <div class="input-label">Date</div>
           <input type="date" data-clear-btn="false" name="date-1" id="date-1" ng-model="newGame.date" ng-change="changesMade()">
         </label>
       </div>
       <div class="row">
         <div class="col-50 list">
-          <label class="item item-input item-select">
+          <label class="item item-input item-floating-label">
             <div class="input-label">Start Time</div>
             <input type="time" data-clear-btn="false" name="date-1" id="date-1" ng-model="newGame.startTime" ng-change="changesMade()">
           </label>
         </div>
         <div class="col-50 list">
-          <label class="item item-input item-select">
+          <label class="item item-input item-floating-label">
             <div class="input-label">Finish Time</div>
             <input type="time" data-clear-btn="false" name="time-1" id="time-1" ng-model="newGame.finishTime" ng-change="changesMade()">
           </label>
         </div>
       </div>
-    </div>
-
-    <!-- Popup  -->
-
-    <!-- <div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
-      <div role="main" class="ui-content">
-        <h1>Game not saved</h1>
-        <h3 class="ui-title">Continue without saving?</h3>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Yes</a>
+      <div class="col">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Host</span>
+          <input type="text" placeholder="Host">
+        </label>
       </div>
-    </div> -->
-    <!-- /content -->
+      <div class="col">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Host Contact</span>
+          <input type="tel" placeholder="Host Contact">
+        </label>
+      </div>
+      <div class="col">
+        <div class="col">
+          <label class="add-edit-game--events-label">Pre and Post Game Events</label>
+        </div>
+      </div>
+      <ion-list class="col events">
+        <ion-item ng-repeat="game.value.events">
+          <label class="item item-input item-floating-label col-25">
+            <span class="input-label">Time</span>
+            <input type="time" data-clear-btn="false">
+          </label>
+          <label class="item item-input item-floating-label col-75">
+            <span class="input-label">Details</span>
+            <input type="text" data-clear-btn="false" placeholder="Details">
+          </label>
+        </ion-item>
+      </ion-list>
+      <!-- add event btn
+
+      -->
+    </div>
   </ion-content>
 
 </ion-modal-view>

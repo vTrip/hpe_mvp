@@ -56,7 +56,7 @@ $manly-color: #510A23;
 @import 'contact-item';
 @import 'ticket-list';
 @import 'ticket-detail';
-@import 'add-edit-destination';
+@import 'add-edit-game';
 @import 'add-edit-contact';
 @import 'guest-ticket-list';
 @import 'help-detail';
@@ -103,24 +103,20 @@ a:link, a:visited, a:hover, a:active
 }
 
 .item.item-input.item-floating-label {
-  color: black;
+  color: $dark;
   border: none;
-  border-bottom: solid $dark 1px;
+  border-bottom: solid #ddd 1px;
   padding: 0;
-  width: 95%;
   margin: auto;
-  input {
-    color: $dark;
-  }
 
   *::-webkit-input-placeholder {
-  color: $dark;
+  color: #ddd;
   }
   *:-moz-placeholder {
-    color: $dark;
+    color: #ddd;
   }
   *:-ms-input-placeholder { /* IE10+ */
-    color: $dark;
+    color: #ddd;
   }
 }
 
