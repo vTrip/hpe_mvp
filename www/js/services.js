@@ -1,8 +1,8 @@
 angular.module('starter')
 
 .factory('GamesListService', function($http) {
-   // var endpoint = 'http://10.0.1.12/api/game';
-  var endpoint = 'http://thebitspace.com.au/api/game';
+   var endpoint = 'http://10.0.1.10/api/game';
+  // var endpoint = 'http://thebitspace.com.au/api/game';
 
   return {
     all: function() {
@@ -64,8 +64,8 @@ angular.module('starter')
 })
 
 .factory('ContactsService', function($http) {
-  // var endpoint = 'http://10.0.1.12/api/contact';
-  var endpoint = 'http://thebitspace.com.au/api/contact';
+  var endpoint = 'http://10.0.1.10/api/contact';
+  // var endpoint = 'http://thebitspace.com.au/api/contact';
 
   return {
     all: function() {
