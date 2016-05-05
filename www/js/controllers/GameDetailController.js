@@ -71,7 +71,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
   $scope.formatTime = function formatTime(time) {
     var momentTime = moment(time);
-    return momentTime.format('hh:mm A');
+    return momentTime.format('h:mm A');
   }
 
   $scope.prepareForSegue = function prepareForSegue(view) {
