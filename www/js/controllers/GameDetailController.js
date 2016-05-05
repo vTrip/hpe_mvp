@@ -69,6 +69,11 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     return momentDate.format('DD MMM');
   }
 
+  $scope.formatTime = function formatTime(time) {
+    var momentTime = moment(time);
+    return momentTime.format('hh:mm A');
+  }
+
   $scope.prepareForSegue = function prepareForSegue(view) {
     $location.path("/menu/games/" + $scope.game.value.id + "/" + view);
   }

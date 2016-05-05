@@ -59,7 +59,36 @@
             <label class="col">Post Game cocktail at The Marquee</label>
           </div>
         </div>
-      </label>
+      </div>
     </div>
+    <div class="card">
+      <div class="col help-detail">
+        <div class="row">
+          <div class="col help-detail--info">Have a question?</div>
+        </div>
+      </div>
+      <div class="col help-detail">
+        <div class="row">
+          <div class="col help-detail--info">
+            Contact your host
+            <br/>
+            {{game.value.host_name}}
+          </div>
+          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
+          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-call"></a></div>
+        </div>
+      </div>
+      <div class="col help-detail">
+        <div class="row">
+          <div class="col help-detail--info">
+            Changed your mind? Dont worry
+            <br/>
+            click here to decline the invitation
+           </div>
+          <div class="col-20 help-detail--decline">DECLINE</div>
+        </div>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>
