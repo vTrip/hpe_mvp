@@ -1,27 +1,28 @@
 <?php
-	// echo 'Path: '.$_SERVER["REQUEST_URI"]."<br>";	
-	// echo 'Type: '.$_SERVER['REQUEST_METHOD']."<br>";
-	
+	// Author: James Millar james@millar.name
+
 	$call = explode('/',$_SERVER["REQUEST_URI"]);
+	// var_dump("<pre>",$call,"</pre>");
+	
 	$object = $call[2];
+	
+	$id = explode(',',$call[3]);
+	// var_dump("<pre>",$id,"</pre>");
 	
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
     header('Access-Control-Allow-Methods: GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS');
 
-    sleep (1.5);	
+    sleep (1.5);
+    
+    $model = json_decode(file_get_contents($object.'.json'),TRUE);	
 
 	if ($_SERVER['REQUEST_METHOD']=="GET")
 	{
 		header('Content-Type: application/json');
-		// header('Access-Control-Allow-Origin: *');
-		
-		$model = json_decode(file_get_contents($object.'.json'),TRUE);
-		
+
 		if (count($call)>=4)
 		{
-			$id = explode(',',$call[3]);
-			
 			if (count($id)>1)
 			{
 				$filtered = [];	
@@ -44,20 +45,6 @@
 				}
 			}
 			
-			// foreach ($model as $record) {
-			// 	if (in_array($record['id'],$id))
-			// 	{
-			// 		if (count($id)>1)
-			// 		{
-			// 			array_push($filtered, $record);
-			// 		}
-			// 		else
-			// 		{
-			// 			$model = $record;
-			// 		}
-			// 	}
-			// } 
-			
 			if (count($id)>1)
 			{
 				$model = $filtered;
@@ -67,8 +54,7 @@
 		echo json_encode($model,JSON_PRETTY_PRINT);
 	}
 	else if ($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		$model = json_decode(file_get_contents($object.'.json'),TRUE);
+	{	
 		$id = -1;
 		foreach ($model as $record) 
 		{
@@ -85,14 +71,26 @@
 		
 		http_response_code(201);
 	}
+	else if ($_SERVER['REQUEST_METHOD']=="PUT")
+	{
+		$new = json_decode(file_get_contents('php://input'),TRUE);
+		
+		$model[$id[0]] = $new;
+		
+		foreach ($model as &$record) 
+		{
+			if (in_array($record['id'],$id))
+			{
+				$record = $new;
+			}
+		} 
+		
+		file_put_contents($object.'.json', json_encode($model,JSON_PRETTY_PRINT));
+		
+		http_response_code(204);
+	}
 	else if ($_SERVER['REQUEST_METHOD']=="PATCH")
 	{
-
-		
-		$model = json_decode(file_get_contents($object.'.json'),TRUE);
-		
-		$id = explode(',',$call[3]);
-		
 		$new = json_decode(file_get_contents('php://input'),TRUE);
 		
 		foreach ($model as &$record) 
@@ -109,19 +107,13 @@
 		file_put_contents($object.'.json', json_encode($model,JSON_PRETTY_PRINT));
 		
 		http_response_code(204);
-		
-		// echo "Chicken";
 	}
 	else if ($_SERVER['REQUEST_METHOD']=="DELETE")
 	{
-		$model = json_decode(file_get_contents($object.'.json'),TRUE);
-		
 		$new_model = [];
 		
 		if (count($call)>=4)
 		{
-			$id = explode(',',$call[3]);
-			
 			foreach ($model as $record) {
 				if (!in_array($record['id'],$id))
 				{
