@@ -2,8 +2,9 @@
 {
 	&--date
 	{
-		font-size: 20px;
+		font-size: 24px;
 		margin-bottom: 0.2em;
+		font-family: $font-stack-regular;
 	}
 
 	&--ticket-stat
@@ -15,6 +16,12 @@
 	&--stat-group
 	{
 		display: inline-block;
+	}
+
+	&--stat-group, &--info-left, &--manage-ticket
+	{
+		font-family: $font-stack-regular;
+		font-size: 14px;
 	}
 
 	&--manage-ticket
@@ -29,7 +36,6 @@
 	&--info-left
 	{
 		text-align: left;
-		font-size: 13px;
 	}
 
 	&--info-right, &--time, &--number-tickets
