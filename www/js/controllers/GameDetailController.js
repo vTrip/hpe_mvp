@@ -79,6 +79,12 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     return momentTime.format('h:mm A');
   }
 
+  $scope.deleteGuest = function deleteGuest(id) {
+    GuestService.delete(id).then(function() {
+      $scope.reload();
+    });
+  }
+
   // Contact search modal
   var searchContactModalPromise = $ionicModal.fromTemplateUrl('templates/game-add-guest.html', {
     scope: $scope,
@@ -100,6 +106,21 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     });
   }
 
+  $scope.addGuest = function addGuest(guest) {
+    var guest = {
+      contact_id: guest.contact_id,
+      game_id: $scope.game.id,
+    };
+
+    GuestService.create(guest).then(function() {
+      searchContactModalPromise.then(function(m) {
+        m.hide();
+      }).finally(function() {
+        $scope.reload();
+      });
+    });
+  }
+
   $scope.saveSearchContact = function saveSearchContact(contact) {
     var guest = {
       contact_id: contact.id,
@@ -110,7 +131,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       searchContactModalPromise.then(function(m) {
         m.hide();
       }).finally(function() {
-        $scope.loadGuests();
+        $scope.reload();
       });
     });
   }

@@ -145,6 +145,13 @@ angular.module('starter')
         url: endpoint + '/' + params,
       });
     },
+    
+    delete: function(id) {
+      return $http({
+          method: 'DELETE',
+          url : endpoint + '/' + id
+      });
+    },
   }
 
 
