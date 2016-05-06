@@ -5,12 +5,12 @@
       <div class="col">Click + below to add a new game</div>
     </div>
     <ion-list class="game-list">
-      <ion-item class="game-list--item card" ng-repeat="game in games.value track by $index" ng-href="#/menu/games/{{game.id}}" ng-hide="games.value.length == 0">
+      <ion-item class="game-detail--item card" ng-repeat="game in games.value track by $index" ng-href="#/menu/games/{{game.id}}" ng-hide="games.value.length == 0">
         <div class="row">
           <div class="col">
             <div class="game-list--date">{{formatDate(game.date)}}</div>
-            <div>{{game.homeTeam}}</div>
-            <div>v {{game.awayTeam}}</div>
+            <div class="game-list--team">{{game.homeTeam}}</div>
+            <div class="game-list--team">v {{game.awayTeam}}</div>
           </div>
           <div class="col">
             <div class="team-logo--{{game.awayTeam | lowercase}}"></div>

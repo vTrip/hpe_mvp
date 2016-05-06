@@ -4,13 +4,23 @@
 	{
 		box-shadow: 0 3px 6px rgba(0,0,0,0.18);
 	}
-	
+
+	&--date, &--team, &--ticket-stat
+	{
+		font-family: $font-stack-regular;
+	}
+
 	&--date
 	{
 		font-size: 24px;
 		margin-bottom: 0.2em;
 	}
-	
+
+	&--team, &--ticket-stat
+	{
+		font-size: 14px;
+	}
+
 	&--logo-souths
 	{
 		display: inline-block;
@@ -18,9 +28,9 @@
 		height: 75px;
 		background: url('../assets/team-logos/logo-souths.png') no-repeat;
 	}
-	
+
 	&--ticket-stat
 	{
-		margin-bottom: 0.2em;	
+		margin-bottom: 0.2em;
 	}
 }
