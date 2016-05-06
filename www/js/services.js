@@ -112,3 +112,26 @@ angular.module('starter')
     },
   }
 })
+
+.factory('GuestStatusService', function($http) {
+  var endpoint = 'http://10.0.1.10/api/guest-status';
+  // var endpoint = 'http://thebitspace.com.au/api/guest-status';
+
+  return {
+    all: function() {
+      return $http ({
+        method: 'GET',
+        url: endpoint,
+      });
+    },
+
+    read: function(id) {
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + id,
+      });
+    },
+  }
+
+
+})

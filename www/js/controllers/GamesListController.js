@@ -121,8 +121,10 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
       details: null,
     };
     $scope.newGame.events.push(newEvent);
-    console.log($scope.newGame.events);
+  }
 
+  $scope.deleteEvent = function deleteEvent($index) {
+    $scope.newGame.events.splice($index, 1);
   }
 
 });

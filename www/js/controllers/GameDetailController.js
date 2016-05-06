@@ -1,4 +1,4 @@
-angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, GamesListService, ContactsService, $state, $ionicModal, $ionicPopup) {
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, GamesListService, ContactsService, GuestStatusService, $state, $ionicModal, $ionicPopup) {
 
   $scope.game = {
     $loading: true,
@@ -40,23 +40,26 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
      cssClass: 'custom-loading-popup',
     });
 
-    GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game.value = res.data;
+    var promises = [GamesListService.read($stateParams.gameId), GuestStatusService.read($stateParams.gameId)];
+
+    $q.all(promises).then(function(res) {
+      $scope.game.value = res[0].data;
       ContactsService.selection($scope.game.value.guests).then(function(guests) {
         $scope.guests = guests.data;
         $scope.revealContactOptions = new Array(guests.data.length);
         $scope.revealContactOptions.forEach(function(item, index) {
           item = false;
         });
-      });
+      }).finally(function() {
+        loadingPopup.close();
+        $scope.game.$loading = false;
+        $scope.$broadcast('scroll.refreshComplete');
+      });;
+      $scope.guest_status = res[1].data;
     }).catch(function(err) {
       // any error catching here
       $scope.game.$error = true;
       console.log(err);
-    }).finally(function() {
-      loadingPopup.close();
-      $scope.game.$loading = false;
-      $scope.$broadcast('scroll.refreshComplete');
     });
   }
 
@@ -76,6 +79,21 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
   $scope.prepareForSegue = function prepareForSegue(view) {
     $location.path("/menu/games/" + $scope.game.value.id + "/" + view);
+  }
+
+  $scope.getStatusString = function getStatusString(id) {
+    var index = $scope.getGuestStatus(id);
+    if (index != -1) {
+      return $scope.guest_status.statuses[index].status;
+    }
+    return null;
+  }
+
+  $scope.getGuestStatus = function getGuestStatus(id) {
+    var index = $scope.guest_status.statuses.map(function(guest_status) {
+        return guest_status.contact_id;
+      }).indexOf(id);
+    return index;
   }
 
   // Contact search modal
@@ -237,6 +255,14 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
        m.hide();
      });
    }
+  }
+
+  $scope.showNewEventField = function showNewEventField() {
+    var newEvent = {
+      start_time: null,
+      details: null,
+    };
+    $scope.newGame.events.push(newEvent);
   }
   // end of edit game modal
 

@@ -45,6 +45,12 @@
         <ion-item class="guest-list--item col" ng-repeat="guest in guests track by $index" ng-click="toggleShowContactOptions($index)">
           <div class="row">
             <div class="guest-list--name col">{{guest.name}}</div>
+            <div class="col guest-list--status" ng-show="getGuestStatus(guest.id) == -1">
+              <div>Invite +</div>
+            </div>
+            <div class="col guest-list--status" ng-show="getGuestStatus(guest.id) != -1">
+              <div>{{getStatusString(guest.id)}}</div>
+            </div>
           </div>
           <div class="guest-list--contact row" ng-show="revealContactOptions[$index]">
             <div class="col"><a href="sms:0414 123 123" class="ion-android-textsms"></a></div>

@@ -51,7 +51,7 @@
       <div class="col">
         <label class="item item-input item-floating-label">
           <span class="input-label">Host Contact</span>
-          <input type="tel" placeholder="Host Contact" ng-model="newGame.host_contact">
+          <input type="tel" placeholder="Host Contact" ng-model="newGame.host_mobile">
         </label>
       </div>
       <div class="col">
@@ -60,7 +60,7 @@
         </div>
       </div>
       <ion-list class="col add-edit-game--events">
-        <ion-item ng-repeat="event in newGame.events">
+        <ion-item ng-repeat="event in newGame.events track by $index">
           <div class="row">
             <label class="item item-input item-floating-label col-25">
               <span class="input-label">Time</span>
@@ -71,6 +71,7 @@
               <input type="text" data-clear-btn="false" placeholder="Details" ng-model="event.details">
             </label>
           </div>
+          <ion-option-button class="ion-android-trash" ng-click="deleteEvent($index)"></ion-option-button>
         </ion-item>
       </ion-list>
       <div class="col add-edit-game--btn-container">
