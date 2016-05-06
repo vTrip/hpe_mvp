@@ -1,9 +1,9 @@
 .guest-list
 {
-	h1
+	&--title
 	{
 		font-size: 20px;
-		margin-bottom: 16px;
+		font-family: $font-stack-regular;
 	}
 
 	&--ticket
@@ -33,7 +33,10 @@
 	}
 
 	&--name
-	{}
+	{
+		font-size: 16px;
+		font-family: $font-stack-regular;
+	}
 
 	&--contact
 	{
@@ -64,6 +67,7 @@
     	/*bottom: 0;*/
 		font-family: $font-stack-regular;
 		font-size: 14px;
+		text-align: right;
 	}
 
 	&--add-guest
@@ -78,13 +82,10 @@
 		font-family: $font-stack-medium;
 	}
 
-	&--status
-	{
-		text-align: right;
-	}
-
 	&--invite, &--add-guest
 	{
+		text-align: right;
+		padding: 5px;
 		color: #24B0CA;
 	}
 
