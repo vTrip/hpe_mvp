@@ -80,6 +80,9 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
       invited: 0,
       accepted: 0,
       declined: 0,
+      host_name: null,
+      host_contact: null,
+      events: [],
     }
     addGameModalPromise.then(function(m) {
       m.show();
@@ -110,6 +113,16 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     }).catch(function(err) {
       console.log(err);
     });
+  }
+
+  $scope.showNewEventField = function showNewEventField() {
+    var newEvent = {
+      start_time: null,
+      details: null,
+    };
+    $scope.newGame.events.push(newEvent);
+    console.log($scope.newGame.events);
+
   }
 
 });
