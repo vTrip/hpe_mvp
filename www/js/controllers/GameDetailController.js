@@ -45,7 +45,6 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     $q.all(promises).then(function(res) {
       $scope.game.value = res[0].data;
       ContactsService.selection($scope.game.value.guests).then(function(guests) {
-        console.log(guests);
         $scope.guests = guests.data;
         $scope.revealContactOptions = new Array(guests.data.length);
         $scope.revealContactOptions.forEach(function(item, index) {

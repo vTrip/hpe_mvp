@@ -62,6 +62,19 @@
 	{
 		/*position: absolute;*/
     	/*bottom: 0;*/
+		font-family: $font-stack-regular;
+		font-size: 14px;
+	}
+
+	&--add-guest
+	{
+		font-size: 29px;
+		font-family: $font-stack-regular;
+	}
+
+	&--invite
+	{
+		font-size: 14px;
 		font-family: $font-stack-medium;
 	}
 
@@ -70,7 +83,7 @@
 		text-align: right;
 	}
 
-	&--invite
+	&--invite, &--add-guest
 	{
 		color: #24B0CA;
 	}

@@ -41,10 +41,10 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
     });
     GamesListService.all().then(function(result) {
       $scope.games.value = result.data;
-      console.error();(result.data);
+      console.log(result.data);
     }).catch(function(err) {
       $scope.games.$error = true;
-      console.log(err);
+      console.error(err);
     }).finally(function() {
       loadingPopup.close();
       $scope.games.$loading = false;
