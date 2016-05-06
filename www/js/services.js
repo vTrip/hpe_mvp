@@ -125,6 +125,10 @@ angular.module('starter')
       });
     },
 
+    create: function(guest) {
+      return $http.post(endpoint, guest);
+    },
+
     read: function(id) {
       return $http ({
         method: 'GET',

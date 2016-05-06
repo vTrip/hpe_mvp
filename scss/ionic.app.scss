@@ -94,7 +94,6 @@ html, body, h1, h2, h3, h4, h5, h6
 {
   background-color: $manly-color;
   color: white;
-  font-family: "robotoregular";
 }
 
 a:link, a:visited, a:hover, a:active
@@ -150,4 +149,19 @@ a:link, a:visited, a:hover, a:active
       }
     }
   }
+}
+
+.custom-nav-title {
+  font-size: 20px;
+  font-style: $font-stack-regular;
+}
+
+.custom-nav-button {
+  font-size: 14px;
+  font-style: $font-stack-medium;
+  text-transform: uppercase;
+}
+
+.ion-android-close {
+  font-size: 24px;
 }

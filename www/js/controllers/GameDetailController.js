@@ -1,4 +1,4 @@
-angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, GamesListService, GuestService, $state, $ionicModal, $ionicPopup) {
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, GamesListService, GuestService, ContactsService, $state, $ionicModal, $ionicPopup) {
 
   $scope.game = {
     $loading: true,
@@ -42,21 +42,26 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game.value = res.data;
-      GuestService.selection($scope.game.value.guests).then(function(guests) {
-        $scope.guests = guests.data;
-        $scope.revealContactOptions = new Array(guests.data.length);
-        $scope.revealContactOptions.forEach(function(item, index) {
-          item = false;
-        });
-      }).finally(function() {
-        loadingPopup.close();
-        $scope.game.$loading = false;
-        $scope.$broadcast('scroll.refreshComplete');
-      });
+      $scope.loadGuests();
     }).catch(function(err) {
       // any error catching here
       $scope.game.$error = true;
       console.log(err);
+    }).finally(function() {
+      loadingPopup.close();
+    });
+  }
+
+  $scope.loadGuests = function loadGuests() {
+    GuestService.selection($scope.game.value.guests).then(function(guests) {
+      $scope.guests = guests.data;
+      $scope.revealContactOptions = new Array(guests.data.length);
+      $scope.revealContactOptions.forEach(function(item, index) {
+        item = false;
+      });
+    }).finally(function() {
+      $scope.game.$loading = false;
+      $scope.$broadcast('scroll.refreshComplete');
     });
   }
 
@@ -72,25 +77,6 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.formatTime = function formatTime(time) {
     var momentTime = moment(time);
     return momentTime.format('h:mm A');
-  }
-
-  $scope.prepareForSegue = function prepareForSegue(view) {
-    $location.path("/menu/games/" + $scope.game.value.id + "/" + view);
-  }
-
-  $scope.getStatusString = function getStatusString(id) {
-    var index = $scope.getGuestStatus(id);
-    if (index != -1) {
-      return $scope.guest_status.statuses[index].status;
-    }
-    return null;
-  }
-
-  $scope.getGuestStatus = function getGuestStatus(id) {
-    var index = $scope.guest_status.statuses.map(function(guest_status) {
-        return guest_status.contact_id;
-      }).indexOf(id);
-    return index;
   }
 
   // Contact search modal
@@ -115,17 +101,16 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.saveSearchContact = function saveSearchContact(contact) {
-    var guests = $scope.game.value.guests.slice();
-    searchContactModalPromise.then(function(m) {
-      guests.push(contact.id);
-      var updated = {
-        "guests": guests,
-      }
-      GamesListService.updateAttribute($scope.game.value.id, updated).then(function() {
+    var guest = {
+      contact_id: contact.id,
+      game_id: $scope.game.id,
+    };
+
+    GuestService.create(guest).then(function() {
+      searchContactModalPromise.then(function(m) {
         m.hide();
-        $scope.reload();
-      }).catch(function(err) {
-        console.log(err);
+      }).finally(function() {
+        $scope.loadGuests();
       });
     });
   }

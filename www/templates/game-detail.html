@@ -1,10 +1,10 @@
 <ion-view class="host-game-detail" ng-controller="GameDetailCtrl">
-  <ion-nav-title ng-show="!game.$loading">
+  <ion-nav-title ng-show="!game.$loading" class="custom-nav-title">
     Sea Eagles vs {{game.value.awayTeam}}
   </ion-nav-title>
   <ion-nav-buttons side="right">
     <div class="buttons" ng-click="editGame()">
-      <button class="button button-clear">Edit</button>
+      <button class="button button-clear custom-nav-button">Edit</button>
     </div>
   </ion-nav-buttons>
   <ion-content ng-hide="game.$loading">
@@ -26,8 +26,8 @@
           </div>
         </div>
       </div>
-      <div class="game-detail--manage-ticket" ng-click="prepareForSegue('manage-tickets')">
-        MANAGE TICKETS
+      <div class="game-detail--manage-ticket">
+        <a ng-href="#/menu/games/{{game.value.id}}/manage-tickets">MANAGE TICKETS</a>
       </div>
     </div>
     <div class="guest-list card" ng-show="!game.$loading">
@@ -45,11 +45,10 @@
           <div class="row">
             <div class="guest-list--name col" ng-click="toggleShowContactOptions($index)">{{guest.name}}</div>
             <div class="col-20 guest-list--invite"
-            ng-show="getGuestStatus(guest.id) == -1" ng-click="inviteAll(guest)">Invite</div>
-            <div class="col-10 guest-list--add-guest" ng-show="getGuestStatus(guest.id) == -1">+</div>
-            <div class="col guest-list--{{getStatusString(guest.id)}}"
-            ng-show="getGuestStatus(guest.id) != -1">
-              {{getStatusString(guest.id)}}
+            ng-show="guest.status == null" ng-click="inviteAll(guest)">Invite</div>
+            <div class="col-10 guest-list--add-guest" ng-show="guest.status == null">+</div>
+            <div class="col guest-list--{{guest.status}}" ng-show="guest.status != null">
+              {{guest.status}}
             </div>
           </div>
           <div class="guest-list--contact row" ng-show="revealContactOptions[$index]">
@@ -57,7 +56,7 @@
             <div class="col"><a href="tel:0414 123 123" class="ion-android-call"></a></div>
             <div class="col"><a href="mailto:guest@example.com" class="ion-android-mail"></a></div>
           </div>
-          <ion-option-button class="ion-trash-b guest-list--delete-button"></ion-option-button>
+          <ion-option-button class="ion-trash-b guest-list--delete-button" ng-click="deleteGuest(guest)"></ion-option-button>
         </ion-item>
       </ion-list>
     </div>
