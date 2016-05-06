@@ -59,21 +59,39 @@
           <label class="add-edit-game--events-label">Pre and Post Game Events</label>
         </div>
       </div>
-      <ion-list class="col events">
-        <ion-item ng-repeat="game.value.events">
-          <label class="item item-input item-floating-label col-25">
-            <span class="input-label">Time</span>
-            <input type="time" data-clear-btn="false">
-          </label>
-          <label class="item item-input item-floating-label col-75">
-            <span class="input-label">Details</span>
-            <input type="text" data-clear-btn="false" placeholder="Details">
-          </label>
+      <ion-list class="col add-edit-game--events">
+        <ion-item ng-repeat="event in game.value.events">
+          <div class="row">
+            <label class="item item-input item-floating-label col-25">
+              <span class="input-label">Time</span>
+              <input type="time" data-clear-btn="false" ng-model="event.start_time">
+            </label>
+            <label class="item item-input item-floating-label col-75">
+              <span class="input-label">Details</span>
+              <input type="text" data-clear-btn="false" placeholder="Details" ng-model="event.details">
+            </label>
+          </div>
+          <div class="row">
+            <label class="item item-input item-floating-label col">
+              <span class="input-label">Notes</span>
+              <input type="text" data-clear-btn="false" placeholder="Notes">
+            </label>
+          </div>
         </ion-item>
       </ion-list>
-      <!-- add event btn
-
-      -->
+      <div ng-show="showEventFields()">
+        <label class="item item-input item-floating-label col-25">
+          <span class="input-label">Time</span>
+          <input type="time" data-clear-btn="false" ng-model="event.start_time">
+        </label>
+        <label class="item item-input item-floating-label col-75">
+          <span class="input-label">Details</span>
+          <input type="text" data-clear-btn="false" placeholder="Details" ng-model="event.details">
+        </label>
+      </div>
+      <div class="col add-edit-game--btn-container">
+        <div>ADD EVENT</div>
+      </div>
     </div>
   </ion-content>
 

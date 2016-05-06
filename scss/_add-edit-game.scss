@@ -34,6 +34,31 @@
   &--events-label {
     margin-left: $space / 2;
     margin-right: $space / 2;
+    font-family: $font-stack-medium;
+  }
+
+  &--events {
+    padding: 0;
+    margin-top: $space * 2;
+    margin-bottom: $space * 2;
+
+    ion-item {
+      padding: 0 $space 0 $space;
+      border: none;
+    }
+  }
+
+  &--btn-container {
+    position: relative;
+    margin-bottom: $space * 4;
+    div {
+      font-family: $font-stack-medium;
+      color: #24B0CA;
+      position: absolute;
+      right: 0;
+      padding-left: $space*2;
+      padding-right: $space*2;
+    }
   }
 
 }

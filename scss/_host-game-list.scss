@@ -8,22 +8,25 @@
 			background: inherit;
 		}
 	}
-	
+
 	&--empty
 	{
 		padding: 128px 8px 0 8px;
+		.team-logo--sea-eagles {
+			height: 128px;
+		}
 	}
-	
+
 	&--empty > div
 	{
-		text-align: center;	
+		text-align: center;
 	}
-	
+
 	.icon-football
 	{
-		font-size: 116px;	
+		font-size: 116px;
 		color: $bg-colour-1;
 	}
-	
+
 
 }
