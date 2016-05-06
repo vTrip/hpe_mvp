@@ -46,10 +46,10 @@
           <div class="row">
             <div class="guest-list--name col">{{guest.name}}</div>
             <div class="col guest-list--status" ng-show="getGuestStatus(guest.id) == -1">
-              <div>Invite +</div>
+              <div class="guest-list--invite">Invite +</div>
             </div>
             <div class="col guest-list--status" ng-show="getGuestStatus(guest.id) != -1">
-              <div>{{getStatusString(guest.id)}}</div>
+              <div class="guest-list--{{getStatusString(guest.id)}} || titleCase">{{getStatusString(guest.id)}}</div>
             </div>
           </div>
           <div class="guest-list--contact row" ng-show="revealContactOptions[$index]">

@@ -1,7 +1,7 @@
 angular.module('starter')
 
 .factory('GamesListService', function($http) {
-   var endpoint = 'http://10.0.1.10/api/game';
+   var endpoint = 'http://54.206.46.11/hp/api/game';
   // var endpoint = 'http://thebitspace.com.au/api/game';
 
   return {
@@ -64,7 +64,7 @@ angular.module('starter')
 })
 
 .factory('ContactsService', function($http) {
-  var endpoint = 'http://10.0.1.10/api/contact';
+  var endpoint = 'http://54.206.46.11/hp/api/contact';
   // var endpoint = 'http://thebitspace.com.au/api/contact';
 
   return {
@@ -114,7 +114,7 @@ angular.module('starter')
 })
 
 .factory('GuestStatusService', function($http) {
-  var endpoint = 'http://10.0.1.10/api/guest-status';
+  var endpoint = 'http://54.206.46.11/hp/api/guest-status';
   // var endpoint = 'http://thebitspace.com.au/api/guest-status';
 
   return {
