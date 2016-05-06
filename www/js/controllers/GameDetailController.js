@@ -1,4 +1,4 @@
-angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, GamesListService, ContactsService, GuestStatusService, $state, $ionicModal, $ionicPopup) {
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, GamesListService, GuestService, $state, $ionicModal, $ionicPopup) {
 
   $scope.game = {
     $loading: true,
@@ -40,11 +40,9 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
      cssClass: 'custom-loading-popup',
     });
 
-    var promises = [GamesListService.read($stateParams.gameId), GuestStatusService.read($stateParams.gameId)];
-
-    $q.all(promises).then(function(res) {
-      $scope.game.value = res[0].data;
-      ContactsService.selection($scope.game.value.guests).then(function(guests) {
+    GamesListService.read($stateParams.gameId).then(function(res) {
+      $scope.game.value = res.data;
+      GuestService.selection($scope.game.value.guests).then(function(guests) {
         $scope.guests = guests.data;
         $scope.revealContactOptions = new Array(guests.data.length);
         $scope.revealContactOptions.forEach(function(item, index) {
@@ -54,8 +52,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
         loadingPopup.close();
         $scope.game.$loading = false;
         $scope.$broadcast('scroll.refreshComplete');
-      });;
-      $scope.guest_status = res[1].data;
+      });
     }).catch(function(err) {
       // any error catching here
       $scope.game.$error = true;

@@ -113,8 +113,8 @@ angular.module('starter')
   }
 })
 
-.factory('GuestStatusService', function($http) {
-  var endpoint = 'http://54.206.46.11/hp/api/guest-status';
+.factory('GuestService', function($http) {
+  var endpoint = 'http://54.206.46.11/hp/api/guest';
   // var endpoint = 'http://thebitspace.com.au/api/guest-status';
 
   return {
@@ -129,6 +129,16 @@ angular.module('starter')
       return $http ({
         method: 'GET',
         url: endpoint + '/' + id,
+      });
+    },
+
+    // get a selection of guests
+    // @param (ids) - array of ids to GET
+    selection: function(ids) {
+      var params = ids.join(',');
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + params,
       });
     },
   }
