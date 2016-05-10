@@ -53,12 +53,15 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.loadGuests = function loadGuests() {
-    GuestService.selection($scope.game.value.guests).then(function(guests) {
-      $scope.guests = guests.data;
-      $scope.revealContactOptions = new Array(guests.data.length);
-      $scope.revealContactOptions.forEach(function(item, index) {
-        item = false;
-      });
+    var selection = $scope.game.value.guests;
+    GuestService.selection(selection).then(function(result) {
+      if (result != null) {
+        $scope.guests = result.data;
+        $scope.revealContactOptions = new Array(result.data.length);
+        $scope.revealContactOptions.forEach(function(item, index) {
+          item = false;
+        });
+      }
     }).finally(function() {
       $scope.game.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
