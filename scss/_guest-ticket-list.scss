@@ -1,8 +1,30 @@
 .guest-ticket-list {
+    &--welcome {
+      background: url('../assets/team-logos/sea-eagles.png') center right no-repeat;
+    }
+
+    &--logo.row {
+      background: url("../assets/logo-hp-enterprise.png") no-repeat;
+      -webkit-background-size: contain;
+      -moz-background-size: contain;
+      -o-background-size: contain;
+      background-size: contain;
+      margin-bottom: $space*2;
+      width: 124px;
+      height: 52px;
+    }
+
     &--name {
     	margin-bottom: $space * 2;
     	font-size: 20px;
-      text-align: center;
+    }
+
+    &--message {
+      font-size: 16px;
+    }
+
+    &--name, &--message {
+      font-family: $font-stack-regular;
     }
 
     &--left, &--right
