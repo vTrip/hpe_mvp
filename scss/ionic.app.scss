@@ -96,6 +96,11 @@ html, body, h1, h2, h3, h4, h5, h6
   color: white;
 }
 
+.nav-bar-title {
+  font-family: $font-stack-regular;
+  font-size: 20px;
+}
+
 a:link, a:visited, a:hover, a:active
 {
   color: inherit;
@@ -151,9 +156,8 @@ a:link, a:visited, a:hover, a:active
   }
 }
 
-.custom-nav-title {
-  font-size: 20px;
-  font-style: $font-stack-regular;
+.platform-android.bar.title {
+
 }
 
 .custom-nav-button {
