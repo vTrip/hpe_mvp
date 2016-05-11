@@ -1,5 +1,5 @@
-<ion-view class="guest-ticket-list">
-  <ion-nav-bar>
+<ion-view class="guest-ticket-list" ng-controller="GuestTicketsCtrl">
+  <ion-nav-bar class="bar-stable">
     <ion-nav-title class="nav-bar-title">
       Tickets Received
     </ion-nav-title>
@@ -18,40 +18,72 @@
         </div>
       </div>
     </div>
-    <ion-list>
-      <ion-item class="card">
-        <div class="row">
+    <div class="card">
+      <div class="row">
+        <div class="guest-ticket-list--amount">
+          {{}} Tickets for:
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="padding:16px;">
+          <div class="team-logo--sea-eagles"></div>
+          <div class="ticket-detail--team-name">{{game.value.homeTeam}}</div>
+        </div>
+        <div class="col" style="padding:8px;">
           <div class="col">
-            <div class="guest-ticket-list--name">Gary One</div>
+          </div>
+          <div class="col game-detail--info-center">
+            vs
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="guest-ticket-list--left">Sea Eagles v Rabbitohs</div>
-          </div>
-          <div class="col">
-            <div class="guest-ticket-list--right">G01T01</div>
-          </div>
+        <div class="col" style="padding:16px;">
+          <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
+          <div class="ticket-detail--team-name">{{game.value.awayTeam}}</div>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="guest-ticket-list--left">31 Mar, Thu
-              <br>07:30 PM</div>
-          </div>
-          <div class="col">
-            <div class="guest-ticket-list--right">
-              <a href="http://maps.google.com/?q=Brookvale+Oval" target="_blank"><i class="ion-ios-location"></i> Brookvale Oval</a></div>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col ticket-detail--padding">
+          <div class="ticket-detail--time">{{formatTime(game.value.startTime)}}</div>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="guest-ticket-list--right">
-              <a class="guest-ticket-list--accept" href="">ACCEPT</a>
-              <a class="guest-ticket-list--decline" href="">DECLINE</a>
+        <div class="col ticket-detail--padding">
+          <div class="ticket-detail--date">{{formatDate(game.value.date)}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <ion-list class="col">
+          <ion-item class="guest-ticket-list--invitee">
+            <div class="row">
+              <div class="col">
+                <div class="guest-ticket-list--invitee-name">{{$index}}. Gary One</div>
+              </div>
+              <div class="col">
+                <div class="guest-ticket-list--right row">
+                  <div class="guest-ticket-list--decline col" ng-click="showDeclineTicketModal()">DECLINE</div>
+                  <div class="guest-ticket-list--accept col">ACCEPT</div>
+                </div>
+              </div>
             </div>
-          </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+    <div class="card">
+      <div class="col">
+        <div class="row">
+          <div class="col help-detail--info">Have a question?</div>
         </div>
-      </ion-item>
-    </ion-list>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col help-detail--info">
+            Contact your host
+            <br/>
+            {{game.value.host_name}}
+          </div>
+          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
+          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-call"></a></div>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

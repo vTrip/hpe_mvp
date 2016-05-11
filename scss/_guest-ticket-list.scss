@@ -14,7 +14,20 @@
       height: 52px;
     }
 
-    &--name {
+    &--invitee {
+      padding: 0;
+    }
+
+    &--invitee-name {
+      font-size: 16px;
+      font-family: $font-stack-regular;
+    }
+
+    &--amount {
+      color: #95989A;
+    }
+
+    &--name, &--amount {
     	margin-bottom: $space * 2;
     	font-size: 20px;
     }
@@ -23,7 +36,7 @@
       font-size: 16px;
     }
 
-    &--name, &--message {
+    &--name, &--message, &--amount {
       font-family: $font-stack-regular;
     }
 
@@ -40,6 +53,9 @@
     &--accept, &--decline
     {
     	margin: 0 $space;
+      color: #24B0CA;
+      font-family: $font-stack-medium;
+      font-size: 14px;
 
     	&:first-child
     	{
