@@ -101,6 +101,15 @@ html, body, h1, h2, h3, h4, h5, h6
   font-size: 20px;
 }
 
+.nav-bar-button {
+  font-family: $font-stack-medium;
+  font-size: 14px;
+}
+
+.add-edit-game--nav-bar .button.button-clear i {
+  font-size: 24px;
+}
+
 a:link, a:visited, a:hover, a:active
 {
   color: inherit;
@@ -156,16 +165,8 @@ a:link, a:visited, a:hover, a:active
   }
 }
 
-.platform-android.bar.title {
-
-}
-
-.custom-nav-button {
-  font-size: 14px;
-  font-style: $font-stack-medium;
-  text-transform: uppercase;
-}
-
-.ion-android-close {
-  font-size: 24px;
-}
+// .custom-nav-button {
+//   font-size: 14px;
+//   font-style: $font-stack-medium;
+//   text-transform: uppercase;
+// }
