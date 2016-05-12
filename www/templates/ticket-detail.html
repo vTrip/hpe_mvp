@@ -2,6 +2,7 @@
   <ion-nav-title class="nav-bar-title">Ticket</ion-nav-title>
 
   <ion-content ng-show="!game.$loading">
+    
     <div class="detail card">
       <div class="row">
         <div class="col">
@@ -10,6 +11,10 @@
         </div>
         <div class="col">
           <div class="col">
+            <span id="countdown--days"></span>
+            <span id="countdown--hours"></span>
+            <span id="countdown--minutes"></span>
+            <span id="countdown--seconds"></span>
           </div>
           <div class="col game-detail--info-center">
             vs

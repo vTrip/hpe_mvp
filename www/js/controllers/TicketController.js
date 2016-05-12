@@ -1,4 +1,4 @@
-angular.module('starter').controller('TicketCtrl', function($scope, $stateParams, $ionicPopup, GamesListService) {
+angular.module('starter').controller('TicketCtrl', function($scope, $stateParams, $ionicPopup, GamesListService, $document) {
 
   $scope.game = {
     $loading: false,
@@ -20,6 +20,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     }).finally(function() {
       loadingPopup.close();
       $scope.game.$loading = false;
+      $scope.countDown($scope.game.value.startTime);
     });
   }
   $scope.reload();
@@ -49,5 +50,37 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   $scope.formatTime = function formatTime(time) {
     var momentTime = moment(time);
     return momentTime.format('hh:mm A');
+  }
+  
+  $scope.countDown = function countDown(time) {
+      //time = "2016-05-30 17:30p";
+
+      setInterval(function(){
+        var now = moment();
+        var start = moment(time);
+        
+        var days = start.diff(now, 'days');
+        start.subtract(days,'days');
+        
+        var hours = start.diff(now, 'hours');
+        start.subtract(hours,'hours');
+        
+        var minutes = start.diff(now, 'minutes');
+        start.subtract(minutes,'minutes');
+        
+        var seconds = start.diff(now, 'seconds');    
+        var display_time = days + " : " + hours + " : " + minutes + " : " + seconds;
+        
+        // Left pad with 0
+        days = (days<10)?'0'+days:days;
+        hours = (hours<10)?'0'+hours:hours;
+        minutes = (minutes<10)?'0'+minutes:minutes;
+        seconds = (seconds<10)?'0'+seconds:seconds;
+
+        document.getElementById("countdown--days").innerHTML = days;
+        document.getElementById("countdown--hours").innerHTML = hours;
+        document.getElementById("countdown--minutes").innerHTML = minutes;
+        document.getElementById("countdown--seconds").innerHTML = seconds;
+      },333);
   }
 });
