@@ -1,14 +1,14 @@
 <ion-view class="guest-ticket-list" ng-controller="GuestTicketsCtrl">
   <ion-nav-bar class="bar-stable">
     <ion-nav-title class="nav-bar-title">
-      Tickets Received
+      {{guestGame.guests.length}} Tickets Received
     </ion-nav-title>
   </ion-nav-bar>
   <ion-content>
     <div class="card">
       <div class="guest-ticket-list--welcome">
         <div class="row guest-ticket-list--name">
-          Welcome, {{}}
+          Welcome, {{guests[0].name}}
         </div>
         <div class="row guest-ticket-list--logo"></div>
         <div class="row guest-ticket-list--message">
@@ -21,13 +21,13 @@
     <div class="card">
       <div class="row">
         <div class="guest-ticket-list--amount">
-          {{}} Tickets for:
+          {{guestGame.guests.length}} Tickets for:
         </div>
       </div>
       <div class="row">
         <div class="col" style="padding:16px;">
           <div class="team-logo--sea-eagles"></div>
-          <div class="ticket-detail--team-name">{{game.value.homeTeam}}</div>
+          <div class="ticket-detail--team-name">{{guestGame.homeTeam}}</div>
         </div>
         <div class="col" style="padding:8px;">
           <div class="col">
@@ -37,29 +37,37 @@
           </div>
         </div>
         <div class="col" style="padding:16px;">
-          <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
-          <div class="ticket-detail--team-name">{{game.value.awayTeam}}</div>
+          <div class="team-logo--{{guestGame.awayTeam | lowercase}}"></div>
+          <div class="ticket-detail--team-name">{{guestGame.awayTeam}}</div>
         </div>
       </div>
       <div class="row">
         <div class="col ticket-detail--padding">
-          <div class="ticket-detail--time">{{formatTime(game.value.startTime)}}</div>
+          <div class="ticket-detail--time">{{formatTime(guestGame.startTime)}}</div>
         </div>
         <div class="col ticket-detail--padding">
-          <div class="ticket-detail--date">{{formatDate(game.value.date)}}</div>
+          <div class="ticket-detail--date">{{formatDate(guestGame.date)}}</div>
         </div>
       </div>
       <div class="row">
         <ion-list class="col">
-          <ion-item class="guest-ticket-list--invitee">
+          <ion-item class="guest-ticket-list--invitee" ng-repeat="guest in guests track by $index">
             <div class="row">
               <div class="col">
-                <div class="guest-ticket-list--invitee-name">{{$index}}. Gary One</div>
+                <div class="guest-ticket-list--invitee-name">{{$index + 1}}. {{guest.name}}</div>
               </div>
               <div class="col">
-                <div class="guest-ticket-list--right row">
-                  <div class="guest-ticket-list--decline col" ng-click="showDeclineTicketModal()">DECLINE</div>
-                  <div class="guest-ticket-list--accept col">ACCEPT</div>
+                <div class="row">
+                  <div class="guest-ticket-list--left col">
+                    <div class="guest-ticket-list--decline" ng-show="$index == 0 && guest.status == 'invited'" ng-click="showDeclineTicketModal()">DECLINE</div>
+                    <div class="guest-ticket-list" ng-show="$index == 0 && guest.status != 'invited'">{{guest.status}}</div>
+                  </div>
+                  <div class="guest-ticket-list--right col">
+                    <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'invited'">ACCEPT</div>
+                    <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'accepted'">VIEW</div>
+                    <div class="guest-ticket-list--invite" ng-show="$index != 0 && guest.status == 'null'">INVITE</div>
+                    <div class="guest-ticket-list--invite" ng-show="$index != 0 && guest.status != 'null'">{{guest.status}}</div>
+                  </div>
                 </div>
               </div>
             </div>

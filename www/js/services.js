@@ -158,6 +158,53 @@ angular.module('starter')
       });
     },
   }
+})
+
+.factory('GuestGameService', function($http, $q) {
+  var endpoint = 'http://54.206.46.11/hp/api/guest-game';
+  // var endpoint = 'http://thebitspace.com.au/api/guest-status';
+
+  return {
+    all: function() {
+      return $http ({
+        method: 'GET',
+        url: endpoint,
+      });
+    },
+
+    create: function(guest) {
+      return $http.post(endpoint, guest);
+    },
+
+    read: function(id) {
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + id,
+      });
+    },
+
+    // get a selection of guests
+    // @param (ids) - array of ids to GET
+    selection: function(ids) {
+      var params = ids.join(',');
+      if (params.length != 0) {
+        return $http ({
+          method: 'GET',
+          url: endpoint + '/' + params,
+        });
+      }
+
+      return $q.when(null);
+
+    },
+
+    delete: function(id) {
+      return $http({
+          method: 'DELETE',
+          url : endpoint + '/' + id
+      });
+    },
+  }
 
 
 })
