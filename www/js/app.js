@@ -83,7 +83,7 @@ angular.module('starter', ['ionic'])
     url: '/games/:gameId/manage-tickets/:barcode',
     views: {
       'menuContent' :{
-        templateUrl: 'templates/ticket-detail.html',
+        templateUrl: 'templates/host-ticket-detail.html',
       }
     }
   })
