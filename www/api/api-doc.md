@@ -8,7 +8,7 @@
 
 | Action			| Collection 					| Item							| Item List
 |:---				|:---							|:---							|:---
-| URL					| /api/{resource}				| /api/{resource}/{id} 			| /api/{resource}/{id1},{id2}
+| URL				| /api/{resource}				| /api/{resource}/{id} 			| /api/{resource}/{id1},{id2}
 | GET				| Collection,200; Empty 404		| Object,200; Empty 404			| Collection,200; Empty 404
 | POST				| Empty, 201					| Empty, 404					| Empty, 204
 | PUT				| Empty, 403					| Empty, 204					| Empty, 204
