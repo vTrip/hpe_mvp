@@ -157,6 +157,19 @@ angular.module('starter')
 
     },
 
+    // Update a field of an object
+    // @param (id) - id of the object
+    // @param (data) - field / data to be updated
+    updateAttribute: function(id, data) {
+      return $http({
+        method: 'PATCH',
+        data: data,
+        url: endpoint + '/' + id
+      }).catch(function(err) {
+        console.error(err);
+      });
+    },
+
     delete: function(id) {
       return $http({
           method: 'DELETE',
@@ -202,6 +215,19 @@ angular.module('starter')
 
       return $q.when(null);
 
+    },
+
+    // Update a field of an object
+    // @param (id) - id of the object
+    // @param (data) - field / data to be updated
+    updateAttribute: function(id, data) {
+      return $http({
+        method: 'PATCH',
+        data: data,
+        url: endpoint + '/' + id
+      }).catch(function(err) {
+        console.error(err);
+      });
     },
 
     delete: function(id) {

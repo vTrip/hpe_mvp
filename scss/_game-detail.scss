@@ -59,6 +59,15 @@
 		text-align: center;
 	}
 
+	&--info-center
+	{
+		font-size: 16px;
+		font-family: $font-stack-regular;
+		margin-top: 50%;
+		transform: translateY(-50%);
+
+	}
+
 	&--location
 	{
 		font-family: $font-stack-medium;
