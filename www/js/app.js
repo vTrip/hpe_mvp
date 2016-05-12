@@ -116,6 +116,11 @@ angular.module('starter', ['ionic'])
     templateUrl: 'templates/guest-ticket-list.html',
   })
 
+  .state('guest-ticket-detail', {
+    url: '/guest/tickets/:barcode',
+    templateUrl: 'templates/ticket-detail.html',
+  })
+
 
   $urlRouterProvider.otherwise("/");
 

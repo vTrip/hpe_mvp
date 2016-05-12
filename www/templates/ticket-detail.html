@@ -1,8 +1,10 @@
 <ion-view class="ticket-detail" ng-controller="TicketCtrl">
-  <ion-nav-title class="nav-bar-title">Ticket</ion-nav-title>
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-title class="nav-bar-title">Ticket</ion-nav-title>
+  </ion-nav-bar>
 
   <ion-content ng-show="!game.$loading">
-    
+
     <div class="detail card">
       <div class="row">
         <div class="col">
@@ -11,13 +13,34 @@
         </div>
         <div class="col">
           <div class="col">
-            <span id="countdown--days"></span>
-            <span id="countdown--hours"></span>
-            <span id="countdown--minutes"></span>
-            <span id="countdown--seconds"></span>
-          </div>
-          <div class="col game-detail--info-center">
-            vs
+            <div class="row">
+              <div class="col game-detail--time-desc">
+                Game starts in
+              </div>
+            </div>
+            <div class="row game-detail--time">
+              <div class="col">
+                <span id="countdown--days" class="col game-detail--countdown"></span>
+                <span class="col game-detail--metric">day</span>
+              </div>
+              <div class="col">
+                <span id="countdown--hours" class="col game-detail--countdown"></span>
+                <span class="col game-detail--metric">hrs</span>
+              </div>
+              <div class="col">
+                <span id="countdown--minutes" class="col game-detail--countdown"></span>
+                <span class="col game-detail--metric">mins</span>
+              </div>
+              <div class="col">
+                <span id="countdown--seconds" class="col game-detail--countdown"></span>
+                <span class="col game-detail--metric">sec</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col game-detail--info-center">
+                vs
+              </div>
+            </div>
           </div>
         </div>
         <div class="col">
@@ -40,60 +63,60 @@
       </div>
       <div class="col barcode">
         <canvas id="barcode" class="col" style="padding: 1% 15%;">
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <div class="col game-detail--activities">
-          <label class="col">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
-          <label class="col game-detail--subheading">Activities on the day</label>
-          <div class="row">
-            <label class="col-20">5:00 PM</label>
-            <label class="col">Pre game whiskey at Ship Inn</label>
-          </div>
-          <div class="row">
-            <label class="col-20">7:30 PM</label>
-            <label class="col">Game starts</label>
-          </div>
-          <div class="row">
-            <label class="col-20">9:00 PM</label>
-            <label class="col">Game finishes</label>
-          </div>
-          <div class="row">
-            <label class="col-20">9:15 PM</label>
-            <label class="col">Post Game cocktail at The Marquee</label>
-          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="col help-detail">
+      <div class="card">
         <div class="row">
-          <div class="col help-detail--info">Have a question?</div>
-        </div>
-      </div>
-      <div class="col help-detail">
-        <div class="row">
-          <div class="col help-detail--info">
-            Contact your host
-            <br/>
-            {{game.value.host_name}}
+          <div class="col game-detail--activities">
+            <label class="col">HPE hopes you'll enjoy tonight and the company of our special guest. We look forward to hosting you.</label>
+            <label class="col game-detail--subheading">Activities on the day</label>
+            <div class="row">
+              <label class="col-20">5:00 PM</label>
+              <label class="col">Pre game whiskey at Ship Inn</label>
+            </div>
+            <div class="row">
+              <label class="col-20">7:30 PM</label>
+              <label class="col">Game starts</label>
+            </div>
+            <div class="row">
+              <label class="col-20">9:00 PM</label>
+              <label class="col">Game finishes</label>
+            </div>
+            <div class="row">
+              <label class="col-20">9:15 PM</label>
+              <label class="col">Post Game cocktail at The Marquee</label>
+            </div>
           </div>
-          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
-          <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-call"></a></div>
         </div>
       </div>
-      <div class="col help-detail">
-        <div class="row">
-          <div class="col help-detail--info">
-            Changed your mind? Dont worry
-            <br/>
-            click here to decline the invitation
-           </div>
-          <div class="col-20 help-detail--decline">DECLINE</div>
+      <div class="card">
+        <div class="col help-detail">
+          <div class="row">
+            <div class="col help-detail--info">Have a question?</div>
+          </div>
+        </div>
+        <div class="col help-detail">
+          <div class="row">
+            <div class="col help-detail--info">
+              Contact your host
+              <br/>
+              {{game.value.host_name}}
+            </div>
+            <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
+            <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-call"></a></div>
+          </div>
+        </div>
+        <div class="col help-detail">
+          <div class="row">
+            <div class="col help-detail--info">
+              Changed your mind? Dont worry
+              <br/>
+              click here to decline the invitation
+            </div>
+            <div class="col-20 help-detail--decline">DECLINE</div>
+          </div>
         </div>
       </div>
-    </div>
 
-  </ion-content>
-</ion-view>
+    </ion-content>
+  </ion-view>

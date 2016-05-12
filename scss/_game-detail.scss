@@ -33,6 +33,34 @@
 		font-family: $font-stack-medium;
 	}
 
+	&--time-desc, &--time, &--countdown, &--metric
+	{
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	&--time-desc
+	{
+		text-align: center;
+		font-size: 12px;
+		font-family: $font-stack-regular;
+	}
+
+	&--time
+	{
+		font-family: $font-stack-medium;
+	}
+
+	&--countdown
+	{
+		color: #24B0CA;
+	}
+
+	&--metric
+	{
+		font-size: 12px;
+	}
+
 	&--info-left
 	{
 		text-align: left;
@@ -63,9 +91,6 @@
 	{
 		font-size: 16px;
 		font-family: $font-stack-regular;
-		margin-top: 50%;
-		transform: translateY(-50%);
-
 	}
 
 	&--location

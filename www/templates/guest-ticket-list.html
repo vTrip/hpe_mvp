@@ -63,7 +63,7 @@
                   </div>
                   <div class="guest-ticket-list--right col">
                     <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'invited'" ng-click="acceptInvite()">ACCEPT</div>
-                    <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'accepted'">VIEW</div>
+                    <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'accepted'" ><a href="#/guest/tickets/{{guestGame.tickets[0]}}">VIEW</a></div>
                     <div class="guest-ticket-list--invite" ng-show="$index != 0 && guest.status == null" ng-click="inviteGuest($index)">INVITE</div>
                   </div>
                 </div>
@@ -84,7 +84,7 @@
           <div class="col help-detail--info">
             Contact your host
             <br/>
-            {{game.value.host_name}}
+            {{guestGame.host_name}}
           </div>
           <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
           <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-call"></a></div>
