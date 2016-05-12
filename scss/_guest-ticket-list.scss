@@ -16,6 +16,7 @@
 
     &--invitee {
       padding: 0;
+      border: none;
     }
 
     &--invitee-name {
@@ -42,7 +43,7 @@
 
     &--left, &--right
     {
-    	margin-bottom: $space;
+    	// margin-bottom: $space;
     }
 
     &--right

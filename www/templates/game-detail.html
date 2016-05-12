@@ -48,7 +48,7 @@
             ng-show="guest.status == null" ng-click="inviteAll(guest)">Invite</div>
             <div class="col-10 guest-list--add-guest" ng-click="addGuest(guest)" ng-show="guest.status == null">+</div>
             <div class="col guest-list--{{guest.status}}" ng-show="guest.status != null">
-              {{guest.status}}
+              {{guest.status | capitalize}}
             </div>
           </div>
           <div class="guest-list--contact row" ng-show="revealContactOptions[$index]">
