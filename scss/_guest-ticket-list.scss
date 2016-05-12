@@ -68,4 +68,26 @@
     	// 	margin-right: 0;
     	// }
     }
+
+    &--accepted, &--invited, &--declined
+    {
+      margin: 0;
+      font-family: $font-stack-regular;
+      font-size: 14px;
+    }
+
+    &--accepted
+    {
+      color: #418A3D;
+    }
+
+    &--declined
+    {
+      color: #FF1823;
+    }
+
+    &--invited
+    {
+      color: #FF7626;
+    }
 }

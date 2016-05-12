@@ -1,5 +1,11 @@
 angular.module('starter')
 
+.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+})
+
 .factory('GamesListService', function($http) {
    var endpoint = 'http://54.206.46.11/hp/api/game';
   // var endpoint = 'http://thebitspace.com.au/api/game';

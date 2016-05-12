@@ -60,13 +60,13 @@
                 <div class="row">
                   <div class="guest-ticket-list--left col">
                     <div class="guest-ticket-list--decline" ng-show="$index == 0 && guest.status == 'invited'" ng-click="showDeclineTicketModal()">DECLINE</div>
-                    <div class="guest-ticket-list" ng-show="$index == 0 && guest.status != 'invited'">{{guest.status}}</div>
+                    <div class="guest-ticket-list--{{guest.status}}" ng-show="$index == 0 && guest.status != 'invited'">{{guest.status | capitalize}}</div>
                   </div>
                   <div class="guest-ticket-list--right col">
                     <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'invited'">ACCEPT</div>
                     <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'accepted'">VIEW</div>
-                    <div class="guest-ticket-list--invite" ng-show="$index != 0 && guest.status == 'null'">INVITE</div>
-                    <div class="guest-ticket-list--invite" ng-show="$index != 0 && guest.status != 'null'">{{guest.status}}</div>
+                    <div class="guest-ticket-list--invite" ng-show="$index != 0 && guest.status == 'null'" ng-click="inviteGuest(guest)">INVITE</div>
+                    <div class="guest-ticket-list--{{guest.status}}" ng-show="$index != 0 && guest.status != 'null'">{{guest.status | capitalize}}</div>
                   </div>
                 </div>
               </div>
