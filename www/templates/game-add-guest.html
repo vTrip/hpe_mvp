@@ -13,7 +13,10 @@
         <div class="col">
           <div class="contact-list--search">
             <i class="contact-list--search-icon ion-android-search"></i>
-            <input type="search" ng-model="contacts.$search" ng-change="filterUsers()" autofocus="true">
+            <label class="item item-input item-floating-label">
+              <span class="input-label">Add guest</span>
+              <input type="search" ng-model="contacts.$search" ng-change="filterUsers()" autofocus="true" placeholder="Add guest">
+            </label>
           </div>
         </div>
       </div>

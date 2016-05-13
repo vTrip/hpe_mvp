@@ -19,6 +19,9 @@
       </div>
     </div>
     <div class="ticket-list card">
+      <div class="title">
+        Tickets
+      </div>
       <ion-list>
         <ion-item ng-repeat="ticket in game.value.tickets track by $index">
           <div class="row">
@@ -34,14 +37,14 @@
       </ion-list>
     </div>
 
-    <!-- ng-show="ticket.$show"  -->
-
-    <div id="ticket-input" class="ticket-list--ticket-input row">
-      <label class="ticket-list--ticket-field item item-input item-floating-label col-75">
-        <span class="input-label">Enter barcode</span>
-        <input type="tel" placeholder="Enter barcode" ng-model="ticket.number" autofocus="true"/>
-      </label>
-      <div ng-click="saveTicket()" class="col-25 ticket-list--create">CREATE</div>
+    <div ng-show="ticket.$show" class="card" style="padding-bottom: 16px;">
+      <div id="ticket-input" class="ticket-list--ticket-input row">
+        <label class="ticket-list--ticket-field item item-input item-floating-label col-75">
+          <span class="input-label">Enter barcode</span>
+          <input type="tel" placeholder="Enter barcode" ng-model="ticket.number" autofocus="true"/>
+        </label>
+        <div ng-click="saveTicket()" class="col-25 ticket-list--create">CREATE</div>
+      </div>
     </div>
   </ion-content>
   <div class="button-add" ng-click="addTicket()">

@@ -13,8 +13,9 @@
 
   &--button
   {
-    margin: auto;
+    margin: auto $space;
     font-size: 24px;
+    text-align: center;
   }
 
   &--decline

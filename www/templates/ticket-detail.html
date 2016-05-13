@@ -39,8 +39,8 @@
               </div>
             </div>
             <div class="row">
-              <div class="col game-detail--info-center">
-                vs
+              <div class="col game-detail--info">
+                v
               </div>
             </div>
           </div>
@@ -104,8 +104,8 @@
               <br/>
               {{game.value.host_name}}
             </div>
-            <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
-            <div class="col-10 help-detail--button"><a href="{{game.value.host_mobile}}" class="ion-android-call"></a></div>
+            <div class="col-10 help-detail--button"><a href="sms:{{game.value.host_mobile}}" class="ion-android-textsms"></a></div>
+            <div class="col-10 help-detail--button"><a href="tel:{{game.value.host_mobile}}" class="ion-android-call"></a></div>
           </div>
         </div>
         <div class="col help-detail">

@@ -88,6 +88,13 @@ ion-content {
   background-color: #ddd;
 }
 
+ion-modal-view {
+  background-color: white;
+  ion-content {
+    background-color: white;
+  }
+}
+
 .scroll {
   height: 100%;
 }
