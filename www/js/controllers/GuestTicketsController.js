@@ -24,8 +24,10 @@ angular.module('starter').controller('GuestTicketsCtrl', function($scope, $state
     });
     GuestGameService.read(0).then(function(res) {
       $scope.guestGame = res.data;
+      console.log(res.data);
       GuestService.selection($scope.guestGame.guests).then(function(res) {
         var result = res.data;
+        console.log(result);
         var duplicate = 0;
         var first = result[0];
 
@@ -39,7 +41,6 @@ angular.module('starter').controller('GuestTicketsCtrl', function($scope, $state
         }
 
         $scope.guests = result;
-        console.log(result);
       });
     }).finally(function() {
       loadingPopup.close();

@@ -53,7 +53,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
   }
 
   $scope.countDown = function countDown(time) {
-      //time = "2016-05-30 17:30p";
+      // time = "2016-05-30 17:30p";
 
       setInterval(function(){
         var now = moment();

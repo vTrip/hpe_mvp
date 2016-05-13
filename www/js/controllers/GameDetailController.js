@@ -34,6 +34,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     $scope.game.$loading = true;
   });
 
+  $scope.isReady = function isReady() {
+    return !$scope.game.$loading && !$scope.guests.length > 0;
+  }
+
   $scope.reload = function reload() {
     var loadingPopup = $ionicPopup.show({
      template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
@@ -82,10 +86,18 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     return momentTime.format('h:mm A');
   }
 
+  $scope.invite = function invite(guest) {
+    var updated = {
+      status: "invited"
+    }
+
+    GuestService.updateAttribute(guest.id, updated);
+    $scope.reload();
+  }
+
   $scope.deleteGuest = function deleteGuest(id) {
-    GuestService.delete(id).then(function() {
-      $scope.reload();
-    });
+    GuestService.delete(id);
+    $scope.reload();
   }
 
   // Contact search modal
@@ -127,7 +139,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.saveSearchContact = function saveSearchContact(contact) {
     var guest = {
       contact_id: contact.id,
-      game_id: $scope.game.id,
+      game_id: $scope.game.value.id,
     };
 
     GuestService.create(guest).then(function() {
@@ -162,7 +174,6 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.filterUsers = function filterUsers() {
     var array = [];
     for (var i = 0; i < $scope.contacts.value.length; ++i) {
-      console.log($scope.contacts.value[i].email);
       var obj = $scope.contacts.value[i].email;
       if (obj != undefined) {
         if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
