@@ -162,9 +162,12 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.filterUsers = function filterUsers() {
     var array = [];
     for (var i = 0; i < $scope.contacts.value.length; ++i) {
+      console.log($scope.contacts.value[i].email);
       var obj = $scope.contacts.value[i].email;
-      if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
-      array.push($scope.contacts.value[i]);
+      if (obj != undefined) {
+        if (obj.indexOf($scope.contacts.$search.toLowerCase()) > -1)
+        array.push($scope.contacts.value[i]);
+      }
     }
     $scope.filteredUsers = array;
   }
