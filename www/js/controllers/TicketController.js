@@ -51,26 +51,26 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     var momentTime = moment(time);
     return momentTime.format('hh:mm A');
   }
-  
+
   $scope.countDown = function countDown(time) {
       //time = "2016-05-30 17:30p";
 
       setInterval(function(){
         var now = moment();
         var start = moment(time);
-        
+
         var days = start.diff(now, 'days');
         start.subtract(days,'days');
-        
+
         var hours = start.diff(now, 'hours');
         start.subtract(hours,'hours');
-        
+
         var minutes = start.diff(now, 'minutes');
         start.subtract(minutes,'minutes');
-        
-        var seconds = start.diff(now, 'seconds');    
+
+        var seconds = start.diff(now, 'seconds');
         var display_time = days + " : " + hours + " : " + minutes + " : " + seconds;
-        
+
         // Left pad with 0
         days = (days<10)?'0'+days:days;
         hours = (hours<10)?'0'+hours:hours;
