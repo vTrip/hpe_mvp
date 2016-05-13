@@ -2,6 +2,18 @@
     position: relative;
     height: 100%;
 
+    &--manly-logo {
+      margin-left: 50%;
+      transform: translateX(-50%);
+      height: 128px;
+      width: 128px;
+      background: url("../assets/team-logos/sea-eagles.png") no-repeat;
+      -webkit-background-size: contain;
+      -moz-background-size: contain;
+      -o-background-size: contain;
+      background-size: contain;
+    }
+
     &--panel {
         position: relative;
         margin: 4 * $space 4 * $space;

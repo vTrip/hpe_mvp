@@ -6,16 +6,17 @@
 		margin: 32px 8px;
 		font-size: 20px;
 	}
-	
+
 	& .item-content
 	{
 		padding: 16px 49px 16px 8px;
 	}
-	
+
 	&--icon
 	{
 		display: inline-block;
 		margin: 8px;
+		margin-top: 32px;
 		width: 56px;
 		height: 56px;
 		color: white;
@@ -26,8 +27,8 @@
 		font-family: 'robotobold';
 		text-align: center;
 	}
-	
-	&--menu-icon 
+
+	&--menu-icon
 	{
 		display: inline-block;
 		width: 48px;
@@ -36,12 +37,12 @@
 		font-size: 32px;
 		padding-right: 16px;
 	}
-	
+
 	&--item
 	{
 		border: none;
 		line-height: 32px;
-		
+
 		&:first-child
 		{
 			border: 1px solid #B2B2B2;
