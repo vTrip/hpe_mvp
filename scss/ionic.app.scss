@@ -84,6 +84,10 @@ html, body, h1, h2, h3, h4, h5, h6
   font-family: $font-stack;
 }
 
+ion-content {
+  background-color: #ddd;
+}
+
 .scroll {
   height: 100%;
 }
@@ -119,17 +123,38 @@ a:link, a:visited, a:hover, a:active
 .item.item-input.item-floating-label {
   color: $dark;
   border: none;
-  border-bottom: solid #ddd 1px;
+  // border-bottom: solid #ddd 1px;
   padding: 0;
 
+  border: none;
+
+  input {
+    border-bottom: solid 1px #E0E0E0;
+  }
+
+  input:focus {
+    border-bottom: solid 1px #24B0CA;
+  }
+
+  .input-label {
+    font-size: 12px;
+  }
+
   *::-webkit-input-placeholder {
-  color: #ddd;
+    color: #ddd;
+    font-size: 16px;
   }
   *:-moz-placeholder {
     color: #ddd;
+    font-size: 16px;
   }
   *:-ms-input-placeholder { /* IE10+ */
     color: #ddd;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
   }
 }
 

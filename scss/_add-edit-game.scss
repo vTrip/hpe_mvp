@@ -24,10 +24,13 @@
   &--content {
     .item.item-input.item-select, .item.item-input.item-floating-label {
       border: none;
-      border-bottom: solid 1px #ddd;
       padding-left: 0;
       margin-left: $space;
       margin-right: $space;
+    }
+
+    .item.item-input.item-select {
+      border-bottom: solid 1px #ddd;
     }
   }
 

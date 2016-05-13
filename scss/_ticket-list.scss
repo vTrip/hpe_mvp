@@ -15,8 +15,6 @@
 	}
 
 	&--button {
-		color: #24B0CA;
-		font-family: $font-stack-medium;
 		text-align: right;
 		padding: 5px;
 	}
@@ -33,8 +31,12 @@
 		position: absolute;
 		bottom: 0;
 		right: $space;
+	}
+
+	&--create, &--button {
 		color: #24B0CA;
 		font-family: $font-stack-medium;
 		font-size: 14px;
 	}
+
 }
