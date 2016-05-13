@@ -42,6 +42,16 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
     number: null,
   };
 
+  $scope.deleteTicket = function deleteTicket($index) {
+    var ticket = $scope.game.value.tickets[$index];
+    $scope.game.value.tickets.splice($index, 1);
+    
+    var updated = {
+      tickets: $scope.game.value.tickets,
+    };
+    GamesListService.updateAttribute($scope.game.value.id, updated);
+  }
+
   $scope.addTicket = function addTicket() {
     $scope.ticket.$show = true;
     $location.hash("ticket-input");

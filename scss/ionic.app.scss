@@ -206,6 +206,18 @@ a:link, a:visited, a:hover, a:active
   transform: translateX(-50%);
 }
 
+.ion-trash-b {
+  background-color: $assertive;
+  color: white;
+}
+
+.ion-trash-b.activated {
+  opacity: 0.6;
+  background-color: $assertive;
+  color: white;
+}
+
+
 // .custom-nav-button {
 //   font-size: 14px;
 //   font-style: $font-stack-medium;
