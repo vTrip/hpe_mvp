@@ -10,9 +10,8 @@
         <div class="row guest-ticket-list--name">
           Welcome, {{guests[0].name}}
         </div>
-        <div class="row guest-ticket-list--logo"></div>
         <div class="row guest-ticket-list--message">
-          Invites you to the
+          Hewlett Packard Enterprise invites you to the
           <br/>
           Manly Sea Eagles Chairman's Club.
         </div>
@@ -20,22 +19,17 @@
     </div>
     <div class="card">
       <div class="row">
-        <div class="guest-ticket-list--amount">
-          {{guestGame.guests.length}} Tickets for:
-        </div>
-      </div>
-      <div class="row">
-        <div class="col" style="padding:16px;">
-          <div class="team-logo--sea-eagles"></div>
+        <div class="col">
+          <div class="team-logo--sea-eagles logo-right"></div>
           <div class="ticket-detail--team-name">{{guestGame.homeTeam}}</div>
         </div>
-        <div class="col">
+        <div class="col-10" style="margin:auto;">
           <div class="col game-detail--info-center">
             v
           </div>
         </div>
-        <div class="col" style="padding:16px;">
-          <div class="team-logo--{{guestGame.awayTeam | lowercase}}"></div>
+        <div class="col">
+          <div class="team-logo--{{guestGame.awayTeam | lowercase}} logo-left"></div>
           <div class="ticket-detail--team-name">{{guestGame.awayTeam}}</div>
         </div>
       </div>
@@ -45,6 +39,11 @@
         </div>
         <div class="col ticket-detail--padding">
           <div class="ticket-detail--date">{{formatDate(guestGame.date)}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="guest-ticket-list--amount">
+          Your tickets:
         </div>
       </div>
       <div class="row">
@@ -74,12 +73,12 @@
       </div>
     </div>
     <div class="card">
-      <div class="col">
+      <div class="col" style="padding-left:0;">
         <div class="row">
           <div class="col help-detail--info">Have a question?</div>
         </div>
       </div>
-      <div class="col">
+      <div class="col" style="padding-left:0;">
         <div class="row">
           <div class="col help-detail--info">
             Contact your host

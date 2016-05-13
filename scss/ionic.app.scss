@@ -196,6 +196,16 @@ a:link, a:visited, a:hover, a:active
   }
 }
 
+.logo-right {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo-left {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 // .custom-nav-button {
 //   font-size: 14px;
 //   font-style: $font-stack-medium;

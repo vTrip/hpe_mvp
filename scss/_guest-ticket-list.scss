@@ -1,6 +1,18 @@
 .guest-ticket-list {
+
+    ion-list {
+      padding: 0;
+
+      .col {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
     &--welcome {
-      background: url('../assets/sea-eagles-watermark.png') center right no-repeat;
+      background: url('../assets/logo-hp-enterprise-watermark.png') top right no-repeat;
+      background-size: 78px 33px;
+      padding-top: $space/2;
     }
 
     &--logo.row {
@@ -29,15 +41,12 @@
     }
 
     &--name, &--amount {
-    	margin-bottom: $space * 2;
-    	font-size: 20px;
+      margin-top: $space;
+    	margin-bottom: $space*2;
     }
 
-    &--message {
+    &--message, &--name, &--amount {
       font-size: 16px;
-    }
-
-    &--name, &--message, &--amount {
       font-family: $font-stack-regular;
     }
 
