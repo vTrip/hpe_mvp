@@ -20,4 +20,21 @@
 		text-align: right;
 		padding: 5px;
 	}
+
+	&--ticket-input {
+		position: relative;
+	}
+
+	&--ticket-field {
+		margin-left: $space;
+	}
+
+	&--create {
+		position: absolute;
+		bottom: 0;
+		right: $space;
+		color: #24B0CA;
+		font-family: $font-stack-medium;
+		font-size: 14px;
+	}
 }
