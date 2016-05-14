@@ -1,5 +1,13 @@
 .ticket-detail {
 
+  .parent-column {
+    padding: 0;
+
+    > .col {
+      padding: 0;
+    }
+  }
+
   .carousel-img {
     width: 90%;
   }

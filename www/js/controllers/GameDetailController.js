@@ -1,4 +1,4 @@
-angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, GamesListService, GuestService, ContactsService, $state, $ionicModal, $ionicPopup) {
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, $ionicListDelegate, GamesListService, GuestService, ContactsService, $state, $ionicModal, $ionicPopup) {
 
   $scope.game = {
     $loading: true,
@@ -97,6 +97,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
   $scope.deleteGuest = function deleteGuest(id) {
     GuestService.delete(id);
+    $ionicListDelegate.closeOptionButtons();
     $scope.reload();
   }
 

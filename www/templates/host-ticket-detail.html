@@ -6,11 +6,11 @@
 
     <div class="detail card">
       <div class="row">
-        <div class="col">
+        <div class="col parent-column">
           <div class="team-logo--sea-eagles"></div>
           <div class="ticket-detail--team-name">{{game.value.homeTeam}}</div>
         </div>
-        <div class="col">
+        <div class="col parent-column">
           <div class="col">
             <div class="row">
               <div class="col game-detail--time-desc">
@@ -28,7 +28,7 @@
               </div>
               <div class="col">
                 <span id="countdown--minutes" class="col game-detail--countdown"></span>
-                <span class="col game-detail--metric">mins</span>
+                <span class="col game-detail--metric">min</span>
               </div>
               <div class="col">
                 <span id="countdown--seconds" class="col game-detail--countdown"></span>
@@ -42,7 +42,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col parent-column">
           <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
           <div class="ticket-detail--team-name">{{game.value.awayTeam}}</div>
         </div>

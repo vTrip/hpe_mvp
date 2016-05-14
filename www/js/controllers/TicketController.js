@@ -20,7 +20,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     }).finally(function() {
       loadingPopup.close();
       $scope.game.$loading = false;
-      $scope.countDown($scope.game.value.startTime);
+      $scope.countDown($scope.game.value.date, $scope.game.value.startTime);
     });
   }
   $scope.reload();
@@ -52,23 +52,24 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
     return momentTime.format('hh:mm A');
   }
 
-  $scope.countDown = function countDown(time) {
-      // time = "2016-05-30 17:30p";
+  $scope.countDown = function countDown(date, time) {
+
+      var start = moment(date).format('YYYY-MM-DD') + 'T' + moment(time).format('hh:mm:ss') + 'Z';
 
       setInterval(function(){
         var now = moment();
-        var start = moment(time);
+        var dateTime = moment(start)
 
-        var days = start.diff(now, 'days');
-        start.subtract(days,'days');
+        var days = dateTime.diff(now, 'days');
+        dateTime.subtract(days,'days');
 
-        var hours = start.diff(now, 'hours');
-        start.subtract(hours,'hours');
+        var hours = dateTime.diff(now, 'hours');
+        dateTime.subtract(hours,'hours');
 
-        var minutes = start.diff(now, 'minutes');
-        start.subtract(minutes,'minutes');
+        var minutes = dateTime.diff(now, 'minutes');
+        dateTime.subtract(minutes,'minutes');
 
-        var seconds = start.diff(now, 'seconds');
+        var seconds = dateTime.diff(now, 'seconds');
         var display_time = days + " : " + hours + " : " + minutes + " : " + seconds;
 
         // Left pad with 0
