@@ -146,6 +146,7 @@ angular.module('starter')
     // @param (ids) - array of ids to GET
     selection: function(ids) {
       var params = ids.join(',');
+      console.log(params);
       if (params.length != 0) {
         return $http ({
           method: 'GET',
