@@ -62,7 +62,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     var selection = $scope.game.value.guests;
     GuestService.selection(selection).then(function(result) {
       if (result != null) {
-        $scope.guests = result.data;
+        $scope.guests = displayGuests(result.data);
         $scope.revealContactOptions = new Array(result.data.length);
         $scope.revealContactOptions.forEach(function(item, index) {
           item = false;
@@ -72,6 +72,26 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       $scope.game.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
     });
+  }
+
+  // iterates over the guests looking for duplicated contact_ids to ammend the
+  // objects as required
+  function displayGuests(guests) {
+    var occured = [];
+    guests.forEach(function(guest, index){
+      if (!occured.hasOwnProperty(guest.contact_id)) {
+        occured[guest.contact_id] = 0;
+      }
+
+      occured[guest.contact_id]++;
+
+      if (occured[guest.contact_id] > 1) {
+        guest.status = 'guest';
+        guest.name += " (Guest " + (occured[guest.contact_id] - 1) + ")";
+      }
+    });
+
+    return guests;
   }
 
   $scope.toggleShowContactOptions = function toggleShowContactOptions($index) {
