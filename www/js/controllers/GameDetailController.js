@@ -46,9 +46,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game.value = res.data;
-      if (res.data.guests.length > 0) {
-        $scope.loadGuests();
-      }
+      $scope.loadGuests();
     }).catch(function(err) {
       // any error catching here
       $scope.game.$error = true;
@@ -61,13 +59,11 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.loadGuests = function loadGuests() {
     var selection = $scope.game.value.guests;
     GuestService.selection(selection).then(function(result) {
-      if (result != null) {
-        $scope.guests = displayGuests(result.data);
-        $scope.revealContactOptions = new Array(result.data.length);
-        $scope.revealContactOptions.forEach(function(item, index) {
-          item = false;
-        });
-      }
+      $scope.guests = displayGuests(result.data);
+      $scope.revealContactOptions = new Array(result.data.length);
+      $scope.revealContactOptions.forEach(function(item, index) {
+        item = false;
+      });
     }).finally(function() {
       $scope.game.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
@@ -78,6 +74,11 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   // objects as required
   function displayGuests(guests) {
     var occured = [];
+
+    guests.sort(function(guestA, guestB) {
+      return guestA.name > guestB.name;
+    });
+
     guests.forEach(function(guest, index){
       if (!occured.hasOwnProperty(guest.contact_id)) {
         occured[guest.contact_id] = 0;
