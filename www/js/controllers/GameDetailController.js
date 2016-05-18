@@ -60,34 +60,18 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
   $scope.loadGuests = function loadGuests() {
     var selection = $scope.game.value.guests;
-    if (selection.length > 1) {
-      GuestService.selection(selection).then(function(result) {
-        if (result != null) {
-          $scope.guests = result.data;
-          $scope.revealContactOptions = new Array(result.data.length);
-          $scope.revealContactOptions.forEach(function(item, index) {
-            item = false;
-          });
-        }
-      }).finally(function() {
-        $scope.game.$loading = false;
-        $scope.$broadcast('scroll.refreshComplete');
-      });
-    } else {
-      console.log(selection[0]);
-      GuestService.read(selection[0]).then(function(result) {
-        if (result != null) {
-          $scope.guests = result.data;
-          $scope.revealContactOptions = new Array(result.data.length);
-          $scope.revealContactOptions.forEach(function(item, index) {
-            item = false;
-          });
-        }
-      }).finally(function() {
-        $scope.game.$loading = false;
-        $scope.$broadcast('scroll.refreshComplete');
-      });
-    }
+    GuestService.selection(selection).then(function(result) {
+      if (result != null) {
+        $scope.guests = result.data;
+        $scope.revealContactOptions = new Array(result.data.length);
+        $scope.revealContactOptions.forEach(function(item, index) {
+          item = false;
+        });
+      }
+    }).finally(function() {
+      $scope.game.$loading = false;
+      $scope.$broadcast('scroll.refreshComplete');
+    });
   }
 
   $scope.toggleShowContactOptions = function toggleShowContactOptions($index) {

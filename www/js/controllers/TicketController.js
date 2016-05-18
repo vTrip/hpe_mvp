@@ -56,7 +56,7 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
 
       var start = moment(date).format('YYYY-MM-DD') + 'T' + moment(time).format('hh:mm:ss') + 'Z';
 
-      setInterval(function(){
+      $scope.countdown_timer = setInterval(function(){
         var now = moment();
         var dateTime = moment(start)
 
@@ -84,4 +84,10 @@ angular.module('starter').controller('TicketCtrl', function($scope, $stateParams
         document.getElementById("countdown--seconds").innerHTML = seconds;
       },333);
   }
+
+  $scope.$on("$ionicView.afterLeave", function(event, data){
+     // handle event
+     clearInterval($scope.countdown_timer);
+  });
+
 });
