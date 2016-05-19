@@ -77,10 +77,6 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   function displayGuests(guests) {
     var occured = [];
 
-    guests.sort(function(guestA, guestB) {
-      return guestA.name > guestB.name;
-    });
-
     guests.forEach(function(guest, index){
       if (!occured.hasOwnProperty(guest.contact_id)) {
         occured[guest.contact_id] = 0;
@@ -93,6 +89,12 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
         guest.name += " (Guest " + (occured[guest.contact_id] - 1) + ")";
       }
     });
+
+    guests.sort(function(a, b){
+       if(a.name < b.name) return -1;
+       if(a.name > b.name) return 1;
+       return 0;
+     });
 
     return guests;
   }
