@@ -69,6 +69,19 @@ angular.module('starter')
   }
 })
 
+.factory('GuestGameService', function($http) {
+   var endpoint = 'http://54.206.46.11/hp/api/guest-game';
+
+  return {
+    read: function(id) {
+      return $http ({
+        method: 'GET',
+        url: endpoint + '/' + id,
+      });
+    }
+  }
+})
+
 .factory('ContactsService', function($http) {
   var endpoint = 'http://54.206.46.11/hp/api/contact';
   // var endpoint = 'http://thebitspace.com.au/api/contact';

@@ -1,4 +1,4 @@
-<ion-view class="ticket-detail" ng-controller="TicketCtrl">
+<ion-view class="ticket-detail" ng-controller="GuestTicketCtrl">
   <ion-nav-bar class="bar-stable">
     <ion-nav-back-button>
     </ion-nav-back-button>
@@ -128,7 +128,7 @@
               <br/>
               click here to decline the invitation
             </div>
-            <div class="col-20 help-detail--decline">DECLINE</div>
+            <div class="col-20 help-detail--decline" ng-click="showDeclineTicketModal()">DECLINE</div>
           </div>
         </div>
       </div>

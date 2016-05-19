@@ -40,12 +40,11 @@
           <div>Please add tickets via 'Manage Tickets' before inviting guests. </div>
         </div>
       </div>
-      <!-- TODO// implement once api/guests issue is resolved -->
-      <!-- <div class="guest-list--empty-state row">
+      <div class="guest-list--empty-state row" ng-show="guests.length == 0">
         <div class="col guest-list--empty-message">
           Click + below to add guests
         </div>
-      </div> -->
+      </div>
       <ion-list>
         <ion-item class="guest-list--item col" ng-repeat="guest in guests track by $index">
           <div class="row">
