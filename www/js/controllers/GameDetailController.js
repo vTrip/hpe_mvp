@@ -51,7 +51,9 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       $scope.game.$error = true;
       console.log(err);
     }).finally(function() {
-      $scope.loadGuests();
+      if ($scope.game.value.guests.length > 0) {
+        $scope.loadGuests();
+      }
       loadingPopup.close();
     });
   }

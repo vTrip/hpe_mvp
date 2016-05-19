@@ -30,7 +30,7 @@
         <a ng-href="#/menu/games/{{game.value.id}}/manage-tickets">MANAGE TICKETS</a>
       </div>
     </div>
-    <div class="guest-list card" ng-show="!game.$loading">
+    <div class="guest-list card">
       <div class="row">
         <div class="col guest-list--title">Guest List</div>
       </div>
@@ -40,7 +40,7 @@
           <div>Please add tickets via 'Manage Tickets' before inviting guests. </div>
         </div>
       </div>
-      <div class="guest-list--empty-state row" ng-show="guests.length == 0">
+      <div class="guest-list--empty-state row" ng-hide="game.value.guests.length != 0">
         <div class="col guest-list--empty-message">
           Click + below to add guests
         </div>
