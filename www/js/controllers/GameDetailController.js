@@ -119,7 +119,19 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.deleteGuest = function deleteGuest(id) {
-    GuestService.delete(id);
+    var newList = {
+      guests: $scope.game.value.guests
+    }
+    var index = newList.guests.indexOf(id);
+    var gameId = $scope.game.value.id;
+
+    newList.guests.splice(index, 1);
+    if (newList.guests[newList.guests.length-1] == -1) {
+      newList.guests.splice(newList.guests.length-1, 1);
+    }
+
+    var promises = [GuestService.delete(id), GamesListService.updateAttribute(gameId, newList)];
+    $q.all(promises);
     $ionicListDelegate.closeOptionButtons();
     $scope.reload();
   }
@@ -146,6 +158,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   }
 
   $scope.addGuest = function addGuest(guest) {
+    var loadingPopup = $ionicPopup.show({
+     template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
+     cssClass: 'custom-loading-popup',
+    });
     var guest = {
       contact_id: guest.contact_id,
       game_id: $scope.game.id,
@@ -155,6 +171,7 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
       searchContactModalPromise.then(function(m) {
         m.hide();
       }).finally(function() {
+        loadingPopup.close();
         $scope.reload();
       });
     });
