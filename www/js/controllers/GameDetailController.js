@@ -46,12 +46,12 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
 
     GamesListService.read($stateParams.gameId).then(function(res) {
       $scope.game.value = res.data;
-      $scope.loadGuests();
     }).catch(function(err) {
       // any error catching here
       $scope.game.$error = true;
       console.log(err);
     }).finally(function() {
+      $scope.loadGuests();
       loadingPopup.close();
     });
   }
@@ -59,11 +59,11 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
   $scope.loadGuests = function loadGuests() {
     var selection = $scope.game.value.guests;
     GuestService.selection(selection).then(function(result) {
-      // $scope.guests = displayGuests(result.data);
-      // $scope.revealContactOptions = new Array(result.data.length);
-      // $scope.revealContactOptions.forEach(function(item, index) {
-      //   item = false;
-      // });
+      $scope.guests = displayGuests(result.data);
+      $scope.revealContactOptions = new Array(result.data.length);
+      $scope.revealContactOptions.forEach(function(item, index) {
+        item = false;
+      });
     }).finally(function() {
       $scope.game.$loading = false;
       $scope.$broadcast('scroll.refreshComplete');
