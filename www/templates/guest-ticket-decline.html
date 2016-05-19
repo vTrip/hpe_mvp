@@ -1,20 +1,20 @@
-<ion-modal-view class="add-edit-contact">
+<ion-modal-view class="ticket-decline">
 
   <ion-header-bar class="add-edit-contact--nav-bar">
     <h1 class="title nav-bar-title">Decline Invitation</h1>
   </ion-header-bar>
 
   <ion-content>
-    <div class="row">
+    <div class="row ticket-decline--heading">
       I'm declining the invitation because
     </div>
-    <div>
+    <div class="ticket-decline--options">
       <ion-radio ng-model="choice" ng-value="'A'">I'm unwell</ion-radio>
       <ion-radio ng-model="choice" ng-value="'B'">Something else has come up</ion-radio>
       <ion-radio ng-model="choice" ng-value="'C'">I'm not interested in NRL</ion-radio>
       <ion-radio ng-model="choice" ng-value="'D'">I've changed my mind</ion-radio>
     </div>
-    <div class="row">
+    <div class="ticket-decline--button row">
       <div class="guest-ticket-list--decline col" ng-click="hideDeclineTicketModal()">DECLINE</div>
     </div>
   </ion-content>

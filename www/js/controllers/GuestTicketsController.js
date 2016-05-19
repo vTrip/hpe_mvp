@@ -13,6 +13,7 @@ angular.module('starter').controller('GuestTicketsCtrl', function($scope, $state
 
   $scope.hideDeclineTicketModal = function hideDeclineTicketModal() {
     declineTicketModalPromise.then(function(m) {
+      $scope.respondToInvite("declined");
       m.hide();
     });
   }
@@ -24,10 +25,8 @@ angular.module('starter').controller('GuestTicketsCtrl', function($scope, $state
     });
     GuestGameService.read(0).then(function(res) {
       $scope.guestGame = res.data;
-      console.log(res.data);
       GuestService.selection($scope.guestGame.guests).then(function(res) {
         var result = res.data;
-        console.log(result);
         var duplicate = 0;
         var first = result[0];
 
@@ -128,11 +127,10 @@ angular.module('starter').controller('GuestTicketsCtrl', function($scope, $state
 
   }
 
-  $scope.acceptInvite = function acceptInvite() {
+  $scope.respondToInvite = function respondToInvite(string) {
     var newStatus = {
-      status: "accepted",
+      status: string,
     }
-
     var guestId = $scope.guestGame.guests[0];
 
     GuestService.updateAttribute(guestId, newStatus).finally(function() {

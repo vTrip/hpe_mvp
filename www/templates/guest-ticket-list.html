@@ -61,7 +61,7 @@
                     <div class="guest-ticket-list--{{guest.status}}" ng-show="$index != 0 && guest.status != null">{{guest.status | capitalize}}</div>
                   </div>
                   <div class="guest-ticket-list--right col">
-                    <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'invited'" ng-click="acceptInvite()">ACCEPT</div>
+                    <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'invited'" ng-click="respondToInvite('accepted')">ACCEPT</div>
                     <div class="guest-ticket-list--accept" ng-show="$index == 0 && guest.status == 'accepted'" ><a href="#/guest/tickets/{{guestGame.tickets[0]}}">VIEW</a></div>
                     <div class="guest-ticket-list--invite" ng-show="$index != 0 && guest.status == null" ng-click="inviteGuest($index)">INVITE</div>
                   </div>
