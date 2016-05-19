@@ -34,6 +34,10 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
     $scope.game.$loading = true;
   });
 
+  $scope.goToManageTickets = function goToManageTickets() {
+    $state.go('menu.manage-tickets', {gameId: $stateParams.gameId})
+  }
+
   $scope.isReady = function isReady() {
     return !$scope.game.$loading && !$scope.guests.length > 0;
   }
