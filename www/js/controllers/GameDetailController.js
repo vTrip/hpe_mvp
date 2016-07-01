@@ -1,4 +1,11 @@
-angular.module('starter').controller('GameDetailCtrl', function($scope, $location, $stateParams, $q, $ionicListDelegate, GamesListService, GuestService, ContactsService, $state, $ionicModal, $ionicPopup) {
+angular.module('starter').controller('GameDetailCtrl', function($scope, $location,
+  $stateParams, $q, $ionicListDelegate, GamesListService, GuestService,
+  ContactsService, $state, $ionicModal, $ionicPopup, LogoToggleService, $timeout,
+  TeamCodes) {
+
+  $scope.$on("$ionicView.enter", function(scopes, states, element) {
+    $scope.showLogos = LogoToggleService.get();
+  });
 
   $scope.game = {
     $loading: true,
@@ -47,19 +54,25 @@ angular.module('starter').controller('GameDetailCtrl', function($scope, $locatio
      template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
      cssClass: 'custom-loading-popup',
     });
+    $timeout(function() {
+      GamesListService.read($stateParams.gameId).then(function(res) {
+        $scope.game.value = res.data;
+      }).catch(function(err) {
+        // any error catching here
+        $scope.game.$error = true;
+        console.log(err);
+      }).finally(function() {
+        if ($scope.game.value.guests.length > 0) {
+          $scope.loadGuests();
+        }
+        loadingPopup.close();
+      });
+      $scope.showLogos = LogoToggleService.get();
+    }, 500);
+  }
 
-    GamesListService.read($stateParams.gameId).then(function(res) {
-      $scope.game.value = res.data;
-    }).catch(function(err) {
-      // any error catching here
-      $scope.game.$error = true;
-      console.log(err);
-    }).finally(function() {
-      if ($scope.game.value.guests.length > 0) {
-        $scope.loadGuests();
-      }
-      loadingPopup.close();
-    });
+  $scope.getTeamCode = function getTeamCode(team) {
+    return TeamCodes.get(team);
   }
 
   $scope.loadGuests = function loadGuests() {

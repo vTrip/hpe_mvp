@@ -246,6 +246,52 @@ angular.module('starter')
       });
     },
   }
+})
 
+.factory('LogoToggleService', function() {
+  var logo_switch = true;
 
+  return {
+    get: function() {
+      return logo_switch;
+    },
+
+    set: function(state) {
+      logo_switch = state;
+      console.log(logo_switch);
+    }
+  }
+})
+
+.factory('TeamCodes', function() {
+  var teams = [
+    {name: 'Broncos', code: 'BRI'},
+    {name: 'Bulldogs', code: 'CBY'},
+    {name: 'Cowboys', code: 'NQL'},
+    {name: 'Dragons', code: 'STI'},
+    {name: 'Eels', code: 'PAR'},
+    {name: 'Knights', code: 'NEW'},
+    {name: 'Panthers', code: 'PEN'},
+    {name: 'Rabbitohs', code: 'SOU'},
+    {name: 'Raiders', code: 'CBR'},
+    {name: 'Roosters', code: 'SYD'},
+    {name: 'Sea Eagles', code: 'MAN'},
+    {name: 'Sharks', code: 'CRO'},
+    {name: 'Storm', code: 'MEL'},
+    {name: 'Tigers', code: 'WST'},
+    {name: 'Titans', code: 'GLD'},
+    {name: 'Warriors', code: 'WAR'}
+  ];
+
+  return {
+    get: function(team) {
+      var code;
+      teams.forEach(function(item) {
+        if (item.name == team) {
+          code = item.code;
+        }
+      });
+      return code;
+    }
+  }
 })

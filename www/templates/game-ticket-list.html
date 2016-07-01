@@ -11,7 +11,8 @@
           <div class="game-detail--info-left">Brookvale Oval</div>
         </div>
         <div class="col">
-          <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
+          <div class="team-logo--code" ng-hide="showLogos">{{getTeamCode(game.value.awayTeam)}}</div>
+          <div class="team-logo--{{game.value.awayTeam | lowercase}}" ng-hide="!showLogos"></div>
         </div>
         <div class="col game-detail--tickets-container">
           <div class="game-detail--number-tickets">{{game.value.tickets.length}} Tickets</div>

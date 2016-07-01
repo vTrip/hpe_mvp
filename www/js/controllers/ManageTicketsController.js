@@ -1,4 +1,10 @@
-angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stateParams, $location, $ionicScrollDelegate, $ionicPopup, GamesListService) {
+angular.module('starter').controller('ManageTicketsCtrl', function($scope,
+  $stateParams, $location, $ionicScrollDelegate, $ionicPopup,
+  GamesListService, LogoToggleService, TeamCodes) {
+
+  $scope.$on("$ionicView.enter", function(scopes, states, element) {
+    $scope.showLogos = LogoToggleService.get();
+  });
 
   $scope.game = {
     $loading: false,
@@ -26,6 +32,10 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   }
   $scope.reload();
 
+  $scope.getTeamCode = function getTeamCode(team) {
+    return TeamCodes.get(team);
+  }
+
   $scope.formatDate = function formatDate(date) {
     var momentDate = moment(date);
     return momentDate.format('DD MMM');
@@ -45,7 +55,7 @@ angular.module('starter').controller('ManageTicketsCtrl', function($scope, $stat
   $scope.deleteTicket = function deleteTicket($index) {
     var ticket = $scope.game.value.tickets[$index];
     $scope.game.value.tickets.splice($index, 1);
-    
+
     var updated = {
       tickets: $scope.game.value.tickets,
     };

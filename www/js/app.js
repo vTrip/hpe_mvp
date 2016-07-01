@@ -35,7 +35,17 @@ angular.module('starter', ['ionic', 'angular-carousel'])
   .state('menu', {
     url: '/menu',
     abstract: true,
-    templateUrl: 'templates/menu.html',
+    templateUrl: 'templates/menu.html'
+  })
+
+  // list of games
+  .state('menu.settings', {
+    url: '/settings',
+    views: {
+      'menuContent' :{
+        templateUrl: 'templates/settings.html',
+      }
+    }
   })
 
   // list of games

@@ -14,7 +14,8 @@
             <div class="game-list--team">v {{game.awayTeam}}</div>
           </div>
           <div class="col">
-            <div class="team-logo--{{game.awayTeam | lowercase}}"></div>
+            <div class="team-logo--code" ng-hide="showLogos">{{getTeamCode(game.awayTeam)}}</div>
+            <div class="team-logo--{{game.awayTeam | lowercase}}" ng-hide="!showLogos"></div>
           </div>
           <div class="col">
             <div class="game-list--ticket-stat">{{game.invited}} Invited</div>

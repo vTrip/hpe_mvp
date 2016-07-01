@@ -1,29 +1,12 @@
-angular.module('starter').controller('GamesListCtrl', function($scope, GamesListService, $ionicPopup, $ionicModal, $stateParams, $state) {
+angular.module('starter').controller('GamesListCtrl', function($scope,
+  GamesListService, $ionicPopup, $ionicModal, $stateParams, $state, $rootScope,
+  LogoToggleService, $timeout, TeamCodes) {
 
   $scope.games = {
     $loading: false,
     $error: false,
     value: [],
   };
-
-  var teams = $scope.teams = [
-    {name: 'Broncos'},
-    {name: 'Bulldogs'},
-    {name: 'Cowboys'},
-    {name: 'Dragons'},
-    {name: 'Eels'},
-    {name: 'Knights'},
-    {name: 'Panthers'},
-    {name: 'Rabbitohs'},
-    {name: 'Raiders'},
-    {name: 'Roosters'},
-    {name: 'Sea-Eagles'},
-    {name: 'Sharks'},
-    {name: 'Storm'},
-    {name: 'Tigers'},
-    {name: 'Titans'},
-    {name: 'Warriors'},
-  ];
 
   $scope.$on( "$ionicView.enter", function( scopes, states ) {
     $scope.reload();
@@ -39,18 +22,24 @@ angular.module('starter').controller('GamesListCtrl', function($scope, GamesList
      template: '<div class="icon-refreshing loading-placeholder"><ion-spinner></ion-spinner></div>',
      cssClass: 'custom-loading-popup',
     });
-    GamesListService.all().then(function(result) {
-      $scope.games.value = result.data;
-    }).catch(function(err) {
-      $scope.games.$error = true;
-      console.error(err);
-    }).finally(function() {
-      loadingPopup.close();
-      $scope.games.$loading = false;
-      $scope.$broadcast('scroll.refreshComplete');
-    });
+    $timeout(function() {
+      GamesListService.all().then(function(result) {
+        $scope.games.value = result.data;
+      }).catch(function(err) {
+        $scope.games.$error = true;
+        console.error(err);
+      }).finally(function() {
+        loadingPopup.close();
+        $scope.games.$loading = false;
+        $scope.$broadcast('scroll.refreshComplete');
+      });
+      $scope.showLogos = LogoToggleService.get();
+    }, 500);
   }
 
+  $scope.getTeamCode = function getTeamCode(team) {
+    return TeamCodes.get(team);
+  }
 
   $scope.isEmptyState = function isEmptyState() {
     return $scope.games.length = 0 && !$scope.games.$loading;

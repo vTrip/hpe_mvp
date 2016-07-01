@@ -1,4 +1,10 @@
-angular.module('starter').controller('TicketCtrl', function($scope, $state, $stateParams, $ionicModal, $ionicPopup, GamesListService, GuestService, $document) {
+angular.module('starter').controller('TicketCtrl', function($scope, $state,
+  $stateParams, $ionicModal, $ionicPopup, GamesListService,
+  GuestService, $document, LogoToggleService, TeamCodes) {
+
+  $scope.$on("$ionicView.enter", function(scopes, states, element) {
+    $scope.showLogos = LogoToggleService.get();
+  });
 
   $scope.game = {
     $loading: false,
@@ -24,6 +30,10 @@ angular.module('starter').controller('TicketCtrl', function($scope, $state, $sta
     });
   }
   $scope.reload();
+
+  $scope.getTeamCode = function getTeamCode(team) {
+    return TeamCodes.get(team);
+  }
 
   var declineTicketModalPromise = $ionicModal.fromTemplateUrl('templates/guest-ticket-decline.html', {
     scope: $scope,

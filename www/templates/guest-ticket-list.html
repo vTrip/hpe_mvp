@@ -20,7 +20,8 @@
     <div class="card">
       <div class="row">
         <div class="col">
-          <div class="team-logo--sea-eagles logo-right"></div>
+          <div class="team-logo--code" ng-hide="showLogos">{{getTeamCode(game.awayTeam)}}</div>
+          <div class="team-logo--sea-eagles logo-right" ng-hide="!showLogos"></div>
           <div class="ticket-detail--team-name">{{guestGame.homeTeam}}</div>
         </div>
         <div class="col-10" style="margin:auto;">

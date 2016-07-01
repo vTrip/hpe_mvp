@@ -1,4 +1,10 @@
-angular.module('starter').controller('GuestTicketsCtrl', function($scope, $state, $q, $ionicModal, $ionicPopup, GuestGameService, GuestService, ContactsService) {
+angular.module('starter').controller('GuestTicketsCtrl', function($scope, $state,
+  $q, $ionicModal, $ionicPopup, GuestGameService, GuestService,
+  ContactsService, LogoToggleService) {
+
+  $scope.$on("$ionicView.enter", function(scopes, states, element) {
+    $scope.showLogos = LogoToggleService.get();
+  });
 
   var declineTicketModalPromise = $ionicModal.fromTemplateUrl('templates/guest-ticket-decline.html', {
     scope: $scope,

@@ -10,7 +10,8 @@
     <div class="detail card">
       <div class="row">
         <div class="col parent-column">
-          <div class="team-logo--sea-eagles"></div>
+          <div class="team-logo--code" ng-hide="showLogos">{{getTeamCode(game.value.awayTeam)}}</div>
+          <div class="team-logo--sea-eagles" ng-hide="!showLogos"></div>
           <div class="ticket-detail--team-name">{{game.value.homeTeam}}</div>
         </div>
         <div class="col parent-column">
@@ -46,7 +47,8 @@
           </div>
         </div>
         <div class="col parent-column">
-          <div class="team-logo--{{game.value.awayTeam | lowercase}}"></div>
+          <div class="team-logo--code" ng-hide="showLogos">{{getTeamCode(game.value.awayTeam)}}</div>
+          <div class="team-logo--{{game.value.awayTeam | lowercase}}" ng-hide="!showLogos"></div>
           <div class="ticket-detail--team-name">{{game.value.awayTeam}}</div>
         </div>
       </div>

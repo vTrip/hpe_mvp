@@ -1,6 +1,8 @@
 // angular.module('starter');
 
-angular.module('starter').controller('LoginCtrl', function($scope, $state) {
+angular.module('starter').controller('LoginCtrl', function($scope, $state, $rootScope) {
+
+  $rootScope.logo_toggle = true;
 
   $scope.$on("$ionicView.loaded", function(scopes, states, element) {
     //focus on the input field once the view is loaded
